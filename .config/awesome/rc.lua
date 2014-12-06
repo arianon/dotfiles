@@ -140,7 +140,7 @@ mymainmenu = awful.menu({
 local separator = wibox.widget.imagebox(beautiful.separatorv)
 
 -- TRAY
-local traywidget = wibox.widget.systray()
+-- local traywidget = wibox.widget.systray()
 
 -- CLOCK
 local clockwidget = wibox.widget.textbox()
@@ -284,8 +284,8 @@ for s = 1, screen.count() do
     right_layout:add(volwidget)
     right_layout:add(clockicon)
     right_layout:add(clockwidget)
-	right_layout:add(separator)
-	right_layout:add(traywidget)
+	-- right_layout:add(separator)
+	-- right_layout:add(traywidget)
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()

@@ -15,7 +15,6 @@ urxvtd -q -o -f &
 transmission-daemon &
 
 thunar --daemon &
-nm-applet &
 setxkbmap es &
 
 #hsetroot -fill "~/Pictures/Wallpapers/clouds.jpg" &
