@@ -1,0 +1,70 @@
+#include "/home/arianon/.colors/satori"
+
+URxvt*perl-lib:	/usr/lib/URxvt/perl
+URxvt*perl-ext:	default,font-size,selection-to-clipboard,matcher
+URxvt.urlLauncher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+URxvt.keysym.C-1: command:\033]710;-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-iso10646-*\007
+URxvt.keysym.C-2: command:\033]710;-*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*\007
+URxvt.keysym.C-3: command:\033]710;-*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*\007
+URxvt.keysym.C-4: command:\033]710;-*-lemon-medium-*-*-*-10-*-*-*-*-*-iso8859-*\007
+
+URxvt.keysym.C-plus: perl:font-size:increase
+URxvt.keysym.C-minus: perl:font-size:decrease
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+*.background: #09090d
+*.foreground: #edeff2
+*.color0: #353540
+*.color1: #8c5760
+*.color2: #7b8c58
+*.color3: #8c6e43
+*.color4: #58698c
+*.color5: #7b5e7d
+*.color6: #66808c
+*.color7: #8c8b8b
+*.color8: #545466
+*.color9: #b26f7a
+*.color10: #9db270
+*.color11: #b28c55
+*.color12: #7086b2
+*.color13: #9c77b2
+*.color14: #82a2b2
+*.color15: #b8b8c8
+
+!URxvt.tabbed.autohide: true
+!URxvt.tabbed.reopen-on-close: yes
+!URxvt.tabbed.tabbar-fg: 0
+!URxvt.tabbed.tabbar-bg: -1
+!URxvt.tabbed.tab-bg: -1
+!URxvt.tabbed.tab-fg: 4
+!URxvt.tabbed.title: false
+!URxvt.tabbed.title-bg: -1
+!URxvt.tabbed.title-fg: 2
+
+URxvt*scrollBar: false
+!URxvt*cursorUnderline: 1
+URxvt*depth: 32
+URxvt*internalBorder: 5
+URxvt*externalBorder: 0
+URxvt*dynamicColors: on
+
+URxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
+!URxvt*font: xft:terminus:size=8:antialias=false
+URxvt*boldFont:
+
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+
+!dzen2.font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
+!dzen2.foreground: #edeff2
+!dzen2.background: #09090d
+
+!vim ts=8

@@ -1,0 +1,24 @@
+# Interface
+
+playlist_display_mode = "classic"
+#song_list_format = "$2%t $1by $6%a$9 $R$1%b"
+song_list_format  = "$5%a$1 ● $8%t $R$1%b"
+song_columns_list_format = "(7f)[white]{l} (25)[blue]{a} (40)[white]{t|f} (30)[blue]{b}"
+#now_playing_prefix = "» "
+#now_playing_suffix = "»"
+
+playlist_separate_albums = "yes"
+
+statusbar_visibility = "no"
+header_visibility = "no"
+titles_visibility = "no"
+
+#progressbar_look = "─╼ "
+#progressbar_look = "───"
+progressbar_look = "─╼─"
+#progressbar_look = "█ "
+progressbar_color = "black"
+progressbar_elapsed_color = "white"
+progressbar_boldness = "yes"
+
+follow_now_playing_lyrics = "yes"
