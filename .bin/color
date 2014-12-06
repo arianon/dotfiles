@@ -1,0 +1,66 @@
+#!/usr/bin/bash
+
+esc="["
+reset="${esc}0m"
+
+blackfg="${esc}30m";    blackbg="${esc}1;30m";
+redfg="${esc}31m";      redbg="${esc}1;31m";
+greenfg="${esc}32m";    greenbg="${esc}1;32m";
+yellowfg="${esc}33m";   yellowbg="${esc}1;33m";
+bluefg="${esc}34m";     bluebg="${esc}1;34m";
+purplefg="${esc}35m"    purplebg="${esc}1;35m";
+cyanfg="${esc}36m";     cyanbg="${esc}1;36m";
+whitefg="${esc}37m";    whitebg="${esc}1;37m";
+
+boldon="${esc}1m";      boldoff="${esc}22m";
+italicson="${esc}3m";   italicsoff="${esc}23m";
+ulon="${esc}4m";        uloff="${esc}24m";
+invon="${esc}7m";       invoff="${esc}27m";
+
+
+blocks() {
+    cat <<blocks
+
+${blackfg}████${reset}${blackbg}████${reset} ${redfg}████${reset}${redbg}████${reset} ${greenfg}████${reset}${greenbg}████${reset} ${yellowfg}████${reset}${yellowbg}████${reset} ${bluefg}████${reset}${bluebg}████${reset} ${purplefg}████${reset}${purplebg}████${reset} ${cyanfg}████${reset}${cyanbg}████${reset} ${whitefg}████${reset}${whitebg}████${reset}
+${blackfg}████${reset}${blackbg}████${reset} ${redfg}████${reset}${redbg}████${reset} ${greenfg}████${reset}${greenbg}████${reset} ${yellowfg}████${reset}${yellowbg}████${reset} ${bluefg}████${reset}${bluebg}████${reset} ${purplefg}████${reset}${purplebg}████${reset} ${cyanfg}████${reset}${cyanbg}████${reset} ${whitefg}████${reset}${whitebg}████${reset}
+${blackfg}████${reset}${blackbg}████${reset} ${redfg}████${reset}${redbg}████${reset} ${greenfg}████${reset}${greenbg}████${reset} ${yellowfg}████${reset}${yellowbg}████${reset} ${bluefg}████${reset}${bluebg}████${reset} ${purplefg}████${reset}${purplebg}████${reset} ${cyanfg}████${reset}${cyanbg}████${reset} ${whitefg}████${reset}${whitebg}████${reset}
+
+blocks
+}
+
+lines() {
+cat <<lines
+
+${redfg}╔╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╗  ${greenfg}╔╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╗  ${yellowfg}╔╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╗
+${boldon}${redfg}╚╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╝  ${greenfg}╚╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╝  ${yellowfg}╚╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╝${reset}
+${bluefg}╔╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╗  ${purplefg}╔╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╗  ${cyanfg}╔╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╗
+${boldon}${bluefg}╚╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╝  ${purplefg}╚╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╝  ${cyanfg}╚╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╩╝${reset}
+
+lines
+}
+
+numbers() {
+    cat <<numbers
+
+${blackfg}11111111${reset} ${redfg}22222222${reset} ${greenfg}33333333${reset} ${yellowfg}44444444${reset} ${bluefg}55555555${reset} ${purplefg}66666666${reset} ${cyanfg}77777777${reset} ${whitefg}88888888${reset}
+${blackbg}11111111${reset} ${redbg}22222222${reset} ${greenbg}33333333${reset} ${yellowbg}44444444${reset} ${bluebg}55555555${reset} ${purplebg}66666666${reset} ${cyanbg}77777777${reset} ${whitebg}88888888${reset}
+
+numbers
+}
+
+satori() {
+    cat <<satori
+
+${blackfg}#353540${reset} ${redfg}#8C5760${reset} ${greenfg}#7B8C58${reset} ${yellowfg}#8C6E43${reset} ${bluefg}#58698C${reset} ${purplefg}#7B5E7D${reset} ${cyanfg}#66808C${reset} ${whitefg}#8C8B8B${reset}
+${blackbg}#545466${reset} ${redbg}#B26F7A${reset} ${greenbg}#9DB270${reset} ${yellowbg}#B28C55${reset} ${bluebg}#7086B2${reset} ${purplebg}#9C77B2${reset} ${cyanbg}#8292B2${reset} ${whitebg}#B8B8C8${reset}
+
+satori
+}
+
+case $1 in
+    s) satori ;;
+    b) blocks ;;
+    n) numbers ;;
+    l) lines  ;;
+    *) satori ;;
+esac

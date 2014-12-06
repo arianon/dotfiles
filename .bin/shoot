@@ -1,0 +1,53 @@
+#!/bin/bash
+
+while getopts "us" opt; do
+	case $opt in
+		u) UPLOAD=1 ;;
+		s) GEOMETRY=1 ;;
+		?) exit 1 ;;
+	esac
+done
+
+shift $((OPTIND-1))
+
+IMAGE=${1:-/tmp/temp.png}
+
+shoot_maim() {
+	maim --hidecursor $@ $IMAGE
+}
+
+shoot_notify() {
+	THUMB=${IMAGE}_thumbnail.png
+	THUMB_SIZE="96x96"
+
+	convert $IMAGE -thumbnail $THUMB_SIZE $THUMB
+	notify-send -i $THUMB "SHOOT" "$1"
+}
+
+shoot_slop() {
+	SLOP_BORDER=2
+	SLOP_COLORS="0.698,0.549,0.333"
+
+	slop -b $SLOP_BORDER -c $SLOP_COLORS $@
+}
+
+if [[ $GEOMETRY ]]; then
+	eval $(shoot_slop)
+	if [[ $Cancel == "true" ]]; then exit 0; fi
+
+	shoot_maim -g $G
+else
+	shoot_maim
+fi
+
+if [[ $UPLOAD ]]; then
+	UPLOAD=$(curl -sf -F file="@$IMAGE" "https://api.teknik.io/upload/post")
+
+	if [[ $UPLOAD =~ "error" ]]; then
+		shoot_notify "Upload failed!"
+	else
+		URL=$(jq -r '.[].results.file.url' <<< $UPLOAD)
+		shoot_notify "Image uploaded!"
+		printf $URL | xclip -sel c
+	fi
+fi
