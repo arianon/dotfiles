@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
-URL=$(xclip -o)
-INFO=$(youtube-dl -f $URL)
+NAME="$(basename $0)"
+URL="$(xclip -o)"
 COOKIE="$HOME/.config/mpv/cookie.txt"
 
 notify() {
-	notify-send -i "/usr/share/icons/hicolor/32x32/apps/mpv.png" "MPV-YT" "$1"
+	notify-send -i "/usr/share/icons/hicolor/32x32/apps/mpv.png" $NAME "$1"
 }
 
 # Glorious bash "error checking". Fucking disgusting.
