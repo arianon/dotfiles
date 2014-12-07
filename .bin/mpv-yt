@@ -1,29 +1,22 @@
 #!/usr/bin/bash
 
 NAME="$(basename $0)"
-URL="$(xclip -o)"
 COOKIE="$HOME/.config/mpv/cookie.txt"
+URL="$(xclip -o)"
 
 notify() {
 	notify-send -i "/usr/share/icons/hicolor/32x32/apps/mpv.png" $NAME "$1"
-}
-
-# Glorious bash "error checking". Fucking disgusting.
-_check() {
-	if [ $? -gt 0 ]; then 
-		notify "Something went wrong."
-	fi
 }
 
 if [[ $URL =~ "http" ]]; then
 	notify "Playing video..."
 	VIDEO=$(youtube-dl -g --cookies $COOKIE -f 43 $URL)
 	
-	_check
+	[ $? -gt 0 ] && notify "youtube-dl failed to start."
 
 	mpv --cookies --cookies-file $COOKIE $VIDEO
 
-	_check
+	[ $? -gt 0 ] && notify "mpv failed to start."
 else
 	notify "Not a valid URL."
 fi
