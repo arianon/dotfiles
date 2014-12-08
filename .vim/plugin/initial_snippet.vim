@@ -17,9 +17,11 @@ fu! C_NewFile()
 	let s:snippet = [
 				\ 'int main(int argc, char* argv[]) {',
 				\ '	',
+				\ '',
+				\ '	return 0;',
 				\ '}',
 				\ '',
-				\ '// vim: ts=4:sts=4:sw=4:noet'
+				\ '/* vim: set ts=4 sts=4 sw=4 noet: */'
 				\	]
 
 	call append("$", s:snippet)
@@ -62,8 +64,3 @@ fu! Python_NewFile()
 	" Send cursor to the main() function
 	call cursor(5, 0)
 endfu
-
-fu! Python_AutoImports()
-	let x = "kek"
-endfu
-
