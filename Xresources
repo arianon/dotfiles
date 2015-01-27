@@ -1,0 +1,28 @@
+#include "themes/satori"
+
+URxvt.perl-lib:	/usr/lib/URxvt/perl
+URxvt.perl-ext-common:	default,matcher,selection-to-clipboard,url-picker,keyboard-select
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.url-picker-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+URxvt.keysym.M-u: perl:url-picker
+URxvt.keysym.M-v: perl:keyboard-select:activate
+
+URxvt.keysym.C-1: command:\033]710;-*-gohufont-medium-*-normal-*-11-*-*-*-*-*-iso10646-*\007
+URxvt.keysym.C-2: command:\033]710;-*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*\007
+URxvt.keysym.C-3: command:\033]710;-*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*\007
+URxvt.keysym.C-4: command:\033]710;-*-lemon-medium-*-*-*-10-*-*-*-*-*-iso8859-*\007
+
+
+URxvt*scrollBar: false
+URxvt*internalBorder: 5
+
+!no bold font
+URxvt*boldFont:
+URxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*,\
+			-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
+
+!vim ts=8
+
+

@@ -1,0 +1,75 @@
+# i don't know why the fuck do I have to unset $TMUX
+super + Return
+	unset TMUX; urxvt
+
+Print
+	~/.bin/shoot -u
+
+shift + @Print
+	~/.bin/shoot -su
+
+super + r
+	~/.bin/mpv-yt
+
+super + p
+	~/.bin/dmenu2
+
+super + w
+	dwb
+
+# make sxhkd reload its configuration files:
+ctrl + alt + r
+	pkill -USR1 -x sxhkd
+
+super + shift + q
+	pkill -x swm
+
+# I am become WM, the destroyer of X
+
+# Window Manipulation
+super + {h,j,k,l}
+	~/.bin/wm-move {left,down,up,right} 10
+
+super + shift + {h,j,k,l}
+	~/.bin/wm-move {left,down,up,right} 40
+
+super + alt + {h,j,k,l}
+	~/.bin/wm-resize {left,down,up,right} 10
+
+super + alt + shift + {h,j,k,l}
+	~/.bin/wm-resize {left,down,up,right} 40
+
+alt + {Tab, shift + Tab}
+ 	~/.bin/wm-focus {next,prev}
+
+super + Escape
+	killw $(pfw)
+
+super + s
+	chwso -i $(pfw)
+
+super + f
+	~/.bin/wm-fullscreen
+
+super + {y,u,g,b,n}
+	~/.bin/wm-move {tl,tr,md,bl,br}
+
+super {+ shift,} + m
+	~/.bin/wm-resize {maxheight,maxvert}
+
+# Group Manipulation
+super + {F1,F2,F3,F4,F5}
+	~/.bin/wm-group -t {1,2,3,4,5}
+
+super + alt + {F1,F2,F3,F4,F5}
+	~/.bin/wm-group -o {1,2,3,4,5}
+
+super + shift + {F1,F2,F3,F4,F5}
+	~/.bin/wm-group -d all; \
+	~/.bin/wm-group -a {1,2,3,4,5}
+
+super + Backspace
+	~/.bin/wm-group -d all
+
+# vim: set syntax=sh:
+

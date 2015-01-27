@@ -1,7 +1,0 @@
-#!/bin/bash
-
-tr-notify() {
-	notify-send -i transmission "Transmission" "$1"
-}
-
-transmission-remote -a "$@" && tr-notify "Torrent added."
