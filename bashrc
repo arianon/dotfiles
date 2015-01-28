@@ -1,20 +1,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Prompt
-__prompt() {
-    local PROMPT=">>>"
-    local R="[31m"
-    local G="[32m"
-    local N="[0m"
+__prompt () {
+    (( $? != 0 )) \
+        && echo -n "[31m" \
+        || echo -n "[32m"
 
-    local COL
-    (( $? != 0 )) && COL=$R || COL=$G
-
-    export PS1="${COL}${PROMPT}${N} "
+    echo -n "$ [0m"
 }
 
-export PROMPT_COMMAND="__prompt"
+PS1='$(__prompt)'
+
+# Binds
+bind "TAB:menu-complete"
 
 # Functions
 ls() { command ls -F --color=auto --group-directories-first $*; }
@@ -30,12 +28,12 @@ cd() {
     fi
 }
 
-mkcd() { 
+mkcd() {
     if (( $# != 1 )); then
         echo "usage: mkcd <directory>"
         return 1
     fi
-    
+
     if [[ -d "$1" ]]; then
         echo "'$1' already exists, cd-ing."
     else
@@ -80,11 +78,6 @@ roll() {
     fi
 }
 
-sprunge() {
-    local FILE=${1:-"-"} # 1st arg or STDIN
-    curl -sF "sprunge=<${FILE}" http://sprunge.us
-}
-
 # Aliases
 if which pacaur >&-
     then alias pacman="pacaur"
@@ -113,7 +106,7 @@ alias g="grep"
 alias s="sed"
 alias t="tmux"
 alias v="vim"
- 
+
 # misc
 alias so="source ~/.bashrc"
 alias :q="exit"
