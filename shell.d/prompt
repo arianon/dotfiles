@@ -1,16 +1,27 @@
 #!/bin/bash
 
+R=$(tput setaf 1)
+G=$(tput setaf 2)
+Y=$(tput setaf 3)
+# B=$(tput setaf 4)
+# M=$(tput setaf 5)
+# C=$(tput setaf 6)
+# W=$(tput setaf 7)
+N=$(tput sgr0)
+
 function git_prompt {
+    local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    local status="[${G}${branch}${N}]"
+
+    echo -n " $status"
+}
 
 function prompt {
-    if (( $? != 0 )); then
-        tput setaf 1
-    else
-        tput setaf 2
-    fi
+    (( $? != 0 )) && echo -n "${R}" || echo -n "${Y}"
 
-    echo -n "λ"
-    tput sgr0
+    echo -n "λ${N}"
+
+    [[ -d .git ]] && git_prompt
 }
 
 PS1='$(prompt) '
