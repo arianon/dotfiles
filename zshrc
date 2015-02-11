@@ -8,7 +8,7 @@ fi
 
 if [[ -z "$TMUX" ]]; then
 	group="tmux"
-	check=`tmux ls 2>/dev/null | grep -c $group`
+	check=$(tmux ls 2>/dev/null | grep -c $group)
 	id="$group -> $RANDOM"
 
 	if [[ $check -gt 0 ]]; then
@@ -23,10 +23,15 @@ fi
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -U colors && colors
 
-export PATH=~/.bin:${PATH}:$(ruby -rubygems -e "puts Gem.user_dir")/bin
+export PATH=~/bin:${PATH}:$(ruby -rubygems -e "puts Gem.user_dir")/bin
+export GOPATH=$HOME/go
+
+# Prompt
 
 prompt off
-PROMPT="%(?,%F{blue},%F{red})$ %{$reset_color%}"
+setopt PROMPT_SUBST
+
+PROMPT="%(?,%F{blue},%F{red})λ %{$reset_color%}"
 RPROMPT="%F{black}%~%{$reset_color%}"
 
 rand() {
@@ -109,7 +114,7 @@ alias weechat="dtach -A /tmp/weechat.sk weechat"
 alias git="hub"
 
 alias make="make -j"
-alias rm="rm -v"
+alias rm="rm -Iv"
 alias mv="mv -v"
 alias cp="cp -Rv"
 alias du="cdu -idh"

@@ -1,22 +1,35 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-__prompt () {
-    (( $? != 0 )) \
-        && echo -n "[31m" \
-        || echo -n "[32m"
+if [[ -z "$TMUX" ]]; then
+        group="tmux"
+        check=$(tmux ls 2>/dev/null | grep -c $group)
+        id="$group -> $RANDOM"
 
-    echo -n "$ [0m"
+        if (( $check > 0 )); then
+                tmux new -d -t "$group" -s "$id" \; set destroy \; attach -t "$id" >/dev/null
+        else
+                tmux new -s "$group" >/dev/null
+        fi
+fi
+
+__prompt () {
+    if (( $? != 0 )); then
+        tput setaf 1
+    else
+        tput setaf 2
+    fi
+
+    echo -n "λ"
+    tput sgr0
 }
 
-PS1='$(__prompt)'
+PS1='$(__prompt) '
 
 # Binds
 bind "TAB:menu-complete"
 
 # Functions
-ls() { command ls -F --color=auto --group-directories-first $*; }
-
 cd() {
     if (( $# == 1 )) && [[ -f $1 ]]; then
         local dir=$(dirname $1)
@@ -24,7 +37,7 @@ cd() {
         echo "Correcting $1 to $dir"
         builtin cd $dir
     else
-        builtin cd "$@" && ls
+        builtin cd "$@" && ls -FX --color=auto
     fi
 }
 
@@ -88,13 +101,14 @@ which hub >&- && alias git="hub"
 
 # flags
 alias cp="cp -rv"
-alias rm="rm -v"
+alias rm="rm -Iv"
 alias mv="mv -v"
 alias mkdir="mkdir -p"
 alias make="make -j"
 alias grep="grep --color=auto"
 
 # ls goodies
+alias ls="ls -FX --color=auto"
 alias l="ls -lh"
 alias la="ls -Ah"
 alias ll="ls -lAh"
