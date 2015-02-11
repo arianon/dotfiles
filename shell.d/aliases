@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Aliases
+if which pacaur >&-
+    then alias pacman="pacaur"
+    else alias pacman="sudo pacman"
+fi
+
+which hub >&- && alias git="hub"
+
+# flags
+alias cp="cp -rv"
+alias rm="rm -Iv"
+alias mv="mv -v"
+alias mkdir="mkdir -p"
+alias make="make -j"
+alias grep="grep --color=auto"
+
+# ls goodies
+alias ls="ls -FX --group-directories-first --color=auto"
+alias l="ls -lh"
+alias la="ls -Ah"
+alias ll="ls -lAh"
+
+# shorties
+alias a="awk"
+alias c="clear"
+alias g="grep"
+alias s="sed"
+alias t="tmux"
+alias v="vim"
+
+# misc
+alias so="source ~/.bashrc"
+alias :q="exit"
+alias quit="exit"
+
+# can't live without these
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# vim: expandtab
+

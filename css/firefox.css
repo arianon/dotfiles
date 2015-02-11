@@ -1,0 +1,130 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@-moz-document url(chrome://browser/content/browser.xul) {
+
+/* Hide clutter */
+.urlbar-history-dropmarker,
+#page-proxy-favicon,
+#go-button,
+#identity-icon-labels,
+#identity-box,
+#notification-popup-box[hidden="true"],
+#notification-popup-box[hidden="false"],
+#notification-popup-box,
+.notification-anchor-icon,
+#PanelUI-button,
+.findbar-highlight.tabbable,
+.tabs-newtab-button,
+.toolbarbutton-1,
+.findbar-case-sensitive,
+#minimize-button,
+#restore-button,
+#close-button,
+.tabbrowser-tab:not([pinned]) .tab-icon-image {
+    display: none !important;
+}
+
+/* Style url-bar */
+#nav-bar {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background: #09090d !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#urlbar {
+    font-family: Terminus !important;
+    font-size: 8pt !important;
+    -moz-appearance: none !important;
+    color: #edeff2 !important;
+    border: none !important;
+    background: #09090d !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 16px !important;
+    margin-left: -6px !important;
+    padding-left: 20px !important;
+}
+
+#nav-bar-customization-target {
+    width: 100% !important;
+}
+
+#content-deck {
+    margin-bottom: 20px !important;
+}
+
+/* Style url-bar */
+#navigator-toolbox {
+    margin-bottom: -1px !important;
+}
+
+/* Style tabs */
+#tabbrowser-tabs {
+    font-family: Terminus !important;
+    font-size: 8pt !important;
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+    height: 20px !important;
+    text-align: center !important;
+    background: #09090d !important;
+    color: #8b8b8c !important;
+}
+
+.tabbrowser-tab[fadein]:not([pinned]) {
+    min-width: 32px !important;
+    max-width: 100% !important;
+    /* margin-top: 2px !important; */
+}
+
+.tabbrowser-tab[selected="true"]{
+    color: #edeff2 !important;
+    background-color: #2b2b30 !important;
+}
+
+/* Remove australis shit */
+#TabsToolbar:not(:-moz-lwtheme)::after,
+#TabsToolbar:not(:-moz-lwtheme)::before {
+    display: none !important;
+}
+
+.tab-background-start,
+.tab-background-end {
+    visibility: hidden !important;
+    box-shadow: none !important;
+}
+
+.tab-background-middle {
+    background: none !important;
+}
+
+#TabsToolbar,
+#TabsToolbar *{
+    clip-path: none !important;
+    max-height: 42px !important;
+}
+
+#TabsToolbar,
+.tabbrowser-tab *,
+.tabs-newtab-button,
+.toolbarbutton,
+.tab-background *{
+    background-image: none !important;
+}
+
+.tab-background,
+.tab-background-middle,
+.tabbrowser-tab:after,
+.tabbrowser-tab:before,
+.tabbrowser-tab:after {
+    box-shadow: none !important;
+    background: none !important;
+}
+
+#TabsToolbar:after {
+    border-bottom: 1px solid #edeff2 !important;
+}
+
+}

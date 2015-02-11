@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function git_prompt {
+
+function prompt {
+    if (( $? != 0 )); then
+        tput setaf 1
+    else
+        tput setaf 2
+    fi
+
+    echo -n "λ"
+    tput sgr0
+}
+
+PS1='$(prompt) '
+
+# vim: expandtab
+

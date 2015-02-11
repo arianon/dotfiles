@@ -13,4 +13,4 @@ setxkbmap es
 sxhkd -c ~/etc/sxhkdrc >/dev/null 2>&1 &
 
 volumeicon &
-exec startxfce4
+exec startlxde
