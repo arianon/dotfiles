@@ -1,17 +1,13 @@
 #!/bin/bash
 
-# Tmux
-
-if [[ -z "$TMUX" ]]; then
-    group="tmux"
-    check=$(tmux ls 2>/dev/null | grep -c $group)
-    id="$group -> $RANDOM"
-
-    if (( $check > 0 )); then
-        tmux new -d -t "$group" -s "$id" \; set destroy \; attach -t "$id" >/dev/null
-    else
-        tmux new -s "$group" >/dev/null
-    fi
-fi
+# SOFTWARE {{{
+export BROWSER="firefox"
+export EDITOR="ed"
+export VISUAL="nvim"
+export PAGER="less"
+# }}}
+# PATHS {{{
+export GOPATH="$HOME/go"
+export PATH="$HOME/bin:$GOPATH/bin:$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH:."
 
 # vim: expandtab

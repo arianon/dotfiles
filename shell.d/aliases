@@ -15,10 +15,11 @@ alias mv="mv -v"
 alias mkdir="mkdir -p"
 alias make="make -j"
 alias grep="grep --color=auto"
+alias diff="diff -Naur"
 
 # ls goodies
 alias ls="ls -FX --group-directories-first --color=auto"
-alias l="ls -lh"
+alias l="ls -Ggho"
 alias la="ls -Ah"
 alias ll="ls -lAh"
 
@@ -42,4 +43,3 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # vim: expandtab
-

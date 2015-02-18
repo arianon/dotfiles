@@ -12,5 +12,5 @@ xrdb -load  ~/etc/Xresources
 setxkbmap es
 sxhkd -c ~/etc/sxhkdrc >/dev/null 2>&1 &
 
-volumeicon &
+#volumeicon &
 exec startlxde

@@ -6,17 +6,17 @@ fi
 
 # Tmux
 
-if [[ -z "$TMUX" ]]; then
-	group="tmux"
-	check=$(tmux ls 2>/dev/null | grep -c $group)
-	id="$group -> $RANDOM"
-
-	if [[ $check -gt 0 ]]; then
-		tmux new -d -t $group -s $id \; set destroy \; attach -t $id >/dev/null
-	else
-		tmux new -s $group >/dev/null
-	fi
-fi
+# if [[ -z "$TMUX" ]]; then
+# 	group="tmux"
+# 	check=$(tmux ls 2>/dev/null | grep -c $group)
+# 	id="$group -> $RANDOM"
+# 
+# 	if [[ $check -gt 0 ]]; then
+# 		tmux new -d -t $group -s $id \; set destroy \; attach -t $id >/dev/null
+# 	else
+# 		tmux new -s $group >/dev/null
+# 	fi
+# fi
 
 ###
 
@@ -53,25 +53,25 @@ say () {
 
 conf() {
 	case $1 in
-		tmux)		vim ~/.tmux.conf ;;
-		term)		vim ~/.config/termite/config ;;
-		rc)			vim ~/.config/awesome/rc.lua && awesome -k ;;
-		theme)		vim ~/.config/awesome/arianon/theme.lua ;;
-		dunst)		vim ~/.config/dunst/dunstrc && pkill -x dunst && notify-send "<b>test</b>\ntest2" ;;
-		weechat)	vim ~/.weechat/weechat.conf ;;
+		tmux)		nvim ~/.tmux.conf ;;
+		term)		nvim ~/.config/termite/config ;;
+		rc)			nvim ~/.config/awesome/rc.lua && awesome -k ;;
+		theme)		nvim ~/.config/awesome/arianon/theme.lua ;;
+		dunst)		nvim ~/.config/dunst/dunstrc && pkill -x dunst && notify-send "<b>test</b>\ntest2" ;;
+		weechat)	nvim ~/.weechat/weechat.conf ;;
 		fonts)		sudoedit /etc/profile.d/infinality-settings.sh ;;
-		ncmpcpp)	vim ~/.ncmpcpp/config ;;
-		bspwm)		vim ~/.config/bspwm/bspwmrc ;;
-		sxhkd)		vim ~/.config/sxhkd/sxhkdrc && pkill -USR1 -x sxhkd ;;
-		panel)		vim ~/.config/bspwm/panel/panel_bar && pkill -x panel; panel ;;
-		comp)		vim ~/.config/compton.conf && pkill compton && compton -b ;;
-		zsh)		vim ~/.zshrc && source ~/.zshrc ;;
-		gtk2)		vim ~/.themes/Numix-Arianon/gtk-2.0/gtkrc ;;
-		gtk3)		vim ~/.themes/Numix-Arianon/gtk-3.0/gtk.css ;;
-		vim)		vim ~/.vimrc ;;
-		vimp)		vim ~/.vimperator/colors/phallus.vimp ;;
-		xinit)		vim ~/.xinitrc ;;
-		xres) 		vim ~/.Xresources && xrdb ~/.Xresources ;;
+		ncmpcpp)	nvim ~/.ncmpcpp/config ;;
+		bspwm)		nvim ~/.config/bspwm/bspwmrc ;;
+		sxhkd)		nvim ~/.config/sxhkd/sxhkdrc && pkill -USR1 -x sxhkd ;;
+		panel)		nvim ~/.config/bspwm/panel/panel_bar && pkill -x panel; panel ;;
+		comp)		nvim ~/.config/compton.conf && pkill compton && compton -b ;;
+		zsh)		nvim ~/.zshrc && source ~/.zshrc ;;
+		gtk2)		nvim ~/.themes/Numix-Arianon/gtk-2.0/gtkrc ;;
+		gtk3)		nvim ~/.themes/Numix-Arianon/gtk-3.0/gtk.css ;;
+		vim)		nvim ~/.nvimrc ;;
+		vimp)		nvim ~/.vimperator/colors/phallus.vimp ;;
+		xinit)		nvim ~/.xinitrc ;;
+		xres) 		nvim ~/.Xresources && xrdb ~/.Xresources ;;
 		*)			echo "Unknown application: $1"  ;;
 	esac
 }
@@ -106,11 +106,14 @@ define() {
 	curl dict://dict.org/d:$1
 }
 
+alias vim="nvim"
+
 alias lsw=lsw
 alias pacman="pacaur"
 alias abs="sudo abs"
-alias v="vim"
+alias v="nvim"
 alias weechat="dtach -A /tmp/weechat.sk weechat"
+alias irssi="dtach -A /tmp/irssi.sk irssi"
 alias git="hub"
 
 alias make="make -j"

@@ -27,4 +27,3 @@ function prompt {
 PS1='$(prompt) '
 
 # vim: expandtab
-

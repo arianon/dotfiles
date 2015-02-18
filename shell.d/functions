@@ -1,5 +1,11 @@
 #!/bin/bash
 
+function color {
+    tput setaf $1
+    shift
+    echo $@
+}
+
 function cd {
     if (( $# == 1 )) && [[ -f $1 ]]; then
         local dir=$(dirname $1)
@@ -35,15 +41,15 @@ function cdtemp {
 function extract {
     if [[ -f $1 ]]; then
         case $1 in
-            *.tar.bz2) tar xvjf $1 ;;
-            *.tar.gz)  tar xvzf $1 ;;
-            *.bz2)     bunzip2 $1 ;;
-            *.rar)     unrar x $1 ;;
-            *.gz)      gunzip $1 ;;
-            *.tar)     tar xvf $1 ;;
-            *.zip)     unzip $1 ;;
-            *.7z)      7za x $1 ;;
-            *) echo "'$1' cannot be extracted." 2>&1 ;;
+        *.tar.bz2) tar xvjf $1 ;;
+        *.tar.gz)  tar xvzf $1 ;;
+        *.bz2)     bunzip2 $1 ;;
+        *.rar)     unrar x $1 ;;
+        *.gz)      gunzip $1 ;;
+        *.tar)     tar xvf $1 ;;
+        *.zip)     unzip $1 ;;
+        *.7z)      7za x $1 ;;
+        *) echo "'$1' cannot be extracted." 2>&1 ;;
         esac
     else
         echo "'$1' is not a valid file or does not exist." 2>&1
@@ -61,5 +67,18 @@ function roll {
     fi
 }
 
-# vim: expandtab
+function unique_tmux {
+    if [[ -z "$TMUX" ]]; then
+        local group="tmux"
+        local check=$(tmux ls 2>/dev/null | grep -c $group)
+        local id="$group -> $RANDOM"
 
+        if (( $check > 0 )); then
+            tmux new -d -t "$group" -s "$id" \; set destroy \; attach -t "$id" >/dev/null
+        else
+            tmux new -s "$group" >/dev/null
+        fi
+    fi
+}
+
+# vim: expandtab

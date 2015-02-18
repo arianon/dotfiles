@@ -71,5 +71,5 @@ super + shift + q
 # super + Backspace
 # 	~/bin/wm-group -d all
 # 
-vim: set syntax=sh:
+vim: set syntax=sh fdm=marker:
 
