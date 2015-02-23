@@ -1,9 +1,12 @@
-#!/bin/bash
-
 function color {
     tput setaf $1
     shift
-    echo $@
+    printf $@
+    tput sgr0
+}
+
+function path {
+    pwd | sed s:$HOME:~:
 }
 
 function cd {
@@ -13,7 +16,7 @@ function cd {
         echo "Correcting $1 to $dir"
         builtin cd $dir
     else
-        builtin cd "$@" && ls -FX --color=auto
+        builtin cd "$@" && ls
     fi
 }
 
@@ -37,6 +40,7 @@ function cdtemp {
     echo "Created temporary directory '$tmp'"
     builtin cd "$tmp"
 }
+
 
 function extract {
     if [[ -f $1 ]]; then
@@ -81,4 +85,26 @@ function unique_tmux {
     fi
 }
 
-# vim: expandtab
+function mkbar {
+	local BAR
+	local INPUT=$1
+
+	local SIZE=${2:-10}
+	local CHAR1=${CHAR1:-"[1;37m|"}
+	local CHAR2=${CHAR2:-"[0;30m|"}
+
+	local VAL=$((INPUT * SIZE / 100))
+
+	for ((v = 0; v < SIZE; v++)); do
+		if ((v < VAL)); then
+			BAR+="$CHAR1"
+		else
+			BAR+="$CHAR2"
+		fi
+	done
+
+	echo "$BAR"
+
+}
+
+# vim: ft=sh:expandtab

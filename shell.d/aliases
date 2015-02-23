@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Aliases
 if which pacaur >&-
     then alias pacman="pacaur"
@@ -7,9 +5,10 @@ if which pacaur >&-
 fi
 
 which hub >&- && alias git="hub"
+which nvim >&- && alias vim="nvim"
 
 # flags
-alias cp="cp -rv"
+alias cp="cp -av"
 alias rm="rm -Iv"
 alias mv="mv -v"
 alias mkdir="mkdir -p"
@@ -17,11 +16,16 @@ alias make="make -j"
 alias grep="grep --color=auto"
 alias diff="diff -Naur"
 
+# stuff
+alias rnb="toilet --gay -t -f future"
+alias weechat="dtach -A /tmp/weechat.sk weechat"
+alias fetch="screenfetch -A 'Arch Linux - Old'"
+
 # ls goodies
 alias ls="ls -FX --group-directories-first --color=auto"
-alias l="ls -Ggho"
+alias l="ls -goh"
 alias la="ls -Ah"
-alias ll="ls -lAh"
+alias ll="ls -Agoh"
 
 # shorties
 alias a="awk"
@@ -42,4 +46,4 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# vim: expandtab
+# vim: ft=sh:expandtab

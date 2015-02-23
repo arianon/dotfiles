@@ -5,6 +5,7 @@
 .urlbar-history-dropmarker,
 #page-proxy-favicon,
 #go-button,
+#refresh-button,
 #identity-icon-labels,
 #identity-box,
 #notification-popup-box[hidden="true"],
@@ -19,7 +20,7 @@
 #minimize-button,
 #restore-button,
 #close-button,
-.tabbrowser-tab:not([pinned]) .tab-icon-image {
+.tab-icon-image {
     display: none !important;
 }
 
@@ -35,15 +36,15 @@
 }
 
 #urlbar {
-    font-family: Terminus !important;
-    font-size: 8pt !important;
+    font-family: Roboto !important;
+    font-size: 11pt !important;
     -moz-appearance: none !important;
     color: #edeff2 !important;
     border: none !important;
     background: #09090d !important;
     margin: 0 !important;
     padding: 0 !important;
-    height: 16px !important;
+    /* height: 20px !important; */
     margin-left: -6px !important;
     padding-left: 20px !important;
 }
@@ -63,8 +64,8 @@
 
 /* Style tabs */
 #tabbrowser-tabs {
-    font-family: Terminus !important;
-    font-size: 8pt !important;
+    font-family: Roboto !important;
+    font-size: 11pt !important;
     margin-left: -15px !important;
     margin-right: -15px !important;
     height: 20px !important;

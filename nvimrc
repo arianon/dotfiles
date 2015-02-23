@@ -29,7 +29,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 " Plug 'Valloric/YouCompleteMe'
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 " }}}
@@ -47,6 +47,10 @@ set nowrap
 set linebreak
 set wildmenu
 set showcmd
+
+let g:lightline = {
+			\ 'colorscheme': 'jellybeans',
+			\ }
 " }}}
 " SEARCH {{{
 set hlsearch

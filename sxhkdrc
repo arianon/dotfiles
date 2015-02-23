@@ -1,21 +1,21 @@
 # i don't know why the fuck do I have to unset $TMUX
-super + Return
-	unset TMUX; urxvt
+#super + Return
+#	unset TMUX; urxvt
 
-Print
-	~/bin/pomf
+#Print
+#	~/bin/pomf
 
 shift + @Print
 	~/bin/pomf -s
 
-super + r
-	~/bin/mpv-yt
+#super + r
+	#~/bin/mpv-yt
 
-super + p
-	~/bin/dmenu2
+#super + p
+	#~/bin/dmenu2
 
-super + w
-	firefox
+#super + w
+#	firefox
 
 # make sxhkd reload its configuration files:
 ctrl + alt + r

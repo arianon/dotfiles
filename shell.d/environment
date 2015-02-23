@@ -1,13 +1,16 @@
-#!/bin/bash
-
-# SOFTWARE {{{
+# SOFTWARE
 export BROWSER="firefox"
-export EDITOR="ed"
-export VISUAL="nvim"
+export EDITOR="nvim"
+export VISUAL=$EDITOR
 export PAGER="less"
-# }}}
-# PATHS {{{
+
+# LANG
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# PATHS
 export GOPATH="$HOME/go"
 export PATH="$HOME/bin:$GOPATH/bin:$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH:."
+export TMPDIR="$HOME/tmp"
 
-# vim: expandtab
+# vim: ft=sh:expandtab

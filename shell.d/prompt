@@ -1,29 +1,19 @@
-#!/bin/bash
-
-R=$(tput setaf 1)
-G=$(tput setaf 2)
-Y=$(tput setaf 3)
-# B=$(tput setaf 4)
-# M=$(tput setaf 5)
-# C=$(tput setaf 6)
-# W=$(tput setaf 7)
-N=$(tput sgr0)
-
-function git_prompt {
-    local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-    local status="[${G}${branch}${N}]"
-
-    echo -n " $status"
-}
-
 function prompt {
-    (( $? != 0 )) && echo -n "${R}" || echo -n "${Y}"
+    case $? in
+        0)   color 4 $1 ;;
+        126) color 3 $1 ;;
+        127) color 5 $1 ;;
+        130) color 2 $1 ;;
+        *)   color 1 $1 ;;
+    esac
 
-    echo -n "λ${N}"
-
-    [[ -d .git ]] && git_prompt
+    if git rev-parse --git-dir &>/dev/null; then
+        local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+        local status="[$(color 2 $branch)]"
+        echo -n " $status"
+    fi
 }
 
-PS1='$(prompt) '
+export PS1='$(prompt λ) '
 
-# vim: expandtab
+# vim: ft=sh:expandtab
