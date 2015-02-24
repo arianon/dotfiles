@@ -9,8 +9,12 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # PATHS
-export GOPATH="$HOME/go"
+export LOCAL="$HOME/local"
+export GOPATH="$LOCAL/go"
+export TMPDIR="/tmp"
+export GOROOT="/usr/lib/go"
+export MAIL="$HOME/var/mail"
+
 export PATH="$HOME/bin:$GOPATH/bin:$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH:."
-export TMPDIR="$HOME/tmp"
 
 # vim: ft=sh:expandtab
