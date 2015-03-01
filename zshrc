@@ -17,7 +17,7 @@ source ~/.shell.d/aliases
 source ~/.shell.d/functions
 source ~/.shell.d/infinality
 
-alias lsw=lsw
+unalias lsw
 
 PERL5LIB="/home/arianon/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/arianon/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;

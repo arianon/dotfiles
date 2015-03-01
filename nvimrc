@@ -47,6 +47,7 @@ set nowrap
 set linebreak
 set wildmenu
 set showcmd
+set ttyfast
 
 let g:lightline = {
 			\ 'colorscheme': 'jellybeans',
@@ -101,6 +102,11 @@ nmap <leader>/ I/* <ESC>A */<ESC>
 vmap <leader># :s/^\s*/&# /<CR>:nohlsearch<CR>
 vmap <leader>/ <ESC>'<O/*<ESC>'>o */<ESC>:'<,'>s/^\s*/& * /<CR>:nohlsearch<CR>
 
+vmap > >gv
+vmap < <gv
+vmap = =gv
+
+nnoremap <silent><leader>c :nohlsearch<CR>
 nnoremap <leader>rv :source ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q!<CR>
