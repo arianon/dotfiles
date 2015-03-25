@@ -22,6 +22,7 @@ HOME_STUFF=(
 	nvimrc
 	tmux.conf
 	spectrwm.conf
+	weechat
 	xinitrc
 	Xresources
 	zshrc
@@ -49,4 +50,4 @@ link() {
 	done
 }
 
-simulate
+${1:-simulate}
