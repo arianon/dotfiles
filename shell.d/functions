@@ -1,48 +1,37 @@
-function color {
+color() {
     tput setaf $1
     shift
     printf $@
     tput sgr0
 }
 
-function path {
+path() {
     pwd | sed s:$HOME:~:
 }
 
-function cd {
+cd() {
     if (( $# == 1 )) && [[ -f $1 ]]; then
         local dir=$(dirname $1)
 
-        echo "Correcting $1 to $dir"
+        echo "Correcting '$1' to '$dir'"
         builtin cd $dir
+    elif [[ ! -d "$1" ]]; then
+        echo "'$1' doesn't exist, creating it."
+        mkdir -p "$1"
+        builtin cd "$1"
     else
-        builtin cd "$@" && ls
+        builtin cd "$1" && ls
     fi
 }
 
-function mkcd {
-    if (( $# != 1 )); then
-        echo "usage: mkcd <directory>"
-        return 1
-    fi
-
-    if [[ -d "$1" ]]; then
-        echo "'$1' already exists, cd-ing."
-    else
-        command mkdir -p "$1"
-    fi
-
-    builtin cd $1
-}
-
-function cdtemp {
+cdtemp() {
     local tmp=$(mktemp -d)
     echo "Created temporary directory '$tmp'"
     builtin cd "$tmp"
 }
 
 
-function extract {
+extract() {
     if [[ -f $1 ]]; then
         case $1 in
         *.tar.bz2) tar xvjf $1 ;;
@@ -60,7 +49,7 @@ function extract {
     fi
 }
 
-function roll {
+roll() {
     local RANGE=${1:-[:alnum:]}
     local CHARS=${2:-16}
 
@@ -71,7 +60,7 @@ function roll {
     fi
 }
 
-function unique_tmux {
+unique_tmux() {
     if [[ -z "$TMUX" ]]; then
         local group="tmux"
         local check=$(tmux ls 2>/dev/null | grep -c $group)
@@ -85,7 +74,7 @@ function unique_tmux {
     fi
 }
 
-function mkbar {
+mkbar() {
 	local BAR
 	local INPUT=$1
 
