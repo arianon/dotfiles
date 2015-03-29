@@ -14,6 +14,6 @@ function prompt {
     fi
 }
 
-export PS1='$(prompt λ) '
+export PS1='$(path) $(prompt λ) '
 
 # vim: ft=sh:expandtab

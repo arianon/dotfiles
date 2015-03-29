@@ -1,11 +1,11 @@
 # Aliases
-if which pacaur >&-
+if which pacaur &>/dev/null
     then alias pacman="pacaur"
     else alias pacman="sudo pacman"
 fi
 
-which hub >&- && alias git="hub"
-which nvim >&- && alias vim="nvim"
+which hub &>/dev/null && alias git="hub"
+which nvim &>/dev/null && alias vim="nvim"
 
 # flags
 alias cp="cp -av"

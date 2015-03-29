@@ -21,6 +21,7 @@ HOME_STUFF=(
 	ncmpcpp
 	nvimrc
 	tmux.conf
+	shell.d
 	spectrwm.conf
 	weechat
 	xinitrc

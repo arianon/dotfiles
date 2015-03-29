@@ -15,13 +15,24 @@ cd() {
 
         echo "Correcting '$1' to '$dir'"
         builtin cd $dir
-    elif [[ ! -d "$1" ]]; then
-        echo "'$1' doesn't exist, creating it."
-        mkdir -p "$1"
-        builtin cd "$1"
     else
-        builtin cd "$1" && ls
+        builtin cd "$@" && ls
     fi
+}
+
+mkcd() {
+    if (( $# != 1 )); then
+        echo "usage: mkcd <directory>"
+        return 1
+    fi
+
+    if [[ -d "$1" ]]; then
+        echo "'$1' already exists, cd-ing."
+    else
+        command mkdir -p "$1"
+    fi
+
+    builtin cd "$1"
 }
 
 cdtemp() {
