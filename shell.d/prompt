@@ -7,11 +7,11 @@ function prompt {
         *)   color 1 $1 ;;
     esac
 
-    if git rev-parse --git-dir &>/dev/null; then
-        local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-        local status="[$(color 2 $branch)]"
-        echo -n " $status"
-    fi
+    # if git rev-parse --git-dir &>/dev/null; then
+    #     local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    #     local status="[$(color 2 $branch)]"
+    #     echo -n " $status"
+    # fi
 }
 
 export PS1='$(path) $(prompt λ) '

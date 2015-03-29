@@ -6,7 +6,8 @@ color() {
 }
 
 path() {
-    pwd | sed s:$HOME:~:
+    # pwd | sed s:$HOME:~:
+    echo ${PWD/$HOME/\~}
 }
 
 cd() {
