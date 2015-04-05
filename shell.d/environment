@@ -6,7 +6,7 @@ export PAGER="less"
 
 # LANG
 export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+# export LC_ALL="en_US.UTF-8"
 
 # PATHS
 export LOCAL="$HOME/local"

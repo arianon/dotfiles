@@ -1,14 +1,17 @@
 #!/bin/sh
 
 xsetroot -cursor_name left_ptr &
+xsetroot -solid '#353540'
 
-setxkbmap -option caps:escape es
-nitrogen --restore
+setxkbmap es
 
-transmission-daemon
-compton &
+# nitrogen --restore
+# hsetroot -tile ~/usr/img/walls/DD459yfn.png
+
+# compton &
 redshift &
 sxhkd -c ~/etc/sxhkdrc &
 
 #volumeicon &
-exec spectrwm
+urxvt &
+exec dwm

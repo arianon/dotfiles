@@ -27,7 +27,7 @@ URxvt.internalBorder: 10
 !no bold font
 URxvt*italicFont:
 URxvt*boldFont:
-URxvt*font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-iso10646-*,\
+URxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*,\
 			-*-stlarch-*-*-*-*-10-*-*-*-*-*-iso10646-*
 
 !vim ts=8:ft=xdefaults

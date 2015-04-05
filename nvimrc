@@ -54,7 +54,7 @@ let g:lightline = {
 			\ }
 " }}}
 " SEARCH {{{
-set hlsearch
+set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
