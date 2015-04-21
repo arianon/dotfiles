@@ -1,7 +1,7 @@
 #include "themes/satori"
 
 URxvt.perl-lib:	/usr/lib/URxvt/perl
-URxvt.perl-ext-common:	default,matcher,selection-to-clipboard,url-picker,keyboard-select
+URxvt.perl-ext-common:	default,matcher,selection-to-clipboard
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.url-picker-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
@@ -27,7 +27,12 @@ URxvt.internalBorder: 10
 !no bold font
 URxvt*italicFont:
 URxvt*boldFont:
-URxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*,\
-			-*-stlarch-*-*-*-*-10-*-*-*-*-*-iso10646-*
+URxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
+!URxvt*font: -*-stlarch-*-*-*-*-10-*-*-*-*-*-iso10646-*
 
 !vim ts=8:ft=xdefaults
+
+! emacs
+Emacs.menuBar: off
+Emacs.verticalScrollBars: off
+Emacs.toolBar: off

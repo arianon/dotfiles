@@ -1,5 +1,20 @@
+# -*-  mode: sh -*-
+
+# XFT SETTINGS
+XFT_SETTINGS="
+Xft.antialias:  1
+Xft.autohint:   0
+Xft.dpi:        96
+Xft.hinting:    1
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+"
+
+echo "$XFT_SETTINGS" | xrdb -merge > /dev/null 2>&1
+
 # INFINALITY
-export INFINALITY_FT_FILTER_PARAMS='10 35 40 35 10'
+export INFINALITY_FT_FILTER_PARAMS='00 35 30 35 00'
 export INFINALITY_FT_AUTOHINT_HORIZONTAL_STEM_DARKEN_STRENGTH=0
 export INFINALITY_FT_AUTOHINT_VERTICAL_STEM_DARKEN_STRENGTH=0
 export INFINALITY_FT_AUTOHINT_INCREASE_GLYPH_HEIGHTS=false

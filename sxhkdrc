@@ -1,12 +1,12 @@
 # i don't know why the fuck do I have to unset $TMUX
-#super + Return
-#	unset TMUX; urxvt
+super + Return
+	unset TMUX; urxvt
 
-#Print
-#	~/bin/pomf
+Print
+	~/bin/imgur
 
 shift + @Print
-	~/bin/pomf -s
+	~/bin/imgur -s
 
 #super + r
 	#~/bin/mpv-yt
@@ -71,5 +71,4 @@ super + shift + q
 # super + Backspace
 # 	~/bin/wm-group -d all
 # 
-vim: set syntax=sh fdm=marker:
 

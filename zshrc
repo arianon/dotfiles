@@ -1,3 +1,4 @@
+# -*- mode: sh -*-
 # Xorg
 
 [[ -z $DISPLAY && $XDG_VTNR == 1 ]] && exec startx
@@ -26,3 +27,5 @@ PERL_LOCAL_LIB_ROOT="/home/arianon/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB
 PERL_MB_OPT="--install_base \"/home/arianon/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPiiT="INSTALL_BASE=/home/arianon/perl5"; export PERL_MM_OPT;
 PERL_MM_OPiiT="INSTALL_BASE=/home/arianon/perl5"; export PERL_MM_OPT;
+
+which todo && todo

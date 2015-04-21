@@ -10,8 +10,7 @@ setxkbmap es
 
 # compton &
 redshift &
-sxhkd -c ~/etc/sxhkdrc &
+# sxhkd -c ~/etc/sxhkdrc &
 
-#volumeicon &
-urxvt &
-exec dwm
+volumeicon &
+exec startxfce4
