@@ -13,10 +13,10 @@ setopt PROMPT_SUBST
 PROMPT="%(?,%F{blue},%F{red})λ %{$reset_color%}"
 RPROMPT="%F{black}%~%{$reset_color%}"
 
-source ~/.shell.d/environment
-source ~/.shell.d/aliases
-source ~/.shell.d/functions
-source ~/.shell.d/infinality
+source .shell.d/environment
+source .shell.d/aliases
+source .shell.d/functions
+source .shell.d/infinality
 
 unalias lsw
 
@@ -28,4 +28,4 @@ PERL_MB_OPT="--install_base \"/home/arianon/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPiiT="INSTALL_BASE=/home/arianon/perl5"; export PERL_MM_OPT;
 PERL_MM_OPiiT="INSTALL_BASE=/home/arianon/perl5"; export PERL_MM_OPT;
 
-which todo && todo
+which todo 2>&1 >/dev/null && todo

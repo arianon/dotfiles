@@ -36,3 +36,6 @@ URxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
 Emacs.menuBar: off
 Emacs.verticalScrollBars: off
 Emacs.toolBar: off
+Emacs.font: SourceCodePro-9.5
+
+!vim ft=xdefaults ts=8

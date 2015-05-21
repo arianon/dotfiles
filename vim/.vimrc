@@ -5,33 +5,33 @@ colorscheme term
 filetype plugin indent on
 " }}}
 " PLUGINS {{{
-call plug#begin()
+" call plug#begin()
 
 " Usability
 " Plug 'jiangmiao/auto-pairs'
-Plug 'raiMondi/delimitMate'
-Plug 'kien/ctrlp.vim'
-Plug 'Shougo/neocomplcache.vim' | let g:neocomplcache_enable_at_startup = 1
-Plug 'scrooloose/syntastic'
+" Plug 'raiMondi/delimitMate'
+" Plug 'kien/ctrlp.vim'
+" Plug 'Shougo/neocomplcache.vim' | let g:neocomplcache_enable_at_startup = 1
+" Plug 'scrooloose/syntastic'
 
-Plug 'garbas/vim-snipmate'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'honza/vim-snippets'
+" Plug 'garbas/vim-snipmate'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
+" Plug 'honza/vim-snippets'
 
 " pseudo-IDEs
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Misc
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/vimproc', { 'do': 'make' }
+" Plug 'itchyny/lightline.vim'
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'scrooloose/nerdcommenter'
+" Plug 'Shougo/vimproc', { 'do': 'make' }
 " Plug 'Valloric/YouCompleteMe'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
-call plug#end()
+" call plug#end()
 " }}}
 " INTERFACE {{{
 set foldmethod=marker
@@ -49,9 +49,6 @@ set wildmenu
 set showcmd
 set ttyfast
 
-let g:lightline = {
-			\ 'colorscheme': 'jellybeans',
-			\ }
 " }}}
 " SEARCH {{{
 set nohlsearch
@@ -71,7 +68,7 @@ set nobackup
 set nowritebackup
 
 set undofile
-set undodir=~/.nvim/undo,/tmp
+set undodir=~/.vim/undo,/tmp
 set undolevels=1000
 set undoreload=1000
 set history=1000

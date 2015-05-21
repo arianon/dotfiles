@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 # Aliases
 if which pacaur &>/dev/null
     then alias pacman="pacaur"
@@ -6,8 +8,6 @@ fi
 
 which hub &>/dev/null && alias git="hub"
 # which nvim &>/dev/null && alias vim="nvim"
-
-alias vim="emacsclient -t"
 
 # flags
 alias cp="cp -av"

@@ -6,11 +6,10 @@ xsetroot -solid '#353540'
 setxkbmap es
 
 # nitrogen --restore
-# hsetroot -tile ~/usr/img/walls/DD459yfn.png
 
-# compton &
+compton -b
 redshift &
+
 # sxhkd -c ~/etc/sxhkdrc &
 
-volumeicon &
-exec startxfce4
+exec dwm

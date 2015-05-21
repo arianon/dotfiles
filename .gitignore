@@ -1,4 +1,4 @@
 **/*.log
 
-weechat/logs
-mpv/watch_later/
+weechat/.weechat/logs
+mpv/.config/mpv/watch_later/
