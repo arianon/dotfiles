@@ -21,7 +21,7 @@ alias diff="diff -Naur"
 # stuff
 alias rnb="toilet --gay -t -f future"
 alias yget="youtube-dl -o '%(title)s.%(ext)s'"
-alias weechat="dtach -A ~/var/sockets/weechat.sk weechat"
+alias weechat="dtach -A /tmp/weechat.sk weechat"
 alias fetch="screenfetch -A 'Arch Linux - Old'"
 
 # ls goodies
