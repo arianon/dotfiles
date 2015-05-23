@@ -5,7 +5,7 @@ xsetroot -solid '#353540'
 
 setxkbmap es
 
-# nitrogen --restore
+nitrogen --restore
 
 compton -b
 redshift &

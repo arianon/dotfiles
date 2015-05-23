@@ -1,5 +1,5 @@
 [global]
-    font = gohufont 10
+    font = terminus 18
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -148,8 +148,8 @@
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
-    width = 0
-    color = "#1f1f22"
+    width = 2
+    color = "#8b8b8c"
 
 [shortcuts]
 
@@ -175,9 +175,9 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 5
+    background = "#09090d"
+    foreground = "#b8b8c8"
+    timeout = 3
 
 [urgency_normal]
     background = "#09090d"
@@ -185,8 +185,8 @@
     timeout = 5
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
+    background = "#8c5760"
+    foreground = "#edeff2"
     timeout = 0
 
 
