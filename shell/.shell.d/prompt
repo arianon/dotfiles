@@ -1,6 +1,6 @@
 # -*-  mode: sh -*-
 
-function prompt {
+prompt() {
     case $? in
         0)   color 4 $1 ;;
         126) color 3 $1 ;;
@@ -16,6 +16,11 @@ function prompt {
     # fi
 }
 
-export PS1='$(path) $(prompt λ) '
+if [[ -n $ZSH_NAME ]]; then
+    export PROMPT="%(?,%F{blue},%F{red})λ %{$reset_color%}"
+    export RPROMPT="%F{black}%~%{$reset_color%}"
+else
+    export PS1='$(path) $(prompt λ) '
+fi
 
 # vim: ft=sh:expandtab

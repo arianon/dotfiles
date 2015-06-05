@@ -7,7 +7,7 @@
 [[ -z $DISPLAY && $XDG_VTNR == 1 ]] && exec startx
 
 # Source files
-for file in .shell.d/*; do
+for file in ~/.shell.d/*; do
     [[ -r $file ]] && source $file
 done
 

@@ -29,31 +29,26 @@ URxvt.url-launcher: /usr/bin/firefox
 URxvt.url-picker-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 
-URxvt.keysym.M-u: perl:url-picker
-URxvt.keysym.M-v: perl:keyboard-select:activate
-
-URxvt.keysym.C-1: command:\033]710;-*-gohufont-medium-*-normal-*-14-*-*-*-*-*-iso10646-*\007
-URxvt.keysym.C-2: command:\033]710;-*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*\007
-URxvt.keysym.C-3: command:\033]710;-*-profont-medium-*-*-*-12-*-*-*-*-*-iso8859-*\007
-URxvt.keysym.C-4: command:\033]710;-*-tewi-medium-r-*-*-11-*-*-*-*-*-iso10646\007
+URxvt.keysym.C-1: command:\033]710;-*-tewi-medium-r-normal-*-11-*-*-*-*-*-*\007
+URxvt.keysym.C-2: command:\033]710;-*-gohufont-medium-*-normal-*-14-*-*-*-*-*-iso10646-*\007
+URxvt.keysym.C-3: command:\033]710;-*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*\007
+URxvt.keysym.C-4: command:\033]710;-*-profont-medium-*-*-*-12-*-*-*-*-*-iso8859-*\007
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 
 URxvt.scrollBar: false
-URxvt.internalBorder: 10
-!URxvt*cursorUnderline: true
+URxvt.internalBorder: 8
+URxvt*cursorUnderline: true
 !URxvt.cursorBlink: true
 !URxvt*letterSpace: -1
 
 !no bold font
 URxvt*italicFont:
 URxvt*boldFont:
-URxvt*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
+URxvt*font: -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 !URxvt*font: -*-stlarch-*-*-*-*-10-*-*-*-*-*-iso10646-*
-
-!vim ts=8:ft=xdefaults
 
 ! emacs
 Emacs.menuBar: off

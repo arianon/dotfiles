@@ -6,20 +6,14 @@
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -U colors && colors
 
-# Prompt
 prompt off
 setopt PROMPT_SUBST
 
-PROMPT="%(?,%F{blue},%F{red})λ %{$reset_color%}"
-RPROMPT="%F{black}%~%{$reset_color%}"
+for file in ~/.shell.d/*; do
+	[[ -r $file ]] && source $file
+done
 
-source .shell.d/environment
-source .shell.d/aliases
-source .shell.d/functions
-source .shell.d/infinality
-
-unalias lsw
-
+# Perl garbage.
 PERL5LIB="/home/arianon/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/arianon/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/arianon/perl5\""; export PERL_MB_OPT;

@@ -2,7 +2,8 @@
 
 #./panel &
 
-sxhkd -c ./sxhkdrc
+sxhkd ./sxhkdrc
+urxvt
 
 ###
 

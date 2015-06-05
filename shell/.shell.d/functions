@@ -12,6 +12,13 @@ path() {
     echo ${PWD/$HOME/\~}
 }
 
+exists?() {
+    for prog in $@; do
+        type $prog &>/dev/null
+    done
+}
+
+
 cd() {
     if (( $# == 1 )) && [[ -f $1 ]]; then
         local dir=$(dirname $1)
@@ -19,7 +26,7 @@ cd() {
         echo "Correcting '$1' to '$dir'"
         builtin cd $dir
     else
-        builtin cd "$@" && ls
+        builtin cd "$@" # && ls
     fi
 }
 
