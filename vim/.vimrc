@@ -1,10 +1,10 @@
-" INIT {{{
+" INIT
 set nocompatible
 syntax enable
 colorscheme term
 filetype plugin indent on
-" }}}
-" PLUGINS {{{
+
+" PLUGINS
 " call plug#begin()
 
 " Usability
@@ -32,8 +32,8 @@ filetype plugin indent on
 " Plug 'tpope/vim-fugitive'
 
 " call plug#end()
-" }}}
-" INTERFACE {{{
+
+" INTERFACE
 set foldmethod=marker
 set scrolloff=7
 set number
@@ -49,20 +49,20 @@ set wildmenu
 set showcmd
 set ttyfast
 
-" }}}
-" SEARCH {{{
+
+" SEARCH
 set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
-" }}}
-" INDENTATION {{{
+
+" INDENTATION
 set autoindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-" }}}
-" HISTORY AND BACKUPS {{{
+
+" HISTORY AND BACKUPS
 set noswapfile
 set nobackup
 set nowritebackup
@@ -72,8 +72,8 @@ set undodir=~/.vim/undo,/tmp
 set undolevels=1000
 set undoreload=1000
 set history=1000
-" }}}
-" MISCELLANEOUS {{{
+
+" MISCELLANEOUS
 set backspace=indent,eol,start
 set autoread
 set autowrite
@@ -84,8 +84,8 @@ set complete=,b,u,]
 set completeopt=menu,preview
 set noerrorbells
 set omnifunc=syntaxcomplete#Complete
-" }}} 
-" KEYBINDS {{{
+ 
+" KEYBINDS
 nnoremap ñ :
 noremap <space> <NOP>
 let mapleader=" "
@@ -114,7 +114,7 @@ nnoremap <leader>b :split<CR>
 nnoremap <leader>h :help<CR>
 nnoremap <leader>H :vert help<CR>
 "}}}
-" STATUSBAR {{{
+" STATUSBAR
 set noshowmode
 
 hi User9 ctermfg=12
@@ -140,8 +140,8 @@ set statusline+=%7*,               " Comma
 set statusline+=%1*%v              " Current column
 set statusline+=%7*\ -               " Dash
 set statusline+=%5*\ %P            " Percentage through file
-" }}}
-" TRIGGERS {{{
+
+" TRIGGERS
 
 " No more autocomments
 au FileType * setlocal formatoptions-=cro
@@ -156,7 +156,7 @@ au BufReadPost *
 		\ exe "normal! g`\"" |
 		\ endif
 
-" }}}
+
 
 
 " vim: fdm=marker

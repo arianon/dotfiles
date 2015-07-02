@@ -1,19 +1,23 @@
-# i don't know why the fuck do I have to unset $TMUX
-super + Return
-	unset TMUX; urxvt
+super + shift + Return
+	termite
 
 Print
-	~/bin/imgur
+	~/bin/imgur $(~/bin/img)
 
 shift + @Print
-	~/bin/imgur -s
+	~/bin/imgur $(~/bin/img -s)
 
 super + p
 	~/bin/dmenu2
 
-super + w
-	firefox
+super + shift + p
+	chromium
+
+super + shift + e
+	emacsclient -c --no-wait
 
 # make sxhkd reload its configuration files:
 ctrl + alt + r
 	pkill -USR1 -x sxhkd
+
+# vim: set syntax=sh:

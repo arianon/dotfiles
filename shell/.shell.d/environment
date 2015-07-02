@@ -1,7 +1,8 @@
 # -*-  mode: sh -*-
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # SOFTWARE
-export BROWSER="firefox"
+export BROWSER="chroimum"
 export EDITOR="vim"
 export VISUAL=$EDITOR
 export PAGER="less"

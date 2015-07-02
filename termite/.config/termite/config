@@ -20,7 +20,7 @@ cursor_blink = system
 cursor_shape = ibeam
 
 # $BROWSER is used by default
-browser = firefox
+browser = chromium
 
 # set size hints for the window
 #size_hints = false

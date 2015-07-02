@@ -11,7 +11,7 @@ hash hub &>/dev/null && alias git="hub"
 
 # flags
 alias cp="cp -av"
-alias rm="rm -Iv"
+alias rm="rm -iv"
 alias mv="mv -v"
 alias mkdir="mkdir -p"
 alias make="make -j"
@@ -35,6 +35,9 @@ else
     alias ll="ls -Agoh"
 fi
 
+# emacs
+alias ec="emacsclient --no-wait -c"
+alias et="emacsclient -t"
 
 # shorties
 alias a="awk"

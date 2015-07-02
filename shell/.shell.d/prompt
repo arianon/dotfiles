@@ -17,10 +17,10 @@ prompt() {
 }
 
 if [[ -n $ZSH_NAME ]]; then
-    export PROMPT="%(?,%F{blue},%F{red})λ %{$reset_color%}"
+    export PROMPT="%(?,%F{blue},%F{red})» %{$reset_color%}"
     export RPROMPT="%F{black}%~%{$reset_color%}"
 else
-    export PS1='$(path) $(prompt λ) '
+    export PS1='$(path) $(prompt ») '
 fi
 
 # vim: ft=sh:expandtab

@@ -54,6 +54,6 @@ URxvt*font: -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 Emacs.menuBar: off
 Emacs.verticalScrollBars: off
 Emacs.toolBar: off
-Emacs.font: SourceCodePro-9.5
+Emacs.font: sourcecodepro-10.5
 
 !vim ft=xdefaults ts=8
