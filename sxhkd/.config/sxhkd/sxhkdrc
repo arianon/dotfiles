@@ -1,5 +1,5 @@
 super + shift + Return
-	termite
+	termite -e fish
 
 Print
 	~/bin/imgur $(~/bin/img)
