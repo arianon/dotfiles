@@ -1,15 +1,14 @@
 #!/bin/sh
 
-xsetroot -cursor_name left_ptr &
+xsetroot -cursor_name left_ptr
 xsetroot -solid '#353540'
+hsetroot -tile ~/usr/img/wallpaper.png
 
-xrdb -merge ~/.Xresources
+xrdb -load ~/.Xresources
 setxkbmap es
 
-hsetroot -tile ~/usr/img/emacs.png
-
-compton -b
+compton &
 redshift &
 
-sxhkd ~/.config/bspwm/sxhkdrc &
-exec bspwm
+sxhkd &
+exec openbox

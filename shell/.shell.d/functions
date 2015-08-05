@@ -12,7 +12,7 @@ path() {
     echo ${PWD/$HOME/\~}
 }
 
-exists?() {
+exists() {
     for prog in $@; do
         type $prog &>/dev/null
     done

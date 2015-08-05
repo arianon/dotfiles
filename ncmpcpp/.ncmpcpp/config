@@ -22,10 +22,10 @@ header_visibility = "no"
 titles_visibility = "no"
 
 # PROGRESSBAR
-progressbar_look = "█"
+#progressbar_look = "█"
 #progressbar_look = "───"
 #progressbar_look = "|||"
-#progressbar_look = "─╼─"
+progressbar_look = "─╼ "
 #progressbar_look = "███"
 progressbar_elapsed_color = "blue"
 progressbar_color = "black"

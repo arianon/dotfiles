@@ -13,6 +13,10 @@ if exists pacaur
 	alias pacman "pacaur"
 end
 
+if exists hub
+	alias git "hub"
+end
+
 if exists ls++
 	alias ls "ls++"
 	alias la "ls++ -A"

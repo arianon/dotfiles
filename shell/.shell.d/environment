@@ -13,11 +13,11 @@ export LANG="en_US.UTF-8"
 
 # PATHS
 export LOCAL="$HOME/local"
-export GOPATH="$LOCAL/go"
 export TMPDIR="/tmp"
-export GOROOT="/usr/lib/go"
 export MAIL="$HOME/var/mail"
 
-export PATH="$HOME/bin:$GOPATH/bin:$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH:."
+# RUBY
+export PATH=~/bin:~/.rbenv/bin:"$PATH"
+eval "$(rbenv init -)"
 
 # vim: ft=sh:expandtab

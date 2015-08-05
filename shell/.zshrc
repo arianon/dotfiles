@@ -10,7 +10,7 @@ prompt off
 setopt PROMPT_SUBST
 
 for file in ~/.shell.d/*; do
-	[[ -r $file ]] && source $file
+	[[ -r $file ]] && . $file
 done
 
 unalias lsw

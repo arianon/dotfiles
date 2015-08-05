@@ -13,3 +13,10 @@ set fish_greeting
 set -x BROWSER chromium
 set -x EDITOR vim
 set -x VISUAL $EDITOR
+
+# Set PATH
+# set -x PATH $HOME/bin $HOME/.rbenv/bin $PATH
+
+if status --is-interactive
+    . (rbenv init -|psub)
+end

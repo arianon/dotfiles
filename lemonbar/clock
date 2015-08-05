@@ -1,0 +1,13 @@
+#!/bin/sh
+
+BG='#FF101017'
+FG='#FFedeff2'
+
+format='%A, %B, %dth %I:%M %p'
+font='tewi'
+
+clock -s -i 45 -f "${format}" |
+    while read clock; do
+        echo "%{c}"${clock}
+    done |
+    lemonbar -g 900x32+0+0 -d -f $font -B $BG -F $FG
