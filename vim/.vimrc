@@ -5,7 +5,10 @@ colorscheme term
 filetype plugin indent on
 
 " PLUGINS
-" call plug#begin()
+call plug#begin()
+
+Plug 'baskerville/vim-sxhkdrc'
+Plug 'leafo/moonscript-vim'
 
 " Usability
 " Plug 'jiangmiao/auto-pairs'
@@ -24,14 +27,14 @@ filetype plugin indent on
 " Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Misc
-" Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'scrooloose/nerdcommenter'
 " Plug 'Shougo/vimproc', { 'do': 'make' }
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'tpope/vim-fugitive'
 
-" call plug#end()
+call plug#end()
 
 " INTERFACE
 set foldmethod=marker

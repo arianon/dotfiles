@@ -17,7 +17,7 @@ export TMPDIR="/tmp"
 export MAIL="$HOME/var/mail"
 
 # RUBY
-export PATH=~/bin:~/.rbenv/bin:"$PATH"
+export PATH=~/bin:~/.cabal/bin:~/.rbenv/bin:"$PATH"
 eval "$(rbenv init -)"
 
 # vim: ft=sh:expandtab

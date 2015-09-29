@@ -1,6 +1,6 @@
 #! /bin/sh
 
-. panel-settings
+. $(dirname $0)/panel-settings
 
 if [ $(pgrep -cx panel) -gt 1 ] ; then
 	printf "%s\n" "The panel is already running." >&2

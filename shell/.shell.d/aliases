@@ -1,8 +1,8 @@
 # -*- mode: sh -*-
 
 # Aliases
-if hash &>/dev/null pacaur
-    then alias pacman="pacaur"
+if hash &>/dev/null aura
+    then alias pacman="sudo aura"
     else alias pacman="sudo pacman"
 fi
 

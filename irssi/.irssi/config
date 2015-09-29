@@ -1,56 +1,48 @@
 servers = (
-  # {{{
+  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
   {
-    address = "irc.freenode.net";
-    chatnet = "freenode";
-    port = "6667";
+    address = "dan.soupwhale.com";
+    chatnet = "Freenode";
+    port = "65531";
+    password = "arianon/freenode:herpderp";
+    use_ssl = "yes";
+    ssl_verify = "no";
     autoconnect = "yes";
   },
   {
-    address = "irc.rizon.net";
-    chatnet = "rizon";
-    port = "6667";
-    autoconnect = "yes";
-  },
-  {
-    address = "irc.nixers.net";
-    chatnet = "nixers";
-    port = "6667";
+    address = "dan.soupwhale.com";
+    chatnet = "Rizon";
+    port = "65531";
+    password = "arianon/Rizon:herpderp";
+    use_ssl = "yes";
+    ssl_verify = "no";
     autoconnect = "yes";
   }
 );
-# }}}
+
 chatnets = {
-  # {{{
-  rizon = {
+  Rizon = {
     type = "IRC";
     nick = "arianon";
-    autosendcmd = "/msg NickServ IDENTIFY 852456; wait 5000; /unquery NickServ";
+    autosendcmd = "/msg nickserv IDENTIFY herpderp; wait 2000; /unquery nickserv";
+    max_kicks = "1";
+    max_msgs = "1";
+    max_whois = "1";
   };
-  nixers = {
-    type = "IRC";
-    nick = "arianon";
-    autosendcmd = "/msg NickServ IDENTIFY 852456; wait 5000; /unquery NickServ";
-  };
-  freenode = {
+  SILC = { type = "SILC"; };
+  Freenode = {
     type = "IRC";
     nick = "arian0n";
-    autosendcmd = "/msg NickServ IDENTIFY 852456; wait 5000; /unquery NickServ";
+    autosendcmd = "/msg nickserv IDENTIFY herpderp; wait 2000; /unquery nickserv";
   };
 };
-# }}} 
+
 channels = (
-  # {{{
-  { name = "#nixers"; chatnet = "nixers"; autojoin = "Yes"; },
-  { name = "#rice"; chatnet = "rizon"; autojoin = "Yes"; },
-  { name = "#soup"; chatnet = "rizon"; autojoin = "Yes"; },
-  { name = "#code"; chatnet = "rizon"; autojoin = "Yes"; },
-  { name = "#chop"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#6c37"; chatnet = "freenode"; autojoin = "Yes"; }
+  { name = "#rice"; chatnet = "Rizon"; autojoin = "yes"; },
+  { name = "#code"; chatnet = "Rizon"; autojoin = "yes"; }
 );
-# }}}
+
 aliases = {
-  # {{{
   ATAG = "WINDOW SERVER";
   ADDALLCHANS = "SCRIPT EXEC foreach my \\$channel (Irssi::channels()) { Irssi::command(\"CHANNEL ADD -auto \\$channel->{name} \\$channel->{server}->{tag} \\$channel->{key}\")\\;}";
   B = "BAN";
@@ -205,9 +197,8 @@ aliases = {
   98 = "WINDOW GOTO 98";
   99 = "WINDOW GOTO 99";
 };
-# }}}
+
 statusbar = {
-  # {{{
 
   items = {
 
@@ -238,7 +229,7 @@ statusbar = {
 
     window = {
 
-      disabled = "yes";
+      disabled = "no";
       type = "window";
       placement = "bottom";
       position = "1";
@@ -251,10 +242,9 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
+        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
-        act = { };
-        chanact = { };
       };
     };
 
@@ -272,7 +262,6 @@ statusbar = {
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
-      disabled = "yes";
     };
 
     prompt = {
@@ -288,79 +277,28 @@ statusbar = {
         input = { priority = "10"; };
       };
     };
-    topic = { disabled = "yes"; };
-    awl_0 = {
+
+    topic = {
+
+      type = "root";
       placement = "top";
+      position = "1";
+      visible = "always";
+
       items = {
-        barstart = { priority = "100"; };
-        awl_0 = { };
-        barend = { priority = "100"; alignment = "right"; };
+        topicbarstart = { priority = "100"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
   };
-
-  topic = {
-
-    type = "root";
-    placement = "top";
-    position = "1";
-    visible = "always";
-
-    items = {
-      topicbarstart = { priority = "100"; };
-      topic = { };
-      topic_empty = { };
-      topicbarend = { priority = "100"; alignment = "right"; };
-    };
-  };
-  "*" = { disabled = "yes"; };
-  awl_0 = {
-    items = {
-      barstart = { priority = "100"; };
-      awl_0 = { };
-      barend = { priority = "100"; alignment = "right"; };
-    };
-  };
 };
-# }}}
 settings = {
-  # {{{
-  core = {
-    real_name = "Michael";
+  core = { 
+    real_name = "Unknown";
     user_name = "arianon";
     nick = "arianon";
-    timestamp_format = "\00314%H:%M";
   };
   "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = {
-    theme = "arianon";
-    completion_char = ",";
-    timestamps = "yes";
-    show_nickmode_empty = "no";
-  };
-  "perl/core/scripts" = {
-    awl_shared_sbar = "OFF";
-    awl_viewer = "no";
-    awl_placement = "top";
-    awl_mouse = "yes";
-    awl_maxlines = "1";
-    awl_prefer_name = "no";
-    awl_block = "16";
-  };
 };
-# }}}
-
-# vim: ft=config:fdm=marker:expandtab
-hilights = (
-  {
-    text = "arian[o0]n";
-    color = "%Y";
-    nick = "no";
-    word = "no";
-    regexp = "yes";
-  }
-);
-keyboard = ( 
-  { key = "meta-[M"; id = "command"; data = "mouse_xterm"; }
-);
-notifies = { join = { }; };
