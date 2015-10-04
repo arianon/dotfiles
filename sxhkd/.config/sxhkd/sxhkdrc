@@ -14,8 +14,8 @@ super + t
 	bspc desktop --layout next
 
 # change window state
-super + {_, shift +} {s,f}
-	bspc window --toggle {floating,pseudo_tiled,fullscreen}
+super + {S,s,f,x,X,m}
+	bspc window --toggle {floating,pseudo_tiled,fullscreen,locked,sticky,private}
 
 super + Tab
 	bspc desktop --focus last
@@ -43,8 +43,11 @@ super + @button{1-3}
 	bspc pointer --ungrab
 
 ### Quit bspwm
-super + Escape
-	pkill panel; pkill -x sxhkd; bspc quit
+super + {_, shift + } Escape
+	{bspc query -T > "$BSPWM_TREE"; \
+	bspc query -H > "$BSPWM_HISTORY"; \
+	bspc query -S > "$BSPWM_STACK"; \
+	bspc quit, bspc quit 1}
 
 
 ### Non-WM related keybinds.

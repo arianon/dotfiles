@@ -4,7 +4,8 @@
 [[ $- != *i* ]] && return
 
 # Run Xorg on TTY1 if it isn't running yet
-[[ -z $DISPLAY && $XDG_VTNR == 1 ]] && exec startx
+[[ -z $DISPLAY && $XDG_VTNR == 1 ]] && \
+    exec startx -- &> /dev/null
 
 bind "TAB:menu-complete"
 

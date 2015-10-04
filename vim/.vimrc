@@ -23,11 +23,11 @@ Plug 'leafo/moonscript-vim'
 " Plug 'honza/vim-snippets'
 
 " pseudo-IDEs
-" Plug 'fatih/vim-go', { 'for': 'go' }
-" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Misc
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'scrooloose/nerdcommenter'
 " Plug 'Shougo/vimproc', { 'do': 'make' }

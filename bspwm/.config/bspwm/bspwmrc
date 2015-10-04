@@ -29,6 +29,12 @@ bspc monitor -d I II III IV V VI VII VIII IX X
 bspc rule -a Gimp pseudo_tiled=on
 bspc rule -a Transmission-gtk pseudo_tiled=on
 bspc rule -a feh floating=on manage=off
-bspc rule -a Chromium desktop=^1 fullscreen=on
+bspc rule -a Chromium desktop=^1 fullscreen=on focus=on
+
+# Loop
+if test -e "$BSPWM_TREE"; then
+	bspc restore -T "$BSPWM_TREE" -H "$BSPWM_HISTORY" -S "$BSPWM_STACK"
+	rm "$BSPWM_TREE" "$BSPWM_HISTORY" "$BSPWM_STACK"
+fi
 
 # TODO: Put panel here.
