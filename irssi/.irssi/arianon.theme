@@ -298,7 +298,7 @@ formats = {
     notify_part = "{nick $0} has parted.";
   };
   "fe-common/core" = {
-    pubmsg = "{pubmsgnick $2 {pubnick \00313$0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick \00304$0}}$1";
     quit = "{channick $0} has quit.";
     quit_once = "{channick $0} has quit.";
   };

@@ -4,59 +4,24 @@
 [[ $- != *i* ]] && return
 
 # Run Xorg on TTY1 if it isn't running yet
-[[ -z $DISPLAY && $XDG_VTNR == 1 ]] && \
-    exec startx -- &> /dev/null
-
-bind "TAB:menu-complete"
-
-### ENVIRONMENT
-export XDG_CONFIG_HOME="$HOME/.config"
-
-# SOFTWARE
-export BROWSER="chroimum"
-export EDITOR="vim"
-export VISUAL=$EDITOR
-export PAGER="less"
-
-# LANG
-export LANG="en_US.UTF-8"
-# export LC_ALL="en_US.UTF-8"
-
-# PATHS
-export LOCAL="$HOME/local"
-export TMPDIR="/tmp"
-export MAIL="$HOME/var/mail"
-
-# RUBY
-export PATH=~/bin:~/.cabal/bin:~/.rbenv/bin:"$PATH"
-eval "$(rbenv init -)"
-
-# LUA
-eval "$(luarocks path --bin)"
-
+[[ $(tty) = "/dev/tty1" ]] && exec startx &>/dev/null
 
 ### ALIASES
-if hash &>/dev/null aura
-  then alias pacman="sudo aura"
-  else alias pacman="sudo pacman"
-fi
-
-hash hub &>/dev/null && alias git="hub"
-# which nvim &>/dev/null && alias vim="nvim"
+hash hub 2>/dev/null && alias git="hub"
+hash nvim 2>/dev/null && alias vim="nvim"
 
 # flags
 alias cp="cp -av"
 alias rm="rm -iv"
 alias mv="mv -v"
 alias mkdir="mkdir -p"
-alias make="make -j"
+alias make="make -j$(nproc)"
 alias grep="grep --color=auto"
 alias diff="diff -Naur"
 
 # stuff
 alias rnb="toilet --gay -t -f future"
 alias weechat="dtach -A /tmp/weechat.sk weechat"
-alias fetch="screenfetch -A 'Arch Linux - Old'"
 
 # ls goodies
 if hash ls++ &>/dev/null; then
@@ -86,7 +51,7 @@ alias .....="cd ../../../.."
 
 
 ### FUNCTIONS
-color() {
+printc() {
   tput setaf $1
   shift
   printf $@
@@ -206,11 +171,11 @@ mkbar() {
 ### PROMPT
 prompt() {
   case $? in
-  0)   color 4 $1 ;;
-  126) color 3 $1 ;;
-  127) color 5 $1 ;;
-  130) color 2 $1 ;;
-  *)   color 1 $1 ;;
+  0)   printc 4 $1 ;;
+  126) printc 3 $1 ;;
+  127) printc 5 $1 ;;
+  130) printc 2 $1 ;;
+  *)   printc 1 $1 ;;
   esac
 }
 

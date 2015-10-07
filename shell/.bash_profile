@@ -16,30 +16,32 @@ export LANG="en_US.UTF-8"
 # export LC_ALL="en_US.UTF-8"
 
 # PATHS
-export LOCAL="$HOME/local"
 export TMPDIR="/tmp"
 export MAIL="$HOME/var/mail"
 
 # HASKELL
-export PATH=~/.cabal/bin:$PATH
+if hash 2>/dev/null cabal; then
+	export PATH=~/.cabal/bin:$PATH
+fi
 
 # GO
-export GOPATH=$HOME/.go
-export PATH=$GOPATH/bin:$PATH
+if hash 2>>/dev/null go; then
+	export GOPATH=$HOME/.go
+	export PATH=$GOPATH/bin:$PATH
+fi
 
 # RUBY
-export PATH=~/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
+if hash 2>/dev/null rbenv; then
+	export PATH=~/.rbenv/bin:$PATH
+	eval "$(rbenv init -)"
+fi
 
 # LUA
-eval "$(luarocks path --bin)"
+if hash 2>/dev/null luarocks; then
+	val "$(luarocks path --bin)"
+fi
 
 # MY SCRIPTS
 export PATH=~/bin:$PATH
-
-# BSPWM
-export BSPWM_TREE=/tmp/bspwm.tree
-export BSPWM_HISTORY=/tmp/bspwm.history
-export BSPWM_STACK=/tmp/bspwm.stack
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc

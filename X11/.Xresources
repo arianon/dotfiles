@@ -1,26 +1,26 @@
 ! Colors
-*background: #09090d
-*foreground: #edeff2
+*background: #14181f
+*foreground: #b7bdcc
 
-*color0: #353540
-*color1: #8c5760
-*color2: #7b8c58
-*color3: #8c6e43
-*color4: #58698c
-*color5: #7b5e7d
-*color6: #66808c
-*color7: #8b8b8c
+*color0: #2b303b
+*color1: #994e55
+*color2: #849971
+*color3: #c5aa75
+*color4: #707e8c
+*color5: #8f7189
+*color6: #778f8e
+*color7: #a6aab2
 
-*color8: #545466
-*color9: #b26f7a
-*color10: #9db270
-*color11: #b28c55
-*color12: #7086b2
-*color13: #9c77b2
-*color14: #82a2b2
-*color15: #b8b8c8
+*color8: #4d576b
+*color9: #bf616a
+*color10: #a3be8c
+*color11: #ebcb8b
+*color12: #8fa1b3
+*color13: #b48ead
+*color14: #96b5b4
+*color15: #b9bbbe
 
-*cursorColor: #839496
+*cursorColor: #b7bdcc
 
 ! URxvt
 URxvt.perl-lib:	/usr/lib/URxvt/perl
@@ -40,7 +40,7 @@ URxvt.iso14755_52: false
 
 URxvt.scrollBar: false
 URxvt.internalBorder: 8
-URxvt*cursorUnderline: true
+!URxvt*cursorUnderline: true
 !URxvt.cursorBlink: true
 !URxvt*letterSpace: -1
 
@@ -49,11 +49,5 @@ URxvt*italicFont:
 URxvt*boldFont:
 URxvt*font: -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 !URxvt*font: -*-stlarch-*-*-*-*-10-*-*-*-*-*-iso10646-*
-
-! emacs
-Emacs.menuBar: off
-Emacs.verticalScrollBars: off
-Emacs.toolBar: off
-Emacs.font: sourcecodepro-10.5
 
 !vim ft=xdefaults ts=8
