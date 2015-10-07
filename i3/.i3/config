@@ -1,0 +1,238 @@
+# i3 config file (v4)
+
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# SETTINGS {{{
+set $mod Mod4
+
+set $background #14181f
+set $foreground #b7bdcc
+
+set $black        #2b303b
+set $lightblack	  #4d576b
+set $red          #994e55
+set $lightred     #bf616a
+set $green        #849971
+set $lightgreen   #a3be8c
+set $yellow       #c5aa75
+set $lightyellow  #ebcb8b
+set $blue         #707e8c
+set $lightblue    #8fa1b3
+set $magenta      #8f7189
+set $lightmagenta #b48ead
+set $cyan         #778f8e
+set $lightcyan    #96b5b4
+set $white        #a6aab2
+set $lightwhite   #b9bbbe
+
+set $ws1 "1:I"
+set $ws2 "2:II"
+set $ws3 "3:III"
+set $ws4 "4:IV"
+set $ws5 "5:V"
+set $ws6 "6:VI"
+set $ws7 "7:VII"
+set $ws8 "8:VIII"
+set $ws9 "9:IV"
+set $ws10 "10:X"
+
+set $gaps_inner 24
+set $gaps_outer 24
+gaps inner $gaps_inner
+gaps outer $gaps_outer
+smart_gaps on
+smart_borders on
+workspace_auto_back_and_forth yes
+# }}}
+# THEME {{{
+font pango:tewi 9
+
+#                       BORDER       BACKGROUND  TEXT     INDICATOR
+client.focused          $lightblue   $lightblue  $black   $lightblue
+client.unfocused        $black       $black      $white   $black
+client.focused_inactive $black       $black      $white   $black
+client.urgent           $red         $red        $white   $red
+# }}}
+# KEYBINDIGS {{{
+
+# Non-WM
+bindsym $mod+p exec dmenu_run
+bindsym --release Print exec imgur $(img)
+bindsym --release Shift+Print exec imgur $(img -s)
+
+bindsym $mod+Return exec --no-startup-id termite || urxvt || rxvt || xterm
+
+# WM
+floating_modifier $mod
+bindsym $mod+Shift+q kill
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+i split horizontal
+bindsym $mod+o split vertical
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+d focus child
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+Tab workspace back_and_forth
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+Tab move container to workspace back_and_forth
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# }}}
+# MODES {{{
+bindsym $mod+r mode "mode_resize"
+# TODO: Ditch the mode for extra keybinds?
+mode "mode_resize" {
+        bindsym j resize grow width 10 px or 1 ppt
+        bindsym k resize grow height 10 px or 1 ppt
+        bindsym l resize shrink height 10 px or 1 ppt
+        bindsym semicolon resize shrink width 10 px or 1 ppt
+
+        bindsym Left resize grow width 10 px or 1 ppt
+        bindsym Down resize grow height 10 px or 1 ppt
+        bindsym Up resize shrink height 10 px or 1 ppt
+        bindsym Right resize shrink width 10 px or 1 ppt
+
+        bindsym Shift+j resize grow width 20 px or 5 ppt
+        bindsym Shift+k resize grow height 20 px or 5 ppt
+        bindsym Shift+l resize shrink height 20 px or 5 ppt
+        bindsym Shift+semicolon resize shrink width 20 px or 5 ppt
+
+        bindsym Shift+Left resize grow width 20 px or 5 ppt
+        bindsym Shift+Down resize grow height 20 px or 5 ppt
+        bindsym Shift+Up resize shrink height 20 px or 5 ppt
+        bindsym Shift+Right resize shrink width 20 px or 5 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# set $mode_gaps "<span background='$yellow' foreground='$background'> gaps </span><span foreground='$red'>i</span>nner <span foreground='$red'>o</span>uter <span foreground='$red'>0 d</span>"
+set $mode_gaps Gaps: (o) outer, (i) inner, (0) none, (d) defaults
+bindsym $mod+g mode "$mode_gaps"
+mode "$mode_gaps" {
+	bindsym o mode "$mode_gaps_outer"
+	bindsym i mode "$mode_gaps_inner"
+
+	bindsym 0 mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
+	bindsym d mode "default", exec --no-startup-id i3-msg "gaps inner current set $gaps_inner" && i3-msg "gaps outer current set $gaps_outer"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+	bindsym plus gaps inner current plus 5
+	bindsym minus gaps inner current minus 5
+	bindsym 0 gaps inner current set 0
+	bindsym d gaps inner current set $gaps_inner
+	
+	bindsym Shift+plus gaps inner all plus 5
+	bindsym Shift+minus gaps inner all minus 5
+	bindsym Shift+0 gaps inner all set 0
+	bindsym Shift+d gaps inner current set $gaps_inner
+	
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+	bindsym plus gaps outer current plus 5
+	bindsym minus gaps outer current minus 5
+	bindsym 0 gaps outer current set 0
+	bindsym d gaps outer current set $gaps_outer
+	
+	bindsym Shift+plus gaps outer all plus 5
+	bindsym Shift+minus gaps outer all minus 5
+	bindsym Shift+0 gaps outer all set 0
+	bindsym Shift+d gaps outer all set $gaps_outer
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+# }}}
+# RULES {{{
+new_window pixel 1
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+assign [class="(?i)firefox"] $ws1
+
+# }}}
+# BAR {{{
+bar {
+	status_command i3blocks
+	strip_workspace_numbers yes
+
+	colors {
+		background $background
+		statusline $white
+		separator $red
+    
+		#                  BORDER      BACKGROUND  TEXT
+		focused_workspace  $blue       $blue       $background
+		inactive_workspace $background $background $white
+		active_workspace   $background $background $white
+		urgent_workspace   $red        $red        $background
+		binding_mode       $background $yellow     $black
+	}
+}
+# }}}
