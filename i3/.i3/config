@@ -3,6 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
+set $font -lucy-tewi-medium-r-normal--11-90-75-75-m-60-ISO10646-1
 
 set $background #14181f
 set $foreground #b7bdcc
@@ -36,7 +37,7 @@ set $ws9 "9:IV"
 set $ws10 "10:X"
 
 set $gaps_inner 24
-set $gaps_outer 24
+set $gaps_outer 0
 gaps inner $gaps_inner
 gaps outer $gaps_outer
 smart_gaps on
@@ -44,7 +45,7 @@ smart_borders on
 workspace_auto_back_and_forth yes
 # }}}
 # THEME {{{
-font pango:tewi 9
+font $font
 
 #                       BORDER       BACKGROUND  TEXT     INDICATOR
 client.focused          $lightblue   $lightblue  $black   $lightblue
@@ -55,7 +56,7 @@ client.urgent           $red         $red        $white   $red
 # KEYBINDIGS {{{
 
 # Non-WM
-bindsym $mod+p exec dmenu_run
+bindsym $mod+p exec dmenu_run -i -p "\$" -nb "$background" -nf "$foreground" -sb "$background" -sf "$lightblue"
 bindsym --release Print exec imgur $(img)
 bindsym --release Shift+Print exec imgur $(img -s)
 
@@ -99,6 +100,7 @@ bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
 bindsym $mod+d focus child
+bindsym $mod+b bar mode toggle
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -134,25 +136,25 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+r mode "mode_resize"
 # TODO: Ditch the mode for extra keybinds?
 mode "mode_resize" {
-        bindsym j resize grow width 10 px or 1 ppt
-        bindsym k resize grow height 10 px or 1 ppt
-        bindsym l resize shrink height 10 px or 1 ppt
-        bindsym semicolon resize shrink width 10 px or 1 ppt
+        bindsym h resize shrink width 10 px or 1 ppt
+        bindsym j resize grow height 10 px or 1 ppt
+        bindsym k resize shrink height 10 px or 1 ppt
+        bindsym l resize grow width 10 px or 1 ppt
 
-        bindsym Left resize grow width 10 px or 1 ppt
+        bindsym Left resize shrink width 10 px or 1 ppt
         bindsym Down resize grow height 10 px or 1 ppt
         bindsym Up resize shrink height 10 px or 1 ppt
-        bindsym Right resize shrink width 10 px or 1 ppt
+        bindsym Right resize grow width 10 px or 1 ppt
 
-        bindsym Shift+j resize grow width 20 px or 5 ppt
-        bindsym Shift+k resize grow height 20 px or 5 ppt
-        bindsym Shift+l resize shrink height 20 px or 5 ppt
-        bindsym Shift+semicolon resize shrink width 20 px or 5 ppt
+        bindsym Shift+h resize shrink width 20 px or 5 ppt
+        bindsym Shift+j resize grow height 20 px or 5 ppt
+        bindsym Shift+k resize shrink height 20 px or 5 ppt
+        bindsym Shift+l resize grow width 20 px or 5 ppt
 
-        bindsym Shift+Left resize grow width 20 px or 5 ppt
+        bindsym Shift+Left resize shrink width 20 px or 5 ppt
         bindsym Shift+Down resize grow height 20 px or 5 ppt
         bindsym Shift+Up resize shrink height 20 px or 5 ppt
-        bindsym Shift+Right resize shrink width 20 px or 5 ppt
+        bindsym Shift+Right resize grow width 20 px or 5 ppt
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -165,8 +167,8 @@ mode "$mode_gaps" {
 	bindsym o mode "$mode_gaps_outer"
 	bindsym i mode "$mode_gaps_inner"
 
-	bindsym 0 mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
-	bindsym d mode "default", exec --no-startup-id i3-msg "gaps inner current set $gaps_inner" && i3-msg "gaps outer current set $gaps_outer"
+	bindsym 0 mode "default", gaps inner current set 0, gaps outer current set 0
+	bindsym d mode "default", gaps inner current set $gaps_inner, gaps outer current set $gaps_outer
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"

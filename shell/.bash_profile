@@ -25,7 +25,7 @@ if hash 2>/dev/null cabal; then
 fi
 
 # GO
-if hash 2>>/dev/null go; then
+if hash 2>/dev/null go; then
 	export GOPATH=$HOME/.go
 	export PATH=$GOPATH/bin:$PATH
 fi
@@ -38,7 +38,7 @@ fi
 
 # LUA
 if hash 2>/dev/null luarocks; then
-	val "$(luarocks path --bin)"
+	eval "$(luarocks path --bin)"
 fi
 
 # MY SCRIPTS

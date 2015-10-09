@@ -24,7 +24,7 @@
 
 ! URxvt
 URxvt.perl-lib:	/usr/lib/URxvt/perl
-URxvt.perl-ext-common:	default,matcher,selection-to-clipboard
+URxvt.perl-ext-common:	default,matcher
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.url-picker-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
