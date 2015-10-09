@@ -1,0 +1,4 @@
+setopt histallowclobber
+setopt nonomatch
+setopt NO_clobber
+setopt interactivecomments
