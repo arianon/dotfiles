@@ -3,3 +3,5 @@ for prof (~/.zsh/profiles/*) {
 }
 
 export PATH=~/bin:$PATH
+
+[[ $(tty) = "/dev/tty1" ]] && exec startx &> /dev/null
