@@ -1,5 +1,5 @@
 cd() {
-	if (( $# == 1 )) && [[ -f $1 ]]; then
+	if [[ -f $1 ]]; then
 		local dir=${1:t}
 		echo "Correcting '$1' to '$dir'"
 		builtin cd $dir

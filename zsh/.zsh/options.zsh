@@ -1,4 +1,8 @@
-setopt histallowclobber
-setopt nonomatch
-setopt NO_clobber
-setopt interactivecomments
+setopt	histallowclobber \
+		nonomatch \
+		NO_clobber \
+		interactivecomments \
+		correct \
+		autocd \
+		complete_in_word \
+		auto_menu

@@ -1,1 +1,2 @@
-PROMPT="%F{black}%~%f %(?,%F{blue},%F{red})→ %f"
+PROMPT="%(?,%F{blue},%F{red})→ %f"
+RPROMPT="%F{green}%~%f"

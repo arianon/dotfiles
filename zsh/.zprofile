@@ -1,7 +1,7 @@
 for prof (~/.zsh/profiles/*) {
-	hash $prof:t:r 2>/dev/null && source $prof
+	if (( $+commands[$prof:t:r] )) source $prof
 }
 
 export PATH=~/bin:$PATH
 
-[[ $(tty) = "/dev/tty1" ]] && exec startx &> /dev/null
+if [[ $(tty) == "/dev/tty1" ]] exec startx &> /dev/null
