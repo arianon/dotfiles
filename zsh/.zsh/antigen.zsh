@@ -7,6 +7,8 @@ else
 	return 1
 fi
 
+antigen use oh-my-zsh
+
 antigen bundles <<EOB
 zsh-users/zsh-completions
 zsh-users/zsh-syntax-highlighting

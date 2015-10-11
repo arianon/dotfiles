@@ -10,7 +10,7 @@ hi NonText      ctermfg=8
 hi SpecialKey   ctermfg=0
 hi Statement    ctermfg=3
 hi Normal       ctermfg=7
-hi Comment      ctermfg=0
+hi Comment      ctermfg=8
 
 " Spell
 hi SpellBad     ctermfg=9    ctermbg=none
