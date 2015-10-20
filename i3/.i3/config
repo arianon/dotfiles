@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font -lucy-tewi-medium-r-normal--11-90-75-75-m-60-ISO10646-1
+set $font pango: Tewi, Siji 8
 
 set $background #14181f
 set $foreground #b7bdcc
@@ -33,7 +33,7 @@ set $ws5 "5:V"
 set $ws6 "6:VI"
 set $ws7 "7:VII"
 set $ws8 "8:VIII"
-set $ws9 "9:IV"
+set $ws9 "9:IX"
 set $ws10 "10:X"
 
 set $gaps_inner 24
@@ -57,6 +57,7 @@ client.urgent           $red         $red        $white   $red
 
 # Non-WM
 bindsym $mod+p exec dmenu_run -i -p "\$" -nb "$background" -nf "$foreground" -sb "$background" -sf "$lightblue"
+bindsym $mod+Shift+a exec --no-startup-id atom
 bindsym --release Print exec imgur $(img)
 bindsym --release Shift+Print exec imgur $(img -s)
 
@@ -179,12 +180,12 @@ mode "$mode_gaps_inner" {
 	bindsym minus gaps inner current minus 5
 	bindsym 0 gaps inner current set 0
 	bindsym d gaps inner current set $gaps_inner
-	
+
 	bindsym Shift+plus gaps inner all plus 5
 	bindsym Shift+minus gaps inner all minus 5
 	bindsym Shift+0 gaps inner all set 0
 	bindsym Shift+d gaps inner current set $gaps_inner
-	
+
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -195,7 +196,7 @@ mode "$mode_gaps_outer" {
 	bindsym minus gaps outer current minus 5
 	bindsym 0 gaps outer current set 0
 	bindsym d gaps outer current set $gaps_outer
-	
+
 	bindsym Shift+plus gaps outer all plus 5
 	bindsym Shift+minus gaps outer all minus 5
 	bindsym Shift+0 gaps outer all set 0
@@ -216,6 +217,8 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
+for_window [class=(?i)firefox"] focus child, layout tabbed, focus
+
 assign [class="(?i)firefox"] $ws1
 
 # }}}
@@ -228,7 +231,7 @@ bar {
 		background $background
 		statusline $white
 		separator $red
-    
+
 		#                  BORDER      BACKGROUND  TEXT
 		focused_workspace  $blue       $blue       $background
 		inactive_workspace $background $background $white

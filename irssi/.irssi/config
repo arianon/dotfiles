@@ -1,20 +1,17 @@
 servers = (
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
   {
-    address = "dan.soupwhale.com";
-    chatnet = "Freenode";
-    port = "65531";
-    password = "arianon/freenode:herpderp";
-    use_ssl = "yes";
+    address = "irc.rizon.net";
+    chatnet = "Rizon";
+    port = "6667";
+    use_ssl = "no";
     ssl_verify = "no";
     autoconnect = "yes";
   },
   {
-    address = "dan.soupwhale.com";
-    chatnet = "Rizon";
-    port = "65531";
-    password = "arianon/Rizon:herpderp";
-    use_ssl = "yes";
+    address = "irc.freenode.net";
+    chatnet = "Freenode";
+    port = "6667";
+    use_ssl = "no";
     ssl_verify = "no";
     autoconnect = "yes";
   }
@@ -24,22 +21,22 @@ chatnets = {
   Rizon = {
     type = "IRC";
     nick = "arianon";
-    autosendcmd = "/msg nickserv IDENTIFY herpderp; wait 2000; /unquery nickserv";
+    autosendcmd = "/msg nickserv IDENTIFY Ed0nUvTAX; wait 2000; /unquery nickserv";
     max_kicks = "1";
     max_msgs = "1";
     max_whois = "1";
   };
-  SILC = { type = "SILC"; };
   Freenode = {
     type = "IRC";
     nick = "arian0n";
-    autosendcmd = "/msg nickserv IDENTIFY herpderp; wait 2000; /unquery nickserv";
+    autosendcmd = "/msg nickserv IDENTIFY vaTjFcgiuM; wait 2000; /unquery nickserv";
   };
 };
 
 channels = (
   { name = "#rice"; chatnet = "Rizon"; autojoin = "yes"; },
-  { name = "#code"; chatnet = "Rizon"; autojoin = "yes"; }
+  { name = "#code"; chatnet = "Rizon"; autojoin = "yes"; },
+  { name = "#6c37"; chatnet = "Freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -229,7 +226,6 @@ statusbar = {
 
     window = {
 
-      disabled = "no";
       type = "window";
       placement = "bottom";
       position = "1";
@@ -245,6 +241,7 @@ statusbar = {
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
+      disabled = "yes";
     };
 
     window_inact = {
@@ -261,6 +258,7 @@ statusbar = {
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
+      disabled = "yes";
     };
 
     prompt = {
@@ -292,6 +290,7 @@ statusbar = {
       };
     };
     awl_0 = {
+      placement = "top";
       items = {
         barstart = { priority = "100"; };
         awl_0 = { };
@@ -308,5 +307,10 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { theme = "arianon"; };
-  "perl/core/scripts" = { awl_shared_sbar = "OFF"; awl_viewer = "no"; };
+  "perl/core/scripts" = {
+    awl_shared_sbar = "OFF";
+    awl_viewer = "no";
+    awl_placement = "top";
+    awl_block = "16";
+  };
 };

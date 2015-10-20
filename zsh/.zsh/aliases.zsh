@@ -13,7 +13,11 @@ alias so="source ~/.zshrc"
 alias :q="exit"
 alias quit="exit"
 
-hash hub 2>/dev/null && alias git="hub"
+if (( $+commands[hub] )) alias git="hub"
+if (( $+commands[aura] )) {
+	alias pacman="sudo aura"
+	alias aura="sudo aura"
+}
 
 if hash ls++ 2>/dev/null; then
   alias ls="ls++"
