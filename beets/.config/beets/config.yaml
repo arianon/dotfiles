@@ -1,0 +1,17 @@
+directory: ~/usr/msc
+library: ~/.beetslibrary.blb
+plugins: convert fetchart embedart chroma
+
+import:
+    move: no
+
+paths:
+    default: $albumartist/$album%aunique{}/$track $title
+    singleton: Singletons/$artist - $title
+    comp: Compilations/$album%aunique{}/$track $title
+    albumtype:soundtrack: Soundtracks/$album/$track $title
+
+convert:
+    # auto: yes
+    command: ffmpeg -i $source -y -acodec libmp3lame -aq 0 $dest
+    extension: mp3

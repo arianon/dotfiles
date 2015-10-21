@@ -1,3 +1,12 @@
+! Xft
+Xft.dpi: 96
+Xft.antialias: true
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+Xft.hinting: false
+Xft.autohint: true
+Xft.hintstyle: hintslight
+
 ! Colors
 *background: #14181f
 *foreground: #b7bdcc
