@@ -32,31 +32,24 @@ Xft.hintstyle: hintslight
 *cursorColor: #b7bdcc
 
 ! URxvt
-URxvt.perl-lib:	/usr/lib/URxvt/perl
-URxvt.perl-ext-common:	default,matcher
-URxvt.url-launcher: /usr/bin/firefox
-URxvt.url-picker-launcher: /usr/bin/firefox
-URxvt.matcher.button: 1
-
-URxvt.keysym.C-1: command:\033]710;-*-tewi-medium-r-normal-*-11-*-*-*-*-*-*\007
-URxvt.keysym.C-2: command:\033]710;-*-gohufont-medium-*-normal-*-14-*-*-*-*-*-iso10646-*\007
-URxvt.keysym.C-3: command:\033]710;-*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*\007
-URxvt.keysym.C-4: command:\033]710;-*-profont-medium-*-*-*-12-*-*-*-*-*-iso8859-*\007
+URxvt.perl-lib:	/usr/lib/urxvt/perl
+URxvt.perl-ext-common:	default,keyboard-select,url-select
+URxvt.url-select.launcher: /usr/bin/firefox-bin
+URxvt.url-select.underline: true
+URxvt.keysym.M-w: perl:url-select:select_next
+URxvt.keysym.M-v: perl:keyboard-select:activate
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-
 
 URxvt.scrollBar: false
 URxvt.internalBorder: 8
 !URxvt*cursorUnderline: true
 !URxvt.cursorBlink: true
-!URxvt*letterSpace: -1
 
 !no bold font
 URxvt*italicFont:
 URxvt*boldFont:
 URxvt*font: -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-!URxvt*font: -*-stlarch-*-*-*-*-10-*-*-*-*-*-iso10646-*
 
 !vim ft=xdefaults ts=8
