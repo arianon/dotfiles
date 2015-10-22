@@ -10,6 +10,7 @@ call plug#begin()
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'leafo/moonscript-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'klen/python-mode'
 
 " Usability
 " Plug 'jiangmiao/auto-pairs'

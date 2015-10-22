@@ -33,11 +33,18 @@ Xft.hintstyle: hintslight
 
 ! URxvt
 URxvt.perl-lib:	/usr/lib/urxvt/perl
-URxvt.perl-ext-common:	default,keyboard-select,url-select
+! requires urxvt-perls
+URxvt.perl-ext-common:	keyboard-select,url-select,clipboard
 URxvt.url-select.launcher: /usr/bin/firefox-bin
 URxvt.url-select.underline: true
+URxvt.url-select.button: 1
+
 URxvt.keysym.M-w: perl:url-select:select_next
-URxvt.keysym.M-v: perl:keyboard-select:activate
+URxvt.keysym.M-e: perl:keyboard-select:activate
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-S-v: perl:clipboard:paste_escaped
+
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false
