@@ -1,9 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/arianon/etc/zsh/.zsh/modules'
-let g:netrw_dirhist_2='/home/arianon/etc/zsh/.zsh'
-let g:netrw_dirhist_3='/home/arianon/etc/zsh/.zsh/modules'
-let g:netrw_dirhist_4='/home/arianon/src/i3-gaps/contrib'
-let g:netrw_dirhist_5='/home/arianon/usr/doc'
-let g:netrw_dirhist_6='/usr/local/lib64/perl5/5.20.2/X11/Protocol/Connection'
-let g:netrw_dirhist_7='/usr/local/lib64/perl5/5.20.2/X11/Protocol'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/arianon/etc/irssi/.irssi'
+let g:netrw_dirhist_2='/home/arianon/.emacs.d/layers'
+let g:netrw_dirhist_3='/tmp/tmp.doiFad8yiN/joostbot/lib/joostbot'
+let g:netrw_dirhist_4='/home/arianon/.ncmpcpp'
+let g:netrw_dirhist_5='/home/arianon/.gem'

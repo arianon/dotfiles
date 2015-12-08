@@ -5,10 +5,13 @@ xsetroot -cursor_name left_ptr
 xsetroot -mod 2 2 -bg '#14181f'
 xrdb -load ~/.Xresources
 setxkbmap es
+xmodmap ~/.xmodmaprc
 
+emacs &
 redshift &
 mpd &
+steam &
 transmission-daemon &
 
-firefox-bin &
-exec i3
+chromium &
+i3

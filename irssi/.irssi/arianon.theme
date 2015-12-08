@@ -1,3 +1,4 @@
+# -*- mode: perl; -*-
 # When testing changes, the easiest way to reload the theme is with /RELOAD.
 # This reloads the configuration file too, so if you did any changes remember
 # to /SAVE it first. Remember also that /SAVE overwrites the theme file with
@@ -58,46 +59,32 @@ info_eol = "false";
 replaces = { "[]=" = "%K$*%n"; };
 
 abstracts = {
-  ##
-  ## generic
-  ##
+  ## generic ##
 
   # text to insert at the beginning of each non-message line
   line_start = "%B-%n!%B-%n ";
 
   # timestamp styling, nothing by default
-  timestamp = "$*%n";
+  timestamp = "%K$*%n";
 
   # any kind of text that needs hilighting, default is to bold
-  hilight = "%_$*%_";
+  hilight = "%R$*";
 
-  # any kind of error message, default is bright red
   error = "%R$*%n";
 
-  # channel name is printed
   channel = "%_$*%_";
-
-  # nick is printed
   nick = "%_$*%_";
-
-  # nick host is printed
   nickhost = "[$*]";
-
-  # server name is printed
   server = "%_$*%_";
-
-  # some kind of comment is printed
   comment = "[$*]";
 
-  # reason for something is printed (part, quit, kick, ..)
   reason = "{comment $*}";
+  # reason for something is printed (part, quit, kick, ..)
 
   # mode change is printed ([+o nick])
   mode = "{comment $*}";
 
-  ##
-  ## channel specific messages
-  ##
+  ## channel specific messages ##
 
   # highlighted nick/host is printed (joins)
   channick_hilight = "%C$*%n";
@@ -118,7 +105,8 @@ abstracts = {
   ##
 
   # the basic styling of how to print message, $0 = nick mode, $1 = nick
-  msgnick = "%K<$0%n$1-%n%K>%n %|";
+  # msgnick = "%K<$0%n$1-%n%K>%n %|";
+  msgnick = "$0%N$1 %K %|%N";
 
   # message from you is printed. "msgownnick" specifies the styling of the
   # nick ($0 part in msgnick) and "ownmsgnick" specifies the styling of the
@@ -146,7 +134,7 @@ abstracts = {
 
   # public message in channel meant for me, $0 = nick mode, $1 = nick
   pubmsgmenick = "{msgnick $0 $1-}";
-  menick = "%Y$*%n";
+  menick = "%8$*%n";
 
   # public highlighted message in channel
   # $0 = highlight color, $1 = nick mode, $2 = nick
@@ -221,7 +209,7 @@ abstracts = {
 
   # /names list
   names_prefix = "";
-  names_nick = "[%_$0%_$1-] ";
+  names_nick = "%_$0%_$1- ";
   names_nick_op = "{names_nick $*}";
   names_nick_halfop = "{names_nick $*}";
   names_nick_voice = "{names_nick $*}";
@@ -250,7 +238,7 @@ abstracts = {
 
   # default background for all statusbars. You can also give
   # the default foreground color for statusbar items.
-  sb_background = "%w";
+  sb_background = "%n";
 
   # default backround for "default" statusbar group
   #sb_default_bg = "%4";
@@ -271,10 +259,9 @@ abstracts = {
   topicsbstart = "{sbstart $*}";
   topicsbend = "{sbend $*}";
 
-  #prompt = "[$*] ";
-  prompt = "%W> %n";
+  prompt = "%b→ %n";
 
-  sb = " %c[%n$*%c]%n";
+  sb = "$*";
   sbmode = "(%c+%n$*)";
   sbaway = " (%GzZzZ%n)";
   sbservertag = ":$0 (change with ^X)";
@@ -294,17 +281,24 @@ abstracts = {
   sb_act_hilight_color = "%R$0$1-%n";
 };
 formats = {
+  "fe-common/core" = {
+	join = "{channick $0} %G→%K has joined";
+    part = "{channick $0} %R←%K has parted";
+	kick = "{channick $0} %R←%K was kicked";
+    quit = "{channick $0} %R←%K has quit";
+    quit_once = "{channick $0} has quit.";
+
+    pubmsg = "{pubmsgnick $2 {pubnick \00307$0}}$1";
+  };
   "fe-common/irc/notifylist" = {
     notify_join = "{nick $0} has joined.";
     notify_part = "{nick $0} has parted.";
   };
-  "fe-common/core" = {
-    pubmsg = "{pubmsgnick $2 {pubnick \00302$0}}$1";
-    quit = "{channick $0} has quit.";
-    quit_once = "{channick $0} has quit.";
-  };
   "Irssi::Script::adv_windowlist" = {
-    awl_display_key = "$H$C$S";
-    awl_display_header = "\017";
+    awl_display_key = "%K$H$C$S%n";
+    awl_display_header = "";
+    awl_display_key_active = "%Y$H$C$S%n";
   };
 };
+
+# vim:ft=perl

@@ -35,7 +35,7 @@ Xft.hintstyle: hintslight
 URxvt.perl-lib:	/usr/lib/urxvt/perl
 ! requires urxvt-perls
 URxvt.perl-ext-common:	keyboard-select,url-select,clipboard
-URxvt.url-select.launcher: /usr/bin/firefox-bin
+URxvt.url-select.launcher: /usr/bin/chromium
 URxvt.url-select.underline: true
 URxvt.url-select.button: 1
 
@@ -53,6 +53,8 @@ URxvt.scrollBar: false
 URxvt.internalBorder: 8
 !URxvt*cursorUnderline: true
 !URxvt.cursorBlink: true
+
+Emacs.font: Source Code Pro-11
 
 !no bold font
 URxvt*italicFont:

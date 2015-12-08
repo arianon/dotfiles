@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font pango: Tewi, Siji 8
+set $font pango: tewi, Siji 8
 
 set $background #14181f
 set $foreground #b7bdcc
@@ -217,15 +217,19 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
-for_window [class=(?i)firefox"] focus child, layout tabbed, focus
+for_window [class=(?i)chromium] focus child, layout tabbed, focus
+for_window [class=(?i)firefox] focus child, layout tabbed, focus
+for_window [class="qemu"] floating enable
 
-assign [class="(?i)firefox"] $ws1
+assign [class="(?i)firefox*"] $ws1
+assign [class="(?i)chromium"] $ws1
 
 # }}}
 # BAR {{{
 bar {
 	status_command i3blocks
 	strip_workspace_numbers yes
+	separator_symbol "·"
 
 	colors {
 		background $background

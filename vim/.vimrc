@@ -7,14 +7,14 @@ filetype plugin indent on
 " PLUGINS
 call plug#begin()
 
-Plug 'baskerville/vim-sxhkdrc'
-Plug 'leafo/moonscript-vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'baskerville/vim-sxhkdrc', { 'for': 'sxhkdrc' }
+Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
+" Plug 'leafo/moonscript-vim', { 'for': 'moonscript' }
+" Plug 'klen/python-mode', { 'for': 'python' }
 
 " Usability
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'raiMondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
+" Plug 'Raimondi/delimitMate'
 " Plug 'kien/ctrlp.vim'
 " Plug 'Shougo/neocomplcache.vim' | let g:neocomplcache_enable_at_startup = 1
 " Plug 'scrooloose/syntastic'
@@ -25,11 +25,20 @@ Plug 'klen/python-mode', { 'for': 'python' }
 " Plug 'honza/vim-snippets'
 
 " pseudo-IDEs
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Misc
 " Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-airline' " {{{
+	let g:airline_theme = 'hybridline'
+	let g:airline_powerline_fonts = 1
+	let g:airline#extensions#whitespace#enabled = 0
+	let g:airline#extensions#branch#enabled = 1
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#fnamemod = ':t'
+	" autocmd User AirlineAfterInit call AirlineInit()
+" }}}
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'scrooloose/nerdcommenter'
 " Plug 'Shougo/vimproc', { 'do': 'make' }
@@ -111,8 +120,8 @@ vmap = =gv
 nnoremap <silent><leader>c :nohlsearch<CR>
 nnoremap <leader>rv :source ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q!<CR>
-nnoremap <leader>Q :wq<CR>
+nnoremap <leader>q :wq<CR>
+nnoremap <leader>Q :q!<CR>
 nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>b :split<CR>

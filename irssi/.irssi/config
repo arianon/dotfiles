@@ -1,44 +1,30 @@
 servers = (
   {
-    address = "irc.rizon.net";
-    chatnet = "Rizon";
-    port = "6667";
-    use_ssl = "no";
+    address = "dan.soupwhale.com";
+    chatnet = "dan-rizon";
+    port = "65531";
+    password = "arianon/Rizon:herpderp";
+    use_ssl = "yes";
     ssl_verify = "no";
     autoconnect = "yes";
   },
   {
-    address = "irc.freenode.net";
-    chatnet = "Freenode";
-    port = "6667";
-    use_ssl = "no";
+    address = "dan.soupwhale.com";
+    chatnet = "dan-freenode";
+    port = "65531";
+    password = "arianon/freenode:herpderp";
+    use_ssl = "yes";
     ssl_verify = "no";
     autoconnect = "yes";
   }
 );
 
 chatnets = {
-  Rizon = {
-    type = "IRC";
-    nick = "arianon";
-    autosendcmd = "/msg nickserv IDENTIFY Ed0nUvTAX; wait 2000; /unquery nickserv";
-    max_kicks = "1";
-    max_msgs = "1";
-    max_whois = "1";
-  };
-  Freenode = {
-    type = "IRC";
-    nick = "arian0n";
-    autosendcmd = "/msg nickserv IDENTIFY vaTjFcgiuM; wait 2000; /unquery nickserv";
-  };
+  "dan-rizon" = { type = "IRC"; };
+  "dan-freenode" = { type = "IRC"; };
 };
 
-channels = (
-  { name = "#rice"; chatnet = "Rizon"; autojoin = "yes"; },
-  { name = "#code"; chatnet = "Rizon"; autojoin = "yes"; },
-  { name = "#6c37"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#joost"; chatnet = "Rizon"; autojoin = "yes"; }
-);
+channels = ( );
 
 aliases = {
   ATAG = "WINDOW SERVER";
@@ -194,6 +180,9 @@ aliases = {
   97 = "WINDOW GOTO 97";
   98 = "WINDOW GOTO 98";
   99 = "WINDOW GOTO 99";
+  spam = "exec -o shitpost";
+  nospam = "exec -o shitpost $* | head -1";
+  kek = "nospam";
 };
 
 statusbar = {
@@ -276,20 +265,7 @@ statusbar = {
       };
     };
 
-    topic = {
-
-      type = "root";
-      placement = "top";
-      position = "1";
-      visible = "always";
-
-      items = {
-        topicbarstart = { priority = "100"; };
-        topic = { };
-        topic_empty = { };
-        topicbarend = { priority = "100"; alignment = "right"; };
-      };
-    };
+    topic = { disabled = "yes"; };
     awl_0 = {
       placement = "top";
       items = {
@@ -306,12 +282,26 @@ settings = {
     user_name = "arianon";
     nick = "arianon";
   };
-  "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = { theme = "arianon"; };
+  "fe-text" = { actlist_sort = "refnum"; scrollback_lines = "0"; };
+  "fe-common/core" = {
+    theme = "arianon";
+    autolog = "yes";
+    autolog_colors = "no";
+    autolog_path = "~/.irssi/logs/$tag/$0.log";
+  };
   "perl/core/scripts" = {
     awl_shared_sbar = "OFF";
     awl_viewer = "no";
     awl_placement = "top";
     awl_block = "16";
+    awl_mouse = "yes";
+    awl_maxlines = "1";
+    awl_maxcolumns = "1";
+    trackbar_string = "---";
   };
 };
+ignores = ( { mask = "Zanthas"; level = "ALL"; } );
+keyboard = ( 
+  { key = "meta-[M"; id = "command"; data = "mouse_xterm"; }
+);
+logs = { };

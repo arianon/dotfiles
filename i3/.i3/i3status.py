@@ -1,25 +1,38 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python3.5
 
 import json
 import time
-import sys
+# import sys
+import threading
 
-widget_layout = {
-    "full_text": "",
-    "background": "",
-    "color": ""
-}
 
-def print_time():
-    time_widget = widget_layout
-    time_widget["full_text"] = time.strftime("%A, %d of %b - %H:%M:%S")
-    time_widget["background"] = "#707e8c"
+class Widget:
+    def __init__(self, text="", background="", color=""):
+        self.text = text
+        self.background = background
+        self.color = color
 
-    return time_widget
+    def __str__(self, *args, **kwargs):
+        return json.dumps(
+            {
+                "text": self.text,
+                "background": self.background,
+                "color": self.color,
+            }, *args, **kwargs)
 
-print(json.dumps({"version": 1}))
-# Begin the endless array.
-print("[[],")
-while True:
-    print(json.dumps([print_time()]) + ",\n", flush=True)
-    time.sleep(1)
+    def pretty(self):
+        return self.__str__(indent=4, sort_keys=True)
+
+
+class DateTime(Widget):
+    def __init__(self, format):
+        super().__init__()
+        self.format = format
+
+    def update(self):
+        self.text = time.strftime(self.format)
+
+
+if __name__ == '__main__':
+    date_label = Widget("DATE", "#8fa1b3")
+    date_widget = DateTime("%A, %b of %d")

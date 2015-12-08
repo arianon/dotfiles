@@ -1,6 +1,6 @@
 cd() {
 	if [[ -f $1 ]]; then
-		local dir=${1:t}
+		local dir=${1:h}
 		echo "Correcting '$1' to '$dir'"
 		builtin cd $dir
 	else

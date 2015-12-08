@@ -4,7 +4,7 @@ for prof (~/.zsh/profiles/*) {
 	if (( $+commands[$prof:t:r] )) source $prof
 }
 
-export PATH=~/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 
-if [[ $(tty) == "/dev/tty1" ]] exec startx &> /dev/null
+if [[ $(tty) == "/dev/tty1" ]] startx

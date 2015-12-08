@@ -1,0 +1,285 @@
+servers = (
+  {
+    address = "irc.quakenet.org";
+    chatnet = "qnet";
+    port = "6667";
+    autoconnect = "no";
+  },
+  {
+    address = "irc.freenode.net";
+    chatnet = "fnode";
+    port = "6697";
+    use_ssl = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.nixers.net";
+    chatnet = "nixers";
+    port = "6697";
+    use_ssl = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.blinkenshell.org";
+    chatnet = "blink";
+    port = "6697";
+    use_ssl = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.iotek.org";
+    chatnet = "iotek";
+    port = "6697";
+    use_ssl = "yes";
+    autoconnect = "no";
+  },
+  {
+    address = "irc.oftc.net";
+    chatnet = "oftc";
+    port = "6697";
+    use_ssl = "yes";
+    autoconnect = "yes";
+  }
+);
+
+chatnets = {
+  fnode = {
+    type = "IRC";
+    nick = "z3bra";
+    autosendcmd = "/msg NickServ IDENTIFY password; /unquery NickServ";
+  };
+  qnet = {
+    type = "IRC";
+    nick = "z3bra";
+    autosendcmd = "/msg Q@Cserve.quakenet.org AUTH z3bra passw0rd; /unquery Q@Cserve.quakenet.org";
+  };
+  nixers = {
+    type = "IRC";
+    nick = "z3bra";
+    autosendcmd = "/msg nickserv IDENTIFY password; /unquery nickserv";
+  };
+  blink = { type = "IRC"; };
+  iotek = { type = "IRC"; };
+  epik = { type = "IRC"; };
+  oftc = { type = "IRC"; };
+};
+
+channels = (
+  { name = "#defrag-france"; chatnet = "qnet"; autojoin = "Yes"; },
+  { name = "#nixers"; chatnet = "nixers"; autojoin = "Yes"; },
+  { name = "#vim-fr"; chatnet = "fnode"; autojoin = "Yes"; },
+  { name = "#archlinux-fr"; chatnet = "fnode"; autojoin = "Yes"; },
+  { name = "#blinkenshell"; chatnet = "blink"; autojoin = "Yes"; },
+  { name = "#iotek"; chatnet = "iotek"; autojoin = "No"; },
+  { name = "#crux"; chatnet = "fnode"; autojoin = "Yes"; },
+  { name = "#2f30"; chatnet = "fnode"; autojoin = "Yes"; },
+  { name = "#morpheus"; chatnet = "oftc"; autojoin = "No"; }
+);
+
+aliases = {
+  J = "join";
+  WJOIN = "join -window";
+  WQUERY = "query -window";
+  P = "part";
+  DESCRIBE = "action";
+  DATE = "time";
+  HOST = "userhost";
+  LAST = "lastlog";
+  SAY = "msg *";
+  WI = "whois";
+  WII = "whois $0 $0";
+  WW = "whowas";
+  W = "window";
+  N = "names";
+  M = "msg";
+  T = "topic";
+  C = "clear";
+  K = "kick";
+  KB = "kickban";
+  KN = "knockout";
+  BANS = "ban";
+  B = "ban";
+  MUB = "unban *";
+  UB = "unban";
+  IG = "ignore";
+  UNIG = "unignore";
+  SB = "scrollback";
+  SH = "exec -";
+  UMODE = "mode $N";
+  WC = "window close";
+  WN = "window name";
+  WS = "window show";
+  WK = "window stick";
+  WM = "window move";
+  WG = "window grow";
+  WL = "window list";
+  SV = "say Irssi $J ($V) - http://irssi.org/";
+  GOTO = "sb goto";
+  CHAT = "dcc chat";
+  RUN = "SCRIPT LOAD";
+  SBAR = "STATUSBAR";
+  INVITELIST = "mode $C +I";
+  Q = "QUIT";
+  QU = "QUERY";
+  UQ = "UNQUERY";
+  HL = "lastlog -hilight -new";
+  OP = "msg ChanServ OP $C";
+  DEOP = "msg ChanServ DEOP $C";
+  CHEZWAM = "say http://chezmoicamarche.com";
+  TWSS = "say THAT'S WHAT SHE SAID";
+};
+
+keyboard = (
+  { key = "meta-A"; id = "change_window"; data = "11"; },
+  { key = "meta-Z"; id = "change_window"; data = "12"; },
+  { key = "meta-E"; id = "change_window"; data = "13"; },
+  { key = "meta-R"; id = "change_window"; data = "14"; },
+  { key = "meta-T"; id = "change_window"; data = "15"; }
+);
+
+statusbar = {
+  default = {
+    # the "default statusbar" to be displayed at the bottom of the window.
+    # contains all the normal items.
+    window = { disabled = "yes"; };
+    topic = { visible = "inactive"; disabled = "yes"; };
+
+    # leave an empty line before the prompt
+    empty_line_top = { placement = "top"; position = "100"; };
+
+    # we treat input line as yet another statusbar :) It's possible to
+    # add other items before or after the input line item.
+    prompt = {
+      type = "root";
+      placement = "bottom";
+      position = "100";
+      visible = "always";
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        input = { priority = "0"; };
+      };
+    };
+
+    #awl_1 = { placement = "top"; items = { barstart = { priority = "100"; }; awl_1 = { }; barend = { priority = "100"; alignment = "right"; }; }; };
+    awl_0 = {
+      placement = "top";
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+
+settings = {
+  core = {
+    real_name = "z3bra";
+    user_name = "z3bra";
+    nick = "z3bra";
+    timestamp_format = "%H:%M (%d/%m)";
+    quit_message = "kill -s TERM $(pidof z3bra)";
+  };
+
+  "fe-text" = {
+    scrollback_time = "48h";
+    actlist_sort = "refnum";
+    indent = "8";
+  };
+
+  "fe-common/core" = {
+    autolog = "yes";
+    autolog_path = "~/var/log/irc/%Y/$tag/$0.%m-%d.log";
+    theme = "default";
+    bell_beeps = "yes";
+    beep_msg_level = "MSGS NOTICES INVITES DCC DCCMSGS HILIGHT";
+    use_status_window = "yes";
+    expand_escapes = "yes";
+    timestamp_level = "MSGS HILIGHT";
+    timestamp_timeout = "900";
+    completion_char = ",";
+  };
+  "perl/core/scripts" = {
+    awl_display_key = "%K$H$C$S";
+    awl_display_key_active = "%W$H$C$S%n";
+    # awl_sort             = "refnum";
+    # awl_hide_data        = "0";
+    awl_placement = "top";
+    awl_block = "";
+    awl_columns = "1";
+    awl_height_adjust = "2";
+    awl_maxlines = "1";
+    awl_prefer_name = "on";
+  };
+  "irc/core" = {
+    ctcp_version_reply = "And what do we say to CTCP VERSION ? NOT. TODAY.";
+  };
+};
+
+hilights = ( { text = "z3bra"; nick = "yes"; word = "yes"; } );
+
+windows = {
+  1 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#vim-fr";
+        tag = "fnode";
+      }
+    );
+  };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#archlinux-fr";
+        tag = "fnode";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#nixers";
+        tag = "nixers";
+      }
+    );
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#crux";
+        tag = "fnode";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#2f30";
+        tag = "fnode";
+      }
+    );
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#blinkenshell";
+        tag = "blink";
+      }
+    );
+  };
+};
+
+logs = { };
