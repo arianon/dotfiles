@@ -10,3 +10,6 @@ mpd/.mpd/mpd.pid
 
 fish/.config/fish/fish*history
 fish/.config/fish/fishd*
+
+transmission/.config/transmission-daemon/torrents
+transmission/.config/transmission-daemon/resume
