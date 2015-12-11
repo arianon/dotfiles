@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/arianon/etc/irssi/.irssi'
-let g:netrw_dirhist_2='/home/arianon/.emacs.d/layers'
-let g:netrw_dirhist_3='/tmp/tmp.doiFad8yiN/joostbot/lib/joostbot'
-let g:netrw_dirhist_4='/home/arianon/.ncmpcpp'
-let g:netrw_dirhist_5='/home/arianon/.gem'
