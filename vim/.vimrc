@@ -4,49 +4,6 @@ syntax enable
 colorscheme term
 filetype plugin indent on
 
-" PLUGINS
-call plug#begin()
-
-Plug 'baskerville/vim-sxhkdrc', { 'for': 'sxhkdrc' }
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
-" Plug 'leafo/moonscript-vim', { 'for': 'moonscript' }
-" Plug 'klen/python-mode', { 'for': 'python' }
-
-" Usability
-Plug 'jiangmiao/auto-pairs'
-" Plug 'Raimondi/delimitMate'
-" Plug 'kien/ctrlp.vim'
-" Plug 'Shougo/neocomplcache.vim' | let g:neocomplcache_enable_at_startup = 1
-" Plug 'scrooloose/syntastic'
-
-" Plug 'garbas/vim-snipmate'
-" Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'tomtom/tlib_vim'
-" Plug 'honza/vim-snippets'
-
-" pseudo-IDEs
-" Plug 'fatih/vim-go', { 'for': 'go' }
-" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-
-" Misc
-" Plug 'itchyny/lightline.vim'
-Plug 'bling/vim-airline' " {{{
-	let g:airline_theme = 'hybridline'
-	let g:airline_powerline_fonts = 1
-	let g:airline#extensions#whitespace#enabled = 0
-	let g:airline#extensions#branch#enabled = 1
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#fnamemod = ':t'
-	" autocmd User AirlineAfterInit call AirlineInit()
-" }}}
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'scrooloose/nerdcommenter'
-" Plug 'Shougo/vimproc', { 'do': 'make' }
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'tpope/vim-fugitive'
-
-call plug#end()
-
 " INTERFACE
 set foldmethod=marker
 set scrolloff=7
