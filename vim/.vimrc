@@ -4,6 +4,13 @@ syntax enable
 colorscheme term
 filetype plugin indent on
 
+call plugin#begin()
+
+Plug 'rhysd/vim-crystal'
+Plug 'scrooloose/syntastic'
+
+call plugin#end()
+
 " INTERFACE
 set foldmethod=marker
 set scrolloff=7

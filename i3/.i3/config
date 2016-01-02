@@ -3,7 +3,8 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font pango: tewi, Siji 8
+set $font pango: tewi 8
+set $border_width 1
 
 set $background #14181f
 set $foreground #b7bdcc
@@ -56,10 +57,10 @@ client.urgent           $red         $red        $white   $red
 # KEYBINDIGS {{{
 
 # Non-WM
-bindsym $mod+p exec dmenu_run -i -p "\$" -nb "$background" -nf "$foreground" -sb "$background" -sf "$lightblue"
+bindsym $mod+p exec dmenu_run -i -p "\$" -fn "tewi" -nb "$background" -nf "$foreground" -sb "$background" -sf "$lightblue"
 bindsym $mod+Shift+a exec --no-startup-id atom
-bindsym --release Print exec imgur $(img)
-bindsym --release Shift+Print exec imgur $(img -s)
+bindsym --release Print exec teknik $(img)
+bindsym --release Shift+Print exec teknik $(img -s)
 
 bindsym $mod+Return exec --no-startup-id termite || urxvt || rxvt || xterm
 
@@ -207,7 +208,7 @@ mode "$mode_gaps_outer" {
 }
 # }}}
 # RULES {{{
-new_window pixel 1
+new_window pixel $border_width
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable

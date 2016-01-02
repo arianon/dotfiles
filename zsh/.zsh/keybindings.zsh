@@ -1,1 +1,1 @@
-bindkey -v
+bindkey -e
