@@ -6,11 +6,12 @@ xsetroot -mod 2 2 -bg '#14181f'
 xrdb -load ~/.Xresources
 setxkbmap latam -option caps:swapescape
 
-emacs &
+rubar &
+# emacs &
 redshift &
-mpd &
-steam &
-transmission-daemon &
+# mpd &
+# steam &
+# transmission-daemon &
 
 chromium &
 i3

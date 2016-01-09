@@ -51,7 +51,7 @@ URxvt.iso14755_52: false
 
 URxvt.scrollBar: false
 URxvt.internalBorder: 8
-!URxvt*cursorUnderline: true
+URxvt*cursorUnderline: true
 !URxvt.cursorBlink: true
 
 Emacs.font: Source Code Pro-11
@@ -59,6 +59,7 @@ Emacs.font: Source Code Pro-11
 !no bold font
 URxvt*italicFont:
 URxvt*boldFont:
-URxvt*font: -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+!URxvt*font: -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+URxvt*font: -*-synepis-normal-*-*-*-14-*-*-*-*-*-iso10646-*
 
 !vim ft=xdefaults ts=8
