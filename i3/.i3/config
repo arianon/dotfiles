@@ -3,8 +3,8 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font pango: tewi 8
-set $border_width 1
+set $font pango: Synepis
+set $border_width 4
 
 set $background #14181f
 set $foreground #b7bdcc
@@ -63,6 +63,8 @@ bindsym --release Print exec teknik $(img)
 bindsym --release Shift+Print exec teknik $(img -s)
 
 bindsym $mod+Return exec --no-startup-id termite || urxvt || rxvt || xterm
+
+bindsym $mod+Shift+e exec emacs
 
 # WM
 floating_modifier $mod
@@ -131,7 +133,7 @@ bindsym $mod+Shift+Tab move container to workspace back_and_forth
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+Escape exec i3-msg exit
 
 # }}}
 # MODES {{{
@@ -221,6 +223,7 @@ for_window [window_type="menu"] floating enable
 for_window [class=(?i)chromium] focus child, layout tabbed, focus
 for_window [class=(?i)firefox] focus child, layout tabbed, focus
 for_window [class="qemu"] floating enable
+for_window [class="(?i)gbdfed"] floating enable
 
 assign [class="(?i)firefox*"] $ws1
 assign [class="(?i)chromium"] $ws1
