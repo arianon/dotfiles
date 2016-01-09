@@ -4,12 +4,16 @@ syntax enable
 colorscheme term
 filetype plugin indent on
 
-call plugin#begin()
+call plug#begin()
 
 Plug 'rhysd/vim-crystal'
 Plug 'scrooloose/syntastic'
+Plug 'digitaltoad/vim-jade'
+Plug 'wavded/vim-stylus'
+Plug 'Shougo/unite.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
-call plugin#end()
+call plug#end()
 
 " INTERFACE
 set foldmethod=marker
