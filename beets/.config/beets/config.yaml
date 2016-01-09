@@ -1,6 +1,6 @@
 directory: ~/usr/msc
 library: ~/.beetslibrary.blb
-plugins: convert fetchart embedart chroma asciify_paths
+plugins: convert fetchart embedart chroma
 
 import:
     move: no
