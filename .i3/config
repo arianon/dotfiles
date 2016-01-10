@@ -233,7 +233,7 @@ assign [class="(?i)steam*"] $ws4
 # }}}
 # BAR {{{
 bar {
-	status_command i3blocks
+	# status_command i3blocks
 	strip_workspace_numbers yes
 	separator_symbol "·"
 
