@@ -1,4 +1,4 @@
-export BROWSER="firefox"
+export BROWSER="chromium"
 export EDITOR="vim"
 export VISUAL=$EDITOR
 
