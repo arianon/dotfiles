@@ -2,6 +2,8 @@ HISTFILE=~/.zhistory
 HISTSIZE=8000
 SAVEHIST=8000
 
+typeset -U path
+
 # Options
 setopt histallowclobber
 setopt nonomatch
@@ -15,13 +17,20 @@ setopt hist_ignore_dups
 setopt inc_append_history
 setopt extended_history
 setopt share_history
+setopt extended_glob
 
 # Keybindings
 bindkey -e
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
 
 # Completion
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select=2 eval "$(dircolors -b)"
 zstyle ':completion:*' completer _complete _correct _approximate
 zstyle ':completion:*' expand prefix suffix
+
+# Modules
+
+autoload zmv
+autoload zcalc
