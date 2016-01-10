@@ -1,3 +1,7 @@
+HISTFILE=~/.zhistory
+HISTSIZE=8000
+SAVEHIST=8000
+
 # Options
 setopt histallowclobber
 setopt nonomatch
@@ -7,6 +11,10 @@ setopt correct
 setopt autocd
 setopt complete_in_word
 setopt auto_menu
+setopt hist_ignore_dups
+setopt inc_append_history
+setopt extended_history
+setopt share_history
 
 # Keybindings
 bindkey -e
