@@ -98,6 +98,9 @@
   (use-package sh-mode
     :mode "Pkgfile\\'")
 
+  (use-package shell-mode
+    :mode "\\.zsh\\'")
+
   (use-package super-save
     :config
     (progn
