@@ -1,3 +1,6 @@
 [submodule "bin"]
 	path = bin
 	url = git://github.com/arianon/scripts.git
+[submodule ".zsh/antigen"]
+	path = .zsh/antigen
+	url = git://github.com/zsh-users/antigen.git
