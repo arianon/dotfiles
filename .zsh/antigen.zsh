@@ -1,4 +1,6 @@
-plug="${0:h}/antigen/antigen.zsh"
+zmodload zsh/zprof
+
+# plug="${0:h}/antigen/antigen.zsh"
 
 if [[ -f "$plug" ]]; then
 	source $plug
@@ -7,7 +9,7 @@ else
 	return 1
 fi
 
-antigen use oh-my-zsh
+# antigen use oh-my-zsh
 
 antigen bundles <<EOB
 zsh-users/zsh-completions
