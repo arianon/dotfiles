@@ -96,10 +96,8 @@
     (spacemacs/set-leader-keys "eh" 'helm-flycheck))
 
   (use-package sh-mode
-    :mode "Pkgfile\\'")
-
-  (use-package shell-mode
-    :mode "\\.zsh\\'")
+    :mode (("Pkgfile\\'" . sh-mode)
+           ("\\.zsh\\'" . sh-mode)))
 
   (use-package super-save
     :config
