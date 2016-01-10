@@ -1,6 +1,6 @@
-if (( ! $+commands[go] )); then
+if (( ! $+commands[go] )) {
 	return 1
-fi
+}
 
 export GOPATH=$HOME/.go
 

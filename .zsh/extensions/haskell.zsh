@@ -1,5 +1,5 @@
-if (( ! $+commands[cabal] )); then
+if (( ! $+commands[cabal] )) {
 	return 1
-fi
+}
 
 path=($HOME/.cabal/bin $path)

@@ -1,9 +1,9 @@
-if (( ! $+commands[rust] && ! $+commands[cargo] )); then
+if (( ! $+commands[rust] && ! $+commands[cargo] )) {
 	return 1
-fi
+}
 
 path=($HOME/.cargo/bin $path)
 
-if (( $+commands[racer] )); then
+if (( $+commands[racer] )) {
 	export RUST_SRC_PATH="$HOME/.rust/src"
-fi
+}

@@ -1,1 +1,3 @@
-for extension (${0:h}/extensions/*) source $extension
+for extension (${0:h}/extensions/*.zsh) {
+	source $extension
+}

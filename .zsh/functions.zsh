@@ -1,24 +1,24 @@
 cd() {
-	if [[ -f $1 ]]; then
+	if [[ -f $1 ]] {
 		local dir=${1:h}
 		echo "Correcting '$1' to '$dir'"
 		builtin cd $dir
-	else
+	} else {
 		builtin cd "$@"
-	fi
+	}
 }
 
 mkcd() {
-	if (( $# != 1 )); then
+	if (( $# != 1 )) {
 		echo "usage: mkcd <directory>"
 		return 1
-	fi
+	}
 	
-	if [[ -d "$1" ]]; then
+	if [[ -d "$1" ]] {
 		echo "'$1' already exists cd-ing."
-	else
+	} else {
 		command mkdir -p "$1"
-	fi
+	}
 
 	builtin cd "$1"
 }

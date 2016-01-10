@@ -1,1 +1,3 @@
-for conf (~/.zsh/*) source $conf
+for conf (~/.zsh/*.zsh) {
+	source $conf
+}

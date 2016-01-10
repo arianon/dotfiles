@@ -1,13 +1,13 @@
 # just t type '...' to get '../..'
 rationalise-dot() {
 	local MATCH
-	if [[ $LBUFFER =~ '(^|/| |	|'$'\n''|\||;|&)\.\.$' ]]; then
+	if [[ $LBUFFER =~ '(^|/| |	|'$'\n''|\||;|&)\.\.$' ]] {
 		LBUFFER+=/
 		zle self-insert
 		zle self-insert
-	else
+	} else {
 		zle self-insert
-	fi
+	}
 }
 
 zle -N rationalise-dot

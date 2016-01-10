@@ -1,13 +1,14 @@
-if (( ! $+commands[ruby] || ! $+commands[gem] )); then
+if (( ! $+commands[ruby] || ! $+commands[gem] )) {
 	return 1
-fi
+}
 
+# TODO: Make this lazy
 
-if [[ -s "$HOME/.rbenv/bin/rbenv" ]]; then
+if [[ -s "$HOME/.rbenv/bin/rbenv" ]] {
 	path=($HOME/.rbenv/bin $path)
 	eval "$(rbenv init - --no-rehash zsh)"
-elif (( $+commands[rbenv] )); then
+} elif (( $+commands[rbenv] )) {
 	eval "$(rbenv init - --no-rehash zsh)"
-else
+} else {
 	path=($HOME/.gem/ruby/*/bin(N) $path)
-fi
+}
