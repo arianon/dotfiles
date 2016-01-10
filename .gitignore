@@ -1,15 +1,18 @@
 **/*.log
 
-weechat/.weechat/logs
-mpv/.config/mpv/watch_later/
+.weechat/logs
+.config/mpv/watch_later/
 
-mpd/.mpd/mpdstate
-mpd/.mpd/mpd.db
-mpd/.mpd/mpd.log
-mpd/.mpd/mpd.pid
+.mpd/mpdstate
+.mpd/mpd.db
+.mpd/mpd.log
+.mpd/mpd.pid
 
-fish/.config/fish/fish*history
-fish/.config/fish/fishd*
+.config/fish/fish*history
+.config/fish/fishd*
 
-transmission/.config/transmission-daemon/torrents
-transmission/.config/transmission-daemon/resume
+.config/transmission-daemon/torrents
+.config/transmission-daemon/resume
+
+.vim/.netrwhist
+.vim/plugged
