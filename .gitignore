@@ -17,3 +17,5 @@
 
 .vim/.netrwhist
 .vim/plugged
+
+.spacemacs.d/.custom.el
