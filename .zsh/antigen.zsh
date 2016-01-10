@@ -13,6 +13,9 @@ antigen bundles <<EOB
 zsh-users/zsh-completions
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
+
+mafredri/zsh-async
+sindresorhus/pure
 EOB
 
 antigen apply
