@@ -16,7 +16,7 @@
      go
      html
      markdown
-     ;; org
+     org
      javascript
      ruby
      ruby-on-rails
