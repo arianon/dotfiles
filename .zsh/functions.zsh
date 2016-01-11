@@ -13,7 +13,7 @@ mkcd() {
 		echo "usage: mkcd <directory>"
 		return 1
 	}
-	
+
 	if [[ -d "$1" ]] {
 		echo "'$1' already exists cd-ing."
 	} else {
