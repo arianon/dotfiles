@@ -17,6 +17,7 @@
      html
      markdown
      ;; org
+     javascript
      ruby
      ruby-on-rails
      semantic
