@@ -21,8 +21,8 @@ setopt extended_glob
 
 # Keybindings
 bindkey -e
-bindkey '\e[1~' beginning-of-line
-bindkey '\e[4~' end-of-line
+bindkey '^[[7~' beginning-of-line
+bindkey '^[[8~' end-of-line
 
 # Completion
 autoload -Uz compinit && compinit
