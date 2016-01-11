@@ -1,0 +1,24 @@
+#!/usr/bin/ruby -wU
+
+require 'json'
+
+# TODO: Use net/http instead of rest-client
+
+begin
+  require 'rest-client'
+rescue LoadError
+  $stderr.puts '$ gem install rest-client'
+  exit 1
+end
+
+TEKNIK = 'https://api.teknik.io/upload/post'
+
+ARGV.each do |file|
+  request = RestClient.post TEKNIK, file: File.new(file)
+
+  response = JSON.parse request
+  url = response.first['results']['file']['url']
+
+  puts url
+  IO.popen('xsel -ib', 'r+') { |c| c.print url }
+end

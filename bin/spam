@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+words = ARGV.join(' ').upcase.split('')
+
+puts words.join(' ')
+puts words[1..-1]

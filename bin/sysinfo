@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Soon.
+#     ___ 
+#    (.. | 
+#    (<> | 
+#   / __  \ 
+#  ( /  \ /| 
+# _/\\ __)/_) 
+# \\/-____\/ 
+
+HOST=$(hostname)
+OS=$(grep "PRETTY_NAME" /etc/*-release | cut -d\" -f 2)
+KERNEL=$(uname -sr)
+PACKAGES=$(pacman -Qq | wc -l)
+WM=$(tail -n 1 "$HOME/.xinitrc" | cut -d " " -f2)
+FONTNAME=$(xrdb -query | sed -n "/URxvt\*font/s/^[^-]*-\*-\([^-]*\)-.*$/\1/p")
+SHELL=$(basename $SHELL)
+UPTIME=$(uptime --pretty | cut -d " " -f2-)
+
+C=$(tput setaf 4)
+B=$(tput setaf 12)
+R=$(tput sgr0)
+
+cat <<EOF
+$B        #         ${USER}${R}@${B}${HOST}
+$B       ###        OS:       $R ${OS}
+$B      #####       Kernel:   $R ${KERNEL}
+$B     #######      Packages: $R ${PACKAGES}
+$C    #########$B     WM:       $R ${WM}
+$C   ####   ####$B    Font:     $R ${FONTNAME}
+$C  ###       ###$B   Shell:    $R ${SHELL}
+$C ##           ##$B  Uptime:   $R ${UPTIME}
+EOF

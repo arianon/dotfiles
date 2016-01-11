@@ -1,0 +1,102 @@
+#!/usr/bin/ruby -U
+# coding: utf-8
+require 'json'
+require 'uri'
+require 'open-uri'
+
+require 'colorize'
+
+class ChanDownload
+  TEMPLATES = {
+    '4chan': 'https://media.8ch.net/%s/src/%s',
+    '8chan': 'https://i.4cdn.org/%s/%s'
+  }
+
+  def initialize(url, opts = {})
+    @url = jsonify(url)
+    @json = JSON.load open(@url)
+    @images = []
+
+    @dry_run = opts.fetch(:dry_run, false)
+  end
+
+  def start!
+    fetch_images && download_images
+  end
+
+  def download_images
+    @images.each_with_index do |image, index|
+      printf('[%s] Downloading %s... ',
+             (index + 1).to_s.yellow,
+             image[:name].black.bold)
+
+      if File.exist?(image[:name])
+        puts 'SKIPPED'.blue
+      else
+        unless @dry_run
+          download = open(image[:url])
+          IO.copy_stream(download, image[:name])
+        end
+
+        puts 'DONE'.green
+      end
+    end
+  end
+
+  def fetch_images
+    @json['posts'].each do |post|
+      next unless post['filename']
+      @images << get_image_url(post)
+
+      next unless post['extra_files']
+      post['extra_files'].each do |file|
+        @images << get_image_url(file)
+      end
+    end
+  end
+
+  private
+
+  def get_image_url(hash)
+    filename = hash['tim'].to_s + hash['ext']
+
+    {
+      name: filename,
+      url: format(TEMPLATES[chan], board, filename)
+    }
+  end
+
+  def board
+    @board ||= @url.split('/')[3]
+  end
+
+  def chan
+    @chan ||= case @url
+              when /4chan.org/
+                :'4chan'
+              when /8ch.net/
+                :'8chan'
+              else
+                fail 'Unknown chan.'
+              end
+  end
+
+  def jsonify(url)
+    if url.end_with? '.html'
+      url.sub(/.html$/, '.json')
+    else
+      url + '.json'
+    end
+  end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  require 'slop'
+
+  opts = Slop.parse do |o|
+    o.bool '-n', '--dry-run', default: false
+  end
+
+  chandl = ChanDownload.new(opts.arguments.first, opts.to_h)
+  chandl.start!
+end

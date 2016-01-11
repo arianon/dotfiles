@@ -1,0 +1,21 @@
+#!/bin/sh
+
+OPT=${1:-"medium"}
+
+usage() {
+    cat <<USAGE
+usage: $(basename $0) [<quality> | audio]
+
+options:
+    <quality>  Sets the video quality, possible options:
+               worst, mobile, low, medium, high, source, best
+               Audio quality is unaffected.
+
+    audio      Doesn't stream video, making it unpausable.
+               This is the default option.
+USAGE
+    exit 0
+}
+
+dtach -A /tmp/monstercat.sk -r none livestreamer -p mpv http://www.twitch.tv/monstercat $OPT
+

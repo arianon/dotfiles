@@ -1,0 +1,16 @@
+#!/usr/bin/ruby -wU
+# coding: utf-8
+
+count = 0
+
+ARGF.each do |line|
+  case line
+  when /^\s*$/ then next
+  # when /^\s*#/ then next
+  when /^\s*[{}]/ then next
+  when %r{^\s*[/*]} then next
+  else count += 1
+  end
+end
+
+puts "SLOC: #{count}"

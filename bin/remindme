@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+while getopts :s:m:h: opt; do
+	case $opt in
+		s)
+			WAIT="$OPTARG"
+			;;
+		m)
+			WAIT=$((OPTARG * 60))
+			;;
+		h)
+			WAIT=$((OPTARG * 60 * 60))
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+		:)
+			echo "Option -$OPTARG requires an argument" >&2
+			exit 1
+			;;
+	esac
+done
+
+MSG=${@:OPTIND}
+
+echo "After $WAIT seconds. I'll notify the following: $MSG"
+
+(( WAIT > 0 )) && sleep $WAIT
+notify-send -u critical "$MSG"

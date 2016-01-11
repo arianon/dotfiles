@@ -1,0 +1,25 @@
+#!/bin/bash
+
+hora=${1:-6}
+vef=${2:-620}
+
+diario=$((6 * hora))
+semanal=$((5 * diario))
+mensual=$((4 * semanal))
+anual=$((12 * mensual))
+
+
+msg="Dado que el dolar valga %'d BsF;
+Ganancias previstas con $%'d o %'d BsF la hora:
+
+Diario (6 horas): $%'d ~ %'d BsF
+Semanal (5 dias): $%'d ~ %'d BsF
+Mensual (4 sems): $%'d ~ %'d BsF
+Anual (12 meses): $%'d ~ %'d BsF
+" 
+
+printf "$msg" $vef $hora $((hora * vef)) \
+              $diario $((diario * vef)) \
+              $semanal $((semanal * vef)) \
+              $mensual $((mensual * vef)) \
+              $anual $((anual * vef))

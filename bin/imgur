@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# arianon - arianon at openmailbox dot org
+# Upload screenshots/images to imgur.com
+
+APIKEY='a9ee805b1840452'
+
+# argument vector || stdin
+FILES=${@:='-'}
+
+for img in "$FILES"; do
+	res=$(curl -F "image=@$img" -H "Authorization: Client-ID $APIKEY" \
+		https://api.imgur.com/3/image)
+	echo $res
+
+	url=$(echo $res | jq -r .data.link)
+
+	echo "$url"
+	notify-send "Image uploaded."
+	echo -n "$url" | xsel -ib
+done

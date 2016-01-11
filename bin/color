@@ -1,0 +1,35 @@
+#!/bin/sh
+
+printc() {
+	tput setaf $1
+	shift
+	printf "$@"
+	tput sgr0
+}
+
+hexas() {
+	for x in $(seq 0 15); do
+		COL=$(xrq color${x})
+
+		printc ${x} "$COL "
+		[[ $x =~ 7|15 ]] && printf "\n"
+	done
+}
+
+squares() {
+	for _ in $(seq 0 2); do
+		for y in $(seq 0 7); do
+			printc ${y} "██████"
+		done
+		printf "\n"
+	done
+
+	for _ in $(seq 0 2); do
+		for x in $(seq 8 15); do
+			printc ${x} "██████"
+		done
+		printf "\n"
+	done
+}
+
+[[ -n $1 ]] && $1 || hexas

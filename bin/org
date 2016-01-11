@@ -1,0 +1,31 @@
+#!/bin/sh
+# coding: utf-8
+
+arg=${1:?}
+
+if ! ( test -f "$arg" || test -d "$arg" ); then
+    echo "err: $arg is not a valid file or directory" >&2
+    exit 1
+fi
+
+mergesubs() {
+    file="${1:?}"
+    basefile="$(basename "$file" | cut -d. -f1)"
+
+    mkvmerge "$file" -o "${basefile}__SUBBED.mkv" \
+             --default-language en \
+             --language 0:en "${basefile}.en.srt" \
+             --language 0:es "${basefile}.es.srt"
+}
+
+subliminal download -l en -l es "$arg" || exit 1
+
+if test -d "$arg"; then
+    for file in "$arg"/{*mkv,*avi,*mp4}; do
+        mergesubs "$file" || exit 1
+    done
+else
+    mergesubs "$arg" || exit 1
+fi
+
+# filebot -rename "$arg" -non-strict
