@@ -93,6 +93,9 @@
   (aggressive-indent-global-mode)
   (rainbow-mode)
 
+  (define-key evil-normal-state-map "H" "^")
+  (define-key evil-normal-state-map "L" "$")
+
   (use-package helm-flycheck
     :defer t
     :if (configuration-layer/layer-usedp 'syntax-checking)
