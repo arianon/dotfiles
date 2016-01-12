@@ -1,1 +1,2 @@
-source ${0:h}/syntax-highlighting/zsh-syntax-highlighting.zsh || return 1
+self=${0:r}
+source $self/zsh-${self:t}.zsh || return 1
