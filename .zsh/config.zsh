@@ -34,3 +34,4 @@ zstyle ':completion:*' expand prefix suffix
 
 autoload zmv
 autoload zcalc
+zmodload zsh/zprof
