@@ -8,7 +8,7 @@ if [[ $commands[fasd] -nt "$fasd_cache" || ! -s "$fasd_cache" ]] {
 	fasd --init posix-alias \
 		zsh-hook \
 		zsh-ccomp \
-		zsh-install \
+		zsh-ccomp-install \
 		zsh-wcomp \
 		zsh-wcomp-install \
 	>| "$fasd_cache"
