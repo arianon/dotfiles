@@ -11,6 +11,7 @@
      c-c++
      colors
      emacs-lisp
+     fasd
      git
      github
      go
@@ -84,6 +85,8 @@
    inhibit-startup-screen t
    initial-major-mode 'ruby-mode
    initial-scratch-message "#!/usr/bin/ruby -wU\n# -*- coding: utf-8 -*-\n"
+
+   evil-move-cursor-back nil
    )
 
   (global-hungry-delete-mode)
@@ -92,8 +95,8 @@
 
   (use-package helm-flycheck
     :defer t
-    :if (configuration-layer/layer-usedp 'auto-completion)
-    :init
+    :if (configuration-layer/layer-usedp 'syntax-checking)
+    :config
     (spacemacs/set-leader-keys "eh" 'helm-flycheck))
 
   (use-package sh-mode
