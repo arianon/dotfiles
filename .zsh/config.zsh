@@ -23,6 +23,7 @@ setopt extended_glob
 bindkey -e
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
+bindkey '^[[3~' delete-char
 
 # Completion
 autoload -Uz compinit && compinit
