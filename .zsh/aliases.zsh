@@ -12,9 +12,12 @@ alias et="emacsclient -t"
 alias so="source ~/.zshrc"
 alias :q="exit"
 alias quit="exit"
+alias zmv="noglob zmv"
 
 if (( $+commands[hub] )) {
-  alias git="hub"
+	alias git="noglob hub"
+} else {
+	alias git="noglob git"
 }
 
 if (( $+commands[aura] )) {
