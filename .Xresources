@@ -60,6 +60,6 @@ Emacs.font: Source Code Pro-11
 URxvt*italicFont:
 URxvt*boldFont:
 !URxvt*font: -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-URxvt*font: -*-synepis-normal-*-*-*-14-*-*-*-*-*-iso10646-*
+URxvt*font: -*-synepis-normal-*-*-*-11-*-*-*-*-*-iso10646-*
 
 !vim ft=xdefaults ts=8
