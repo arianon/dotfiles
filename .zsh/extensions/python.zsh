@@ -1,4 +1,4 @@
-if (( ! $+commands[python] && ! $+commands[pip] )) {
+if (( ! $+commands[python] || ! $+commands[pip] )) {
 	return 1
 }
 
