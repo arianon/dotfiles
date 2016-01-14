@@ -1,6 +1,10 @@
-CHAR="$" # "⟩"
+CHAR="»"
 
-if (( $UID == 0 )) ISROOT="%F{magenta}root%f "
+if (( $UID == 0 )) {
+	COLOR="%(?,green,red)"
+} else {
+	COLOR="%(?,blue,red)"
+}
 
-PROMPT="$ISROOT%(?,%F{blue},%F{red})$CHAR %f"
-RPROMPT="%F{yellow}%~%f"
+PROMPT="%F{black}%S%s%K{black}%F{$COLOR} $CHAR %F{black}%K{$COLOR}%k%F{$COLOR}%f "
+RPROMPT="%F{yellow}%F{black}%K{yellow}%K{black}%F{yellow} %~ %k%F{black}%S%s"
