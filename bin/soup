@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+words = ARGV.join(' ').upcase.delete(' ').split('')
+
+def process_words(words)
+  words.map { |x| "\x03" << rand(2..9).to_s << x }.join(' ')
+end
+
+puts process_words(words)
+
+1.upto(words.length - 1) do |letter|
+  puts process_words(words.rotate!)
+end
