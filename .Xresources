@@ -51,7 +51,6 @@ URxvt.iso14755_52: false
 
 URxvt.scrollBar: false
 URxvt.internalBorder: 8
-URxvt*cursorUnderline: true
 !URxvt.cursorBlink: true
 
 Emacs.font: Source Code Pro-11
