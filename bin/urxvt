@@ -1,10 +1,9 @@
 #!/bin/sh
 
 xrdb ~/.Xresources
+mkfontdir ~/.fonts
+mkfontscale ~/.fonts
+xset +fp ~/.fonts
+xset fp rehash
 
-urxvtc $@
-
-if test $? -eq 2; then
-	urxvtd -q -o -f
-	urxvtc $@
-fi
+exec /usr/bin/urxvt
