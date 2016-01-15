@@ -24,6 +24,9 @@ bindkey -e
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 bindkey '^[[3~' delete-char
+bindkey '[3~' kill-word
+bindkey '[D' backward-word
+bindkey '[C' forward-word
 
 # Completion
 autoload -Uz compinit && compinit
