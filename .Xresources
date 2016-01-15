@@ -8,10 +8,10 @@ Xft.autohint: true
 Xft.hintstyle: hintslight
 
 ! Colors
-*background: #14181f
+*background: #0a0c10
 *foreground: #b7bdcc
 
-*color0: #2b303b
+*color0: #363c4a
 *color1: #994e55
 *color2: #849971
 *color3: #c5aa75
