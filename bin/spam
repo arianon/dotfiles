@@ -1,10 +1,13 @@
 #!/usr/bin/env ruby
 
-words = ARGV.join(' ').upcase.split('')
+require 'colorize'
 
-def process_words(words)
-  words.map { |x| "\x03" << rand(2..9).to_s << x }
+@colors = String.colors - %i(black light_black default)
+@words = ARGV.join(' ').upcase.split('')
+
+def colored_words
+  @words.map { |x| x.colorize(@colors.sample) }
 end
 
-puts process_words(words).join(' ')
-puts process_words(words[1..-1])
+puts colored_words.join(' ')
+puts colored_words[1..-1]
