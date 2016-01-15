@@ -2,8 +2,6 @@
 
 require 'colorize'
 
-String.disable_colorization(true) unless $stdout.tty?
-
 @colors = String.colors - %i(black light_black default)
 @words = ARGV.join(' ').upcase.split('')
 
