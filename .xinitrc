@@ -2,16 +2,15 @@
 xset +fp ~/.fonts
 xset fp rehash
 xsetroot -cursor_name left_ptr
-xsetroot -mod 2 2 -bg '#14181f'
+xsetroot -mod 2 2 -bg "$(xrq background)"
 xrdb -load ~/.Xresources
 setxkbmap latam -option caps:swapescape
 
-rubar &
-# emacs &
+mpd &
 redshift &
-# mpd &
-# steam &
-# transmission-daemon &
+steam &
+transmission-daemon &
 
+rubar &
 chromium &
 i3
