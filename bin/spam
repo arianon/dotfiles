@@ -3,7 +3,7 @@
 require 'colorize'
 
 @colors = String.colors - %i(black light_black default)
-@words = ARGV.join(' ').upcase.split('')
+@words = ARGV.join(' ').upcase.chars
 
 def colored_words
   @words.map { |x| x.colorize(@colors.sample) }
