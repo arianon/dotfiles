@@ -45,7 +45,6 @@ URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.M-S-v: perl:clipboard:paste_escaped
 
-
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
@@ -53,12 +52,9 @@ URxvt.scrollBar: false
 URxvt.internalBorder: 8
 !URxvt.cursorBlink: true
 
-Emacs.font: Source Code Pro-11
-
 !no bold font
 URxvt*italicFont:
 URxvt*boldFont:
-!URxvt*font: -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 URxvt*font: -*-synepis-normal-*-*-*-11-*-*-*-*-*-iso10646-*
 
 !vim ft=xdefaults ts=8
