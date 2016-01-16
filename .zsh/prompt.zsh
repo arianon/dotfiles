@@ -6,5 +6,6 @@ if (( $UID == 0 )) {
 	COLOR="%(?,blue,red)"
 }
 
-PROMPT="%F{black}%S%s%K{black}%F{$COLOR} $CHAR %F{black}%K{$COLOR}%k%F{$COLOR}%f "
-RPROMPT="%F{yellow}%F{black}%K{yellow}%K{black}%F{yellow} %~ %k%F{black}%S%s"
+PROMPT="%F{$COLOR}$ %f"
+#PROMPT="%F{black}%S%s%K{black}%F{$COLOR} $CHAR %F{black}%K{$COLOR}%k%F{$COLOR}%f "
+#RPROMPT="%F{yellow}%F{black}%K{yellow}%K{black}%F{yellow} %~ %k%F{black}%S%s"
