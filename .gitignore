@@ -18,4 +18,8 @@
 .vim/.netrwhist
 .vim/plugged
 
+.weechat/*/
+!.weechat/ruby/
+!.weechat/script/
+
 .spacemacs.d/.custom.el
