@@ -1,14 +1,11 @@
 #!/bin/sh
 
-X=1600
-Y=900
-W=400
-Xo=$(((X - W)/2))
-Yo=$(((Y - 0)/2))
+P=">"
+FN="Synepis-9"
 
-DMENU_OPTS="-p > -fn Synepis "
-# DMENU_OPTS+="-x $Xo -y $Yo -w $W -l 10 "
+NF="$(xrq foreground)"
+NB="$(xrq background)"
+SF="$NB"
+SB="$NF"
 
-DMENU_OPTS="$DMENU_OPTS -nf #b7bdcc -nb #14181f -sf #707e8c -sb #14181f"
-
-dmenu_run $DMENU_OPTS
+dmenu_run -p "$P" -fn "$FN" -nf "$NF" -nb "$NB" -sf "$SF" -sb "$SB" "$@"
