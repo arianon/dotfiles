@@ -1,0 +1,16 @@
+#!/bin/sh
+
+URI="$*"
+
+printf '%s' "$URI" | xsel -ib
+
+tmp="/tmp/link-open-temp"
+
+case $URI in
+	*youtube.com/*)
+		mpv --ytdl-format="bestvideo[height<=360][vcodec=vp9]+worstaudio/bestvideo[height<=360]+worstaudio" \
+			--no-resume-playback \
+			"$URI"
+		;;
+	*) $BROWSER "$URI"
+esac

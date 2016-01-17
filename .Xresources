@@ -35,7 +35,7 @@ Xft.hintstyle: hintslight
 URxvt.perl-lib:	/usr/lib/urxvt/perl
 ! requires urxvt-perls
 URxvt.perl-ext-common:	keyboard-select,url-select,clipboard
-URxvt.url-select.launcher: /usr/bin/chromium
+URxvt.url-select.launcher: /home/arianon/bin/link-open
 URxvt.url-select.underline: true
 URxvt.url-select.button: 1
 
