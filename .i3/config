@@ -57,7 +57,7 @@ client.urgent           $red         $red        $white   $red
 # KEYBINDIGS {{{
 
 # Non-WM
-bindsym $mod+p exec dmenu_run -i -p "\$" -fn "tewi" -nb "$background" -nf "$foreground" -sb "$background" -sf "$lightblue"
+bindsym $mod+p exec dlaunch
 bindsym $mod+Shift+a exec --no-startup-id atom
 bindsym --release Print exec teknik $(img)
 bindsym --release Shift+Print exec teknik $(img -s)
