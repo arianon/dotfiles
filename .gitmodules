@@ -7,3 +7,9 @@
 [submodule ".zsh/extensions/completions"]
 	path = .zsh/extensions/completions
 	url = git://github.com/zsh-users/zsh-completions.git
+[submodule "zplug"]
+	path = zplug
+	url = git://github.com/b4b4r07/zplug.git
+[submodule ".zplug"]
+	path = .zplug
+	url = git://github.com/b4b4r07/zplug.git
