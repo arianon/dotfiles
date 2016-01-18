@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # coding: utf-8
 
 arg=${1:?}
@@ -10,7 +10,7 @@ fi
 
 mergesubs() {
     file="${1:?}"
-    basefile="$(basename "$file" | cut -d. -f1)"
+    basefile="${file%.*}"
 
     mkvmerge "$file" -o "${basefile}__SUBBED.mkv" \
              --default-language en \
