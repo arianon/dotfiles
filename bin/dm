@@ -39,4 +39,4 @@ socket = "#{SOCKDIR}/#{name}"
 
 command = "abduco -e #{KEYSEQ} -#{@method} #{socket} #{ARGV.shelljoin}"
 
-system(command)
+exec command
