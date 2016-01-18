@@ -3,7 +3,7 @@ xset +fp ~/.fonts
 xset fp rehash
 xrdb -load ~/.Xresources
 xsetroot -cursor_name left_ptr
-xsetroot -mod 2 2 -bg "$(xrq background)"
+xsetroot -bg "$(xrq background)"
 setxkbmap latam -option caps:swapescape
 
 mpd &
