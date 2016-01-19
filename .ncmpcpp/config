@@ -23,13 +23,9 @@ header_visibility = "no"
 titles_visibility = "no"
 
 # PROGRESSBAR
-#progressbar_look = "█"
-#progressbar_look = "───"
-#progressbar_look = "|||"
-progressbar_look = "─╼ "
-#progressbar_look = "███"
-progressbar_elapsed_color = "blue"
-progressbar_color = "black"
+progressbar_look = ""
+progressbar_elapsed_color = "white"
+progressbar_color = "white"
 progressbar_boldness = "no"
 
 # MISC
