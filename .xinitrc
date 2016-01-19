@@ -3,13 +3,17 @@ xset +fp ~/.fonts
 xset fp rehash
 xrdb -load ~/.Xresources
 xsetroot -cursor_name left_ptr
-xsetroot -bg "$(xrq background)"
-setxkbmap latam -option caps:swapescape
+hsetroot -solid "$(xrq background)"
+setxkbmap us -option compose:menu -option caps:swapescape
 
+# TODO: put X-independent daemons where they belong
 mpd &
+transmission-daemon &
+
+compton -b &
+dunst &
 redshift &
 steam &
-transmission-daemon &
 
 rubar &
 chromium &
