@@ -6,11 +6,11 @@ set $mod Mod4
 set $font pango: Synepis 9
 set $border_width 4
 
-set $background #14181f
+set $background #0a0c10
 set $foreground #b7bdcc
 
-set $black        #2b303b
-set $lightblack	  #4d576b
+set $black        #363c4a
+set $lightblack   #4d576b
 set $red          #994e55
 set $lightred     #bf616a
 set $green        #849971
@@ -48,11 +48,11 @@ workspace_auto_back_and_forth yes
 # THEME {{{
 font $font
 
-#                       BORDER       BACKGROUND  TEXT     INDICATOR
-client.focused          $lightblue   $lightblue  $black   $lightblue
-client.unfocused        $black       $black      $white   $black
-client.focused_inactive $black       $black      $white   $black
-client.urgent           $red         $red        $white   $red
+#                       BORDER       BACKGROUND  TEXT          INDICATOR
+client.focused          $foreground  $foreground $black        $foreground
+client.unfocused        $black       $black      $foreground   $black
+client.focused_inactive $black       $black      $foreground   $black
+client.urgent           $red         $red        $foreground   $red
 # }}}
 # KEYBINDIGS {{{
 
@@ -243,11 +243,11 @@ bar {
 		separator $red
 
 		#                  BORDER      BACKGROUND  TEXT
-		focused_workspace  $blue       $blue       $background
-		inactive_workspace $background $background $white
-		active_workspace   $background $background $white
+		focused_workspace  $foreground $foreground $background
+		inactive_workspace $background $background $foreground
+		active_workspace   $background $background $foreground
 		urgent_workspace   $red        $red        $background
-		binding_mode       $background $yellow     $black
+		binding_mode       $background $yellow     $foreground
 	}
 }
 # }}}
