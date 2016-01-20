@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'colorize'
+String.colorize_disable(true) unless $stdout.tty?
 
 @colors = String.colors - %i(black light_black default)
 @words = ARGV.join(' ').upcase.delete(' ').chars
