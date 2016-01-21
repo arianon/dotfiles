@@ -28,4 +28,4 @@ else
     mergesubs "$arg" || exit 1
 fi
 
-# filebot -rename "$arg" -non-strict
+filebot -rename "${arg%.*}__SUBBED.mkv" -non-strict
