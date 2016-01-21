@@ -1,0 +1,3 @@
+#!/bin/bash
+
+diff -u "$2" <(sed "$1" < "$2") | pygmentize -l diff
