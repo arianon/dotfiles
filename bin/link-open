@@ -4,14 +4,12 @@ URI="$*"
 
 printf '%s' "$URI" | xsel -ib
 
-tmp="/tmp/link-open-temp"
-
 case $URI in
 	*.webm|*.mp4|*.mkv)
 		notify-send "Opening a video."
 		mpv --no-resume-playback "$URI"
 		;;
-	*youtube.com/*)
+	*youtube.com/*watch*)
 		notify-send "Opening a YouTube video."
 		mpv --ytdl-format="bestvideo[height<=360][vcodec=vp9]+worstaudio/bestvideo[height<=360]+worstaudio" \
 			--no-resume-playback \
