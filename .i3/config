@@ -26,11 +26,11 @@ set $lightcyan    #96b5b4
 set $white        #a6aab2
 set $lightwhite   #b9bbbe
 
-set $ws1 "1:web"
-set $ws2 "2:terms"
-set $ws3 "3:code"
-set $ws4 "4:steam"
-set $ws5 "5:misc"
+set $ws1 "1:I"
+set $ws2 "2:II"
+set $ws3 "3:III"
+set $ws4 "4:IV"
+set $ws5 "5:V"
 set $ws6 "6:VI"
 set $ws7 "7:VII"
 set $ws8 "8:VIII"
