@@ -12,8 +12,8 @@
 .config/fish/fish*history
 .config/fish/fishd*
 
-.config/transmission-daemon/torrents
-.config/transmission-daemon/resume
+.config/transmission-daemon/*
+!.config/transmission-daemon/settings.json
 
 .vim/.netrwhist
 .vim/plugged
