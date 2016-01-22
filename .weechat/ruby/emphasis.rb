@@ -1,7 +1,12 @@
 #!/usr/bin/env ruby
 
+def colorize(s)
+  color = rand(3..13)
+  "\x03#{color}#{s}\x03"
+end
+
 def emphasis(_, _, _, msg)
-  msg.gsub(/`(.+?)`/, "\x03#{rand(3..13)}`\\1`\x03")
+  msg.gsub(/`(.+?)`/, colorize('`\1`') + (msg.start_with?("\x033>") ? "\x033" : ''))
 end
 
 def weechat_init
