@@ -247,7 +247,7 @@ bar {
 		inactive_workspace $background $background $foreground
 		active_workspace   $background $background $foreground
 		urgent_workspace   $red        $red        $background
-		binding_mode       $background $yellow     $foreground
+		binding_mode       $yellow     $yellow     $background
 	}
 }
 # }}}
