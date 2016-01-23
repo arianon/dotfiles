@@ -7,7 +7,7 @@ printf '%s' "$URI" | xsel -ib
 case $URI in
 	*.webm|*.mp4|*.mkv)
 		notify-send "Opening a video."
-		mpv --no-resume-playback "$URI"
+		mpv --no-ytdl --no-resume-playback "$URI"
 		;;
 	*youtube.com/*watch*)
 		notify-send "Opening a YouTube video."
