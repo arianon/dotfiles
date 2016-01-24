@@ -1,9 +1,5 @@
 #!/bin/sh
 
-xrdb ~/.Xresources
-mkfontdir ~/.fonts
-mkfontscale ~/.fonts
-xset +fp ~/.fonts
-xset fp rehash
+xfontreload
 
 exec /usr/bin/urxvt
