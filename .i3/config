@@ -62,7 +62,7 @@ bindsym $mod+Shift+a exec --no-startup-id atom
 bindsym --release Print exec teknik $(img)
 bindsym --release Shift+Print exec teknik $(img -s)
 
-bindsym $mod+Return exec --no-startup-id termite || urxvt || rxvt || xterm
+bindsym $mod+Return exec --no-startup-id urxvt
 
 bindsym $mod+Shift+e exec emacs
 
