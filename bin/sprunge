@@ -12,7 +12,5 @@ fi
 
 link=$(curl -sf -F "sprunge=<$INPUT" http://sprunge.us)
 
-echo -n "$link" | xclip -selection clip-board
-echo -n "$link" | xclip -selection primary
-
+echo -n "$link" | xsel -ipb
 echo "$link"
