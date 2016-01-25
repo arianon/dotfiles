@@ -97,7 +97,7 @@ eval "$(dircolors -b)"
 # }}}
 # Completion {{{
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
-zstyle ':completion:*' menu select=2 eval "$(dircolors -b)"
+zstyle ':completion:*' menu select=2
 zstyle ':completion:*' completer _complete _correct _approximate
 zstyle ':completion:*' expand prefix suffix
 
@@ -154,13 +154,10 @@ PROMPT="%~%F{$COLOR}> %f"
 # Rationalise dot {{{
 # just t type '...' to get '../..'
 rationalise-dot() {
-  local MATCH
-  if [[ $LBUFFER =~ '(^|/| |    |'$'\n''|\||;|&)\.\.$' ]]; then
-    LBUFFER+=/
-    zle self-insert
-    zle self-insert
+  if [[ $LBUFFER = *.. ]]; then
+    LBUFFER+=/..
   else
-    zle self-insert
+    LBUFFER+=.
   fi
 }
 
