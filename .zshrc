@@ -6,9 +6,6 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 # zplug "tarruda/zsh-autosuggestions", nice:9
 
-HYPHEN_INSENSITIVE=true 
-zplug "lib/completion", from:oh-my-zsh
-
 zplug load --verbose
 
 # ALIASES {{{
@@ -57,8 +54,10 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=black'
 typeset -U path
 
 # Options {{{
+setopt always_to_end
 setopt append_history
 setopt autocd
+setopt auto_menu
 setopt auto_pushd
 setopt complete_in_word
 setopt correct
