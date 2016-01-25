@@ -15,6 +15,6 @@ dunst &
 redshift &
 steam &
 
-rubar &
+~/github/panel/rubar &
 chromium &
 i3
