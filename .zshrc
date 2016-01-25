@@ -27,27 +27,26 @@ alias zln="noglob zmv -L"
 alias zmv="noglob zmv"
 
 if (( $+commands[hub] )); then
-	alias git="noglob hub"
+  alias git="noglob hub"
 fi
 
 if (( $+commands[aura] )); then
-    alias pacman="sudo aura"
-    alias aura="sudo aura"
+  alias pacman="sudo aura"
+  alias aura="sudo aura"
 fi
 
 if (( $+commands[ls++] )); then
-    alias ls="ls++"
-    alias la="ls++ -A"
+  alias ls="ls++"
+  alias la="ls++ -A"
 else
-    alias ls="ls -BFX --group-directories-first --color=auto"
-    alias l="ls -goh"
-    alias la="ls -Ah"
-    alias ll="ls -Agoh"
+  alias ls="ls -BFX --group-directories-first --color=auto"
+  alias l="ls -goh"
+  alias la="ls -Ah"
+  alias ll="ls -Agoh"
 fi
 
 # }}} 
 # CONFIG {{{
-
 HISTFILE=~/.zhistory
 HISTSIZE=8000
 SAVEHIST=8000
@@ -112,67 +111,63 @@ autoload zmv
 autoload zcalc
 zmodload zsh/zprof
 #  }}}
-
 #  }}}
 # FUNCTIONS {{{
 
 cd() {
-    if [[ -f $1 ]]; then
-        local dir=${1:h}
-        echo "Correcting '$1' to '$dir'"
-        builtin cd "$dir"
-    else
-        builtin cd "$@"
-    fi
+  if [[ -f $1 ]]; then
+    local dir=${1:h}
+    echo "Correcting '$1' to '$dir'"
+    builtin cd "$dir"
+  else
+    builtin cd "$@"
+  fi
 }
 
 mkcd() {
-    if (( $# != 1 )); then
-        echo "usage: mkcd <directory>"
-        return 1
-    fi
+  if (( $# != 1 )); then
+    echo "usage: mkcd <directory>"
+    return 1
+  fi
 
-    if [[ -d "$1" ]]; then
-        echo "'$1' already exists cd-ing."
-    else
-        command mkdir -p "$1"
-    fi
+  if [[ -d "$1" ]]; then
+    echo "'$1' already exists cd-ing."
+  else
+    command mkdir -p "$1"
+  fi
 
-    builtin cd "$1"
+  builtin cd "$1"
 }
 
 cdt() {
-	  local tmp="$(mktemp -d)"
-	  echo "Created temporary directory '$tmp'"
-	  builtin cd "$tmp"
+  local tmp="$(mktemp -d)"
+  echo "Created temporary directory '$tmp'"
+  builtin cd "$tmp"
 }
 # }}}
 # PROMPT {{{
-
 autoload -U colors && colors
 
 if (( $UID == 0 )); then
-    COLOR="%(?,green,red)"
+  COLOR="%(?,green,red)"
 else
-    COLOR="%(?,blue,red)"
+  COLOR="%(?,blue,red)"
 fi
 
-
 PROMPT="%~%F{$COLOR}> %f"
-
 # }}}
 # EXTRA {{{
 # Rationalise dot {{{
 # just t type '...' to get '../..'
 rationalise-dot() {
-	  local MATCH
-	  if [[ $LBUFFER =~ '(^|/| |	|'$'\n''|\||;|&)\.\.$' ]] {
-		       LBUFFER+=/
-		       zle self-insert
-		       zle self-insert
-	     } else {
-		       zle self-insert
-	     }
+  local MATCH
+  if [[ $LBUFFER =~ '(^|/| |    |'$'\n''|\||;|&)\.\.$' ]]; then
+    LBUFFER+=/
+    zle self-insert
+    zle self-insert
+  else
+    zle self-insert
+  fi
 }
 
 zle -N rationalise-dot
@@ -192,32 +187,32 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # }}}
 # fasd {{{
 if (( $+commands[fasd] )); then
-	fasd_cache="$HOME/.fasd.cache.zsh"
+  fasd_cache="$HOME/.fasd.cache.zsh"
 
-	if [[ $commands[fasd] -nt "$fasd_cache" || ! -s "$fasd_cache" ]]; then
-		fasd --init posix-alias \
-			zsh-hook \
-			zsh-ccomp \
-			zsh-ccomp-install \
-			zsh-wcomp \
-			zsh-wcomp-install \
-		>| "$fasd_cache"
-	fi
+  if [[ $commands[fasd] -nt "$fasd_cache" || ! -s "$fasd_cache" ]]; then
+    fasd --init posix-alias \
+      zsh-hook \
+      zsh-ccomp \
+      zsh-ccomp-install \
+      zsh-wcomp \
+      zsh-wcomp-install \
+      >| "$fasd_cache"
+  fi
 
-	source "$fasd_cache"
-	unset fasd_cache
+  source "$fasd_cache"
+  unset fasd_cache
 fi
 # }}}
 # pip {{{
 if (( $+commands[pip] )); then
-	pip_cache="$HOME/.pip.cache.zsh"
+  pip_cache="$HOME/.pip.cache.zsh"
 
-	if [[ $+commands[pip] -nt "$pip_cache" || ! -s "$pip_cache" ]]; then
-		pip completion --zsh >| "$pip_cache"
-	fi
+  if [[ $+commands[pip] -nt "$pip_cache" || ! -s "$pip_cache" ]]; then
+    pip completion --zsh >| "$pip_cache"
+  fi
 
-	source "$pip_cache"
-	unset pip_cache
+  source "$pip_cache"
+  unset pip_cache
 fi
 # }}}
 # }}}
