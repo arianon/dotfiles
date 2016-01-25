@@ -52,6 +52,9 @@ HISTFILE=~/.zhistory
 HISTSIZE=8000
 SAVEHIST=8000
 
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=green,fg=black'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=black'
+
 typeset -U path
 
 # Options {{{
@@ -84,6 +87,10 @@ bindkey '[3~' kill-word
 bindkey '[D' backward-word
 bindkey '[C' forward-word
 bindkey ' ' magic-space
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
 # }}}
 # Dircolors {{{
 eval "$(dircolors -b)"
@@ -182,5 +189,35 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;40;01m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+# }}}
+# fasd {{{
+if (( $+commands[fasd] )); then
+	fasd_cache="$HOME/.fasd.cache.zsh"
+
+	if [[ $commands[fasd] -nt "$fasd_cache" || ! -s "$fasd_cache" ]]; then
+		fasd --init posix-alias \
+			zsh-hook \
+			zsh-ccomp \
+			zsh-ccomp-install \
+			zsh-wcomp \
+			zsh-wcomp-install \
+		>| "$fasd_cache"
+	fi
+
+	source "$fasd_cache"
+	unset fasd_cache
+fi
+# }}}
+# pip {{{
+if (( $+commands[pip] )); then
+	pip_cache="$HOME/.pip.cache.zsh"
+
+	if [[ $+commands[pip] -nt "$pip_cache" || ! -s "$pip_cache" ]]; then
+		pip completion --zsh >| "$pip_cache"
+	fi
+
+	source "$pip_cache"
+	unset pip_cache
+fi
 # }}}
 # }}}
