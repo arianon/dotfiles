@@ -104,7 +104,7 @@ zstyle ':completion:*' expand prefix suffix
 # Case-and-hyphen insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # Use caching
-zstyle ':completionn::complete:*' use-cache 1
+zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 # }}}
 #  }}}
