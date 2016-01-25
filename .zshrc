@@ -1,13 +1,7 @@
-source ~/.zplug/zplug
-
-zplug "b4b4r07/zplug"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
-# zplug "tarruda/zsh-autosuggestions", nice:9
-
-zplug load --verbose
-
+# PLUGINS {{{
+source ~/.zplugins/completions/zsh-completions.plugin.zsh
+source ~/.zplugins/history-substring-search/zsh-history-substring-search.zsh
+# }}}
 # ALIASES {{{
 alias cp="cp -av"
 alias diff="diff -Naur"
@@ -53,6 +47,13 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=black'
 
 typeset -U path
 
+# Modules {{{
+autoload -Uz compinit && compinit
+autoload -U colors && colors
+autoload zmv
+autoload zcalc
+zmodload zsh/zprof
+# }}}
 # Options {{{
 setopt always_to_end
 setopt append_history
@@ -65,6 +66,7 @@ setopt extended_glob
 setopt extended_history
 setopt histallowclobber
 setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
@@ -94,22 +96,17 @@ bindkey -M emacs '^N' history-substring-search-down
 eval "$(dircolors -b)"
 # }}}
 # Completion {{{
-autoload -Uz compinit && compinit
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 zstyle ':completion:*' menu select=2 eval "$(dircolors -b)"
 zstyle ':completion:*' completer _complete _correct _approximate
 zstyle ':completion:*' expand prefix suffix
+
 # Case-and-hyphen insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # Use caching
 zstyle ':completionn::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 # }}}
-# Modules {{{
-autoload zmv
-autoload zcalc
-zmodload zsh/zprof
-#  }}}
 #  }}}
 # FUNCTIONS {{{
 
@@ -145,8 +142,6 @@ cdt() {
 }
 # }}}
 # PROMPT {{{
-autoload -U colors && colors
-
 if (( $UID == 0 )); then
   COLOR="%(?,green,red)"
 else
@@ -215,3 +210,6 @@ if (( $+commands[pip] )); then
 fi
 # }}}
 # }}}
+
+# Gotta load the syntax-highlighting plug-in at the end.
+source ~/.zplugins/syntax-highlighting/zsh-syntax-highlighting.zsh
