@@ -1,0 +1,12 @@
+#!/bin/sh
+if test -z "$TMUX"; then
+  group="tmux"
+  check="$(tmux ls 2>/dev/null | grep -c $group)"
+  id="$group -> $(head -c6 /dev/urandom | base64)"
+
+  if test "$check" -gt 0; then
+    tmux new -d -t "$group" -s "$id" \; set destroy \; attach -t "$id" >/dev/null
+  else
+    tmux new -s "$group" >/dev/null
+  fi
+fi
