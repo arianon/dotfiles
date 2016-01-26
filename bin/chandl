@@ -34,7 +34,6 @@ class ChanDownload
         puts 'SKIPPED'.blue
       else
         unless @dry_run
-          puts image[:url]
           download = open(image[:url])
           IO.copy_stream(download, image[:name])
         end
