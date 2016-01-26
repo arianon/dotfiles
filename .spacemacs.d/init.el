@@ -6,6 +6,8 @@
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
+     nim
+
      auto-completion
      better-defaults
      c-c++
@@ -75,6 +77,42 @@
 
 (defun dotspacemacs/user-init ()
   (setq-default custom-file "~/.spacemacs.d/.custom.el")
+
+  ;; Spacemacs theming
+  (custom-set-variables
+   '(spacemacs-theme-comment-bg nil)
+   '(spacemacs-theme-org-highlight nil)
+   '(spacemacs-theme-custom-colors
+     '((act1       . "#14181f")
+       (act2       . "#1e242f")
+       (base       . "#b7bdcc")
+       (base-dim   . "#b9bbbe")
+       (bg1        . "#0a0c10")
+       (bg2        . "#14181f")
+       (bg3        . "#363c4a")
+       (bg4        . "#4d576b")
+       (border     . "#0a0c10")
+       ;; --- code blocks?
+       (cursor     . "#b7bdcc")
+       (comment    . "#363c4a")
+       (comment-bg . "#0a0c10") ;; This shouldn't be here
+       (comp       . "#8fa1b3")
+
+       (const      . "#994e55")
+       (err        . "#bf616a")
+       (func       . "#778f8e")
+       (highlight  . "#a6aab2")
+       (keyword    . "#8f7189")
+       (lnum       . "#14181f")
+       (mat        . "#c5aa75")
+       (str        . "#994e55")
+       (suc        . "#a3be8c")
+       (var        . "#707e8c")
+       (war        . "#ebcb8b")
+       (type       . "#849971")))
+
+   )
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -95,6 +133,29 @@
 
   (define-key evil-normal-state-map "H" "^")
   (define-key evil-normal-state-map "L" "$")
+
+  ;; C theming
+  (if (configuration-layer/layer-usedp 'c-c++)
+      (c-add-style "arianon"
+                   '((indent-tabs-mode . t)
+                     (c-basic-offset . 4)
+                     (c-hanging-braces-alist (substatement-open before after)
+                                             (brace-list-open)
+                                             (brace-list-open))
+                     (c-offsets-alist (substatement-open . 0)
+                                      (inline-open . 0)
+                                      (statement-cont . c-lineup-assignments)
+                                      (inextern-lang . 0)
+                                      (innamespace . 0))))
+
+    (dolist (mode '(c-mode c++-mode))
+      (spacemacs/set-leader-keys-for-major-mode mode
+        "os" 'c-set-style)))
+
+  (mapc
+   (lambda (face)
+     (set-face-attribute face nil :weight 'normal ))
+   (face-list))
 
   (use-package helm-flycheck
     :defer t
