@@ -17,6 +17,9 @@ alias zcp="noglob zmv -C"
 alias zln="noglob zmv -L"
 alias zmv="noglob zmv"
 
+for index ({1..9}) alias "$index"="cd +${index}"
+unset index
+
 if (( $+commands[hub] )); then
   alias git="noglob hub"
 fi
