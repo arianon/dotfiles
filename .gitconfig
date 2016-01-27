@@ -6,7 +6,7 @@
 [alias]
 	shallow-clone = clone --depth 1
 [format]
-	pretty = format: %C(auto)%h%d %s %C(bold black)(%cr)%C(reset) %C(bold blue)<%an>
+	pretty = format:%C(auto)%h%d %s %C(bold black)(%cr)%C(reset) %C(bold blue)<%an>
 [color]
 	ui = true
 	branch = auto
@@ -24,7 +24,7 @@
 	local = yellow
 	remote = green
 [color "diff"]
-	meta = yellow
+	meta = blue
 	frag = magenta
 	old = bold red
 	new = bold green
