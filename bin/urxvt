@@ -3,3 +3,10 @@
 xfontreload
 
 exec /usr/bin/urxvt
+
+# urxvtc "$@"
+# 
+# if test $? -eq 2; then
+# 	urxvtd -q -o -f
+# 	urxvtc "$@"
+# fi
