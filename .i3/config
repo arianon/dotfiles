@@ -4,7 +4,7 @@
 # SETTINGS {{{
 set $mod Mod4
 set $font pango: Synepis 9
-set $border_width 4
+set $border_width 2
 
 set $background #0a0c10
 set $foreground #b7bdcc
