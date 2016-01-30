@@ -5,12 +5,12 @@ if [[ -s "$HOME/.rbenv/bin/rbenv" ]]; then
 elif (( $+commands[rbenv] )); then
   eval "$(rbenv init - --no-rehash zsh)"
 else
-  path(~/.gem/ruby/*/bin(N) $path)
+  path=(~/.gem/ruby/*/bin(N) $path)
 fi
 # }}}
 # go {{{
 if [[ -n "$GOPATH" ]]; then
-  path($GOPATH/bin(N) $path)
+  path=($GOPATH/bin(N) $path)
 fi
 # }}}
 
