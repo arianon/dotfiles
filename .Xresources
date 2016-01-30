@@ -1,15 +1,7 @@
-! Xft
-Xft.dpi: 96
-Xft.antialias: true
-Xft.lcdfilter: lcddefault
-Xft.rgba: rgb
-Xft.hinting: false
-Xft.autohint: true
-Xft.hintstyle: hintslight
-
 ! Colors
 *background: #0a0c10
 *foreground: #b7bdcc
+*cursorColor: #b7bdcc
 
 *color0: #363c4a
 *color1: #994e55
@@ -28,8 +20,6 @@ Xft.hintstyle: hintslight
 *color13: #b48ead
 *color14: #96b5b4
 *color15: #b9bbbe
-
-*cursorColor: #b7bdcc
 
 ! URxvt
 URxvt.perl-lib:	/usr/lib/urxvt/perl
@@ -53,8 +43,16 @@ URxvt.internalBorder: 8
 !URxvt.cursorBlink: true
 
 !no bold font
-URxvt*italicFont:
 URxvt*boldFont:
-URxvt*font: -*-synepis-normal-*-*-*-11-*-*-*-*-*-iso10646-*
+URxvt*font:     xft:PragmataPro:size=10
+
+! Xft
+Xft.dpi: 96
+Xft.antialias: true
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+Xft.hinting: false
+Xft.autohint: true
+Xft.hintstyle: hintslight
 
 !vim ft=xdefaults ts=8
