@@ -1,7 +1,7 @@
 #!/bin/sh
 
 P=">"
-FN="Synepis-9"
+FN="ariafont"
 
 NF="$(xrq foreground)"
 NB="$(xrq background)"

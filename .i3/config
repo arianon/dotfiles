@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font pango: Synepis 9
+set $font pango: ariafont
 set $border_width 2
 
 set $background #0a0c10
@@ -224,6 +224,7 @@ for_window [class=(?i)chromium] focus child, layout tabbed, focus
 for_window [class=(?i)firefox] focus child, layout tabbed, focus
 for_window [class="qemu"] floating enable
 for_window [class="(?i)gbdfed"] floating enable
+for_window [class="(?i)grip"] floating enable
 
 assign [class="(?i)firefox*"] $ws1
 assign [class="(?i)chromium"] $ws1
