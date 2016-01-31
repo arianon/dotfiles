@@ -11,7 +11,6 @@ alias make="make -j$(nproc)"
 alias mkdir="mkdir -p"
 alias mv="mv -v"
 alias rm="rm -iv"
-alias weechat="abduco -A /tmp/weechat.sk weechat"
 
 alias zcp="noglob zmv -C"
 alias zln="noglob zmv -L"
