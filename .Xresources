@@ -1,25 +1,75 @@
 ! Colors
-*background: #0a0c10
-*foreground: #b7bdcc
-*cursorColor: #b7bdcc
+!*background: #0a0c10
+!*foreground: #b7bdcc
+!*cursorColor: #b7bdcc
+!
+!*color0: #363c4a
+!*color1: #994e55
+!*color2: #849971
+!*color3: #c5aa75
+!*color4: #707e8c
+!*color5: #8f7189
+!*color6: #778f8e
+!*color7: #a6aab2
+!
+!*color8: #4d576b
+!*color9: #bf616a
+!*color10: #a3be8c
+!*color11: #ebcb8b
+!*color12: #8fa1b3
+!*color13: #b48ead
+!*color14: #96b5b4
+!*color15: #b9bbbe
 
-*color0: #363c4a
-*color1: #994e55
-*color2: #849971
-*color3: #c5aa75
-*color4: #707e8c
-*color5: #8f7189
-*color6: #778f8e
-*color7: #a6aab2
+#define t_background        #000000
+#define t_current_line      #2a2a2a
+#define t_selection      	#424242
+#define t_foreground      	#eaeaea
+#define t_comment	     	#969896
+#define t_red		     	#d54e53
+#define t_orange	     	#e78c45
+#define t_yellow        	#e7c547
+#define t_green	        	#b9ca4a
+#define t_aqua	        	#70c0b1
+#define t_blue	        	#7aa6da
+#define t_purple        	#c397d8
 
-*color8: #4d576b
-*color9: #bf616a
-*color10: #a3be8c
-*color11: #ebcb8b
-*color12: #8fa1b3
-*color13: #b48ead
-*color14: #96b5b4
-*color15: #b9bbbe
+*background:  t_background
+*foreground:  t_foreground
+*cursorColor: #aeafad
+
+! Black
+*color0:      t_current_line
+*color8:      t_selection
+
+! Red
+*color1:	  t_red
+*color9:	  t_red
+
+! Green
+*color2:	  t_green
+*color10:     t_green
+
+! Yellow
+*color3:	  t_orange
+*color11:     t_yellow
+
+! Blue
+*color4:      t_blue
+*color12:     t_blue
+
+! Magenta
+*color5:      t_purple
+*color13:     t_purple
+
+! Cyan
+*color6:      t_aqua
+*color14:     t_aqua
+
+! White
+*color7:      t_comment
+*color15:     t_comment
+
 
 ! URxvt
 URxvt.perl-lib:	/usr/lib/urxvt/perl
@@ -43,8 +93,10 @@ URxvt.internalBorder: 8
 !URxvt.cursorBlink: true
 
 !no bold font
-URxvt*boldFont:
-URxvt*font:     xft:PragmataPro:size=10
+!URxvt*boldFont: -*-ariafont-bold-*-*-*-*-*-*-*-*-*-iso8859-*
+!URxvt*font: -*-ariafont-medium-*-*-*-*-*-*-*-*-*-iso8859-*
+URxvt*font: xft:ariafont
+URxvt*letterSpace: 1
 
 ! Xft
 Xft.dpi: 96
