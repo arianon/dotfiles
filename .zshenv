@@ -9,9 +9,9 @@ export LOCAL="$HOME/.local"
 export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 
 export _JAVA_AWT_NONREPARENTING=1
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dsun.java2d.xrender=true -Dswing.aatext=true'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dsun.java2d.xrender=true -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
-export INFINALITY_FT_FILTER_PARAMS='10 35 40 35 10'
+export INFINALITY_FT_FILTER_PARAMS='15 20 30 20 15'
 export INFINALITY_FT_AUTOHINT_HORIZONTAL_STEM_DARKEN_STRENGTH=0
 export INFINALITY_FT_AUTOHINT_VERTICAL_STEM_DARKEN_STRENGTH=0
 export INFINALITY_FT_AUTOHINT_INCREASE_GLYPH_HEIGHTS=false
