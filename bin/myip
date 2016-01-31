@@ -1,0 +1,9 @@
+#!/bin/sh
+case "$1" in
+  -4) uri="http://v4.ipv6-test.com/api/myip.php" ;;
+  -6) uri="http://v6.ipv6-test.com/api/myip.php" ;;
+  *)  uri="http://ipv6-test.com/api/myip.php" ;;
+esac
+
+curl -s "$uri"
+echo
