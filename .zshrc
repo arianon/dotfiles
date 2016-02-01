@@ -150,7 +150,9 @@ else
   COLOR="%(?,blue,red)"
 fi
 
-PROMPT="%~%F{$COLOR}> %f"
+if [[ "$SSH_CONNECTION" ]] SSH="%F{green}%n%F{black}@%F{blue}%M %f"
+
+PROMPT="${SSH}%~%F{$COLOR}> %f"
 # }}}
 # EXTRA {{{
 # Rationalise dot {{{
