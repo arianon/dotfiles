@@ -1,12 +1,11 @@
 #!/bin/sh
 
-xfontreload
+# xfontreload
+# exec /usr/bin/urxvt
 
-exec /usr/bin/urxvt
+urxvtc "$@"
 
-# urxvtc "$@"
-# 
-# if test $? -eq 2; then
-# 	urxvtd -q -o -f
-# 	urxvtc "$@"
-# fi
+if test $? -eq 2; then
+	urxvtd -q -o -f
+	urxvtc "$@"
+fi
