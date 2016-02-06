@@ -7,8 +7,7 @@ require 'json'
 begin
   require 'rest-client'
 rescue LoadError
-  $stderr.puts '$ gem install rest-client'
-  exit 1
+  abort '$ gem install rest-client'
 end
 
 TEKNIK = 'https://api.teknik.io/v1/Upload'
