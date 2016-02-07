@@ -252,3 +252,6 @@ bar {
 	}
 }
 # }}}
+# AUTOSTART {{{
+exec emacs
+# }}}
