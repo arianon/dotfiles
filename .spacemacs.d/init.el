@@ -7,26 +7,27 @@
    dotspacemacs-configuration-layers
    '(
      auto-completion
-     better-defaults
+     ;; better-defaults
      ;; c-c++
-     colors
+     ;; colors
      emacs-lisp
-     fasd
+     ;; fasd
      git
      ;; github
      ;; go
      ;; html
-     markdown
-     org
+     ;; markdown
+     ;; org
      ;; javascript
      ruby
      ;; ruby-on-rails
      ;; semantic
      shell
+     shell-scripts
      syntax-checking
-     unimpaired
-     version-control
-     yaml
+     ;; unimpaired
+     ;; yaml
+     evil-cleverparens
      )
    dotspacemacs-additional-packages '(
                                       helm-flycheck
@@ -83,16 +84,18 @@
    powerline-default-separator 'arrow
    avy-all-windows 'all-frames
 
-   inhibit-startup-screen t
-   initial-major-mode 'ruby-mode
-   initial-scratch-message "#!/usr/bin/ruby -wU\n# -*- coding: utf-8 -*-\n"
+   ;; inhibit-startup-screen t
+   ;; initial-major-mode 'ruby-mode
+   ;; initial-scratch-message "#!/usr/bin/ruby -wU\n# -*- coding: utf-8 -*-\n"
 
    evil-move-cursor-back nil
    )
 
   (global-hungry-delete-mode)
   (aggressive-indent-global-mode)
-  (rainbow-mode)
+
+  (if (configuration-layer/layer-usedp 'colors)
+      (rainbow-mode))
 
   (define-key evil-normal-state-map "H" "^")
   (define-key evil-normal-state-map "L" "$")
@@ -113,27 +116,21 @@
 
     (dolist (mode '(c-mode c++-mode))
       (spacemacs/set-leader-keys-for-major-mode mode
-        "os" 'c-set-style)))
-
-  (mapc
-   (lambda (face)
-     (set-face-attribute face nil :weight 'normal ))
-   (face-list))
+        "os" #'c-set-style)))
 
   (use-package helm-flycheck
     :defer t
-    :if (configuration-layer/layer-usedp 'syntax-checking)
+    :if (configuration-layer/layer-usedp #'syntax-checking)
     :config
-    (spacemacs/set-leader-keys "eh" 'helm-flycheck))
-
-  (use-package sh-mode
-    :mode (("Pkgfile\\'" . sh-mode)
-           ("\\.zsh\\'" . sh-mode)))
+    (spacemacs/set-leader-keys "eh" #'helm-flycheck))
 
   (use-package super-save
     :config
     (progn
-      (add-to-list 'super-save-triggers 'select-window)
+      (add-to-list 'super-save-triggers #'select-window)
       (super-save-advise-trigger-commands)
       (super-save-initialize)))
+
+  (if (configuration-layer/layer-usedp 'evil-cleverparens)
+      (spacemacs/toggle-evil-cleverparens-on))
   )
