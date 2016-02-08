@@ -92,9 +92,8 @@ URxvt.scrollBar: false
 URxvt.internalBorder: 8
 !URxvt.cursorBlink: true
 
-!no bold font
-!URxvt*boldFont: -*-ariafont-bold-*-*-*-*-*-*-*-*-*-iso8859-*
-!URxvt*font: -*-ariafont-medium-*-*-*-*-*-*-*-*-*-iso8859-*
+!URxvt*boldFont: -*-ariafont-bold-*-*-*-*-*-*-*-*-*-iso10646-*
+!URxvt*font: -*-ariafont-medium-*-*-*-*-*-*-*-*-*-iso10646-*
 URxvt*font: xft:ariafont
 URxvt*letterSpace: 1
 
