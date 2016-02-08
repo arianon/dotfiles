@@ -8,4 +8,5 @@ NB="$(xrq background)"
 SF="$NB"
 SB="$NF"
 
-dmenu_run -p "$P" -fn "$FN" -nf "$NF" -nb "$NB" -sf "$SF" -sb "$SB" "$@"
+exec "$(dmenu_path | dmenu_run -p "$P" -fn "$FN" -nf "$NF" -nb "$NB" -sf "$SF" -sb "$SB" "$@")"
+
