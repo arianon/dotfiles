@@ -3,10 +3,10 @@
 git log --graph --color=always \
         --format="%C(auto)%h%d %s %C(bold black)(%cr) %C(bold blue)<%an>" "$@" |
 fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=ctrl-s \
-    --cycle --inline-info --prompt="Commits> " \
-    --bind "ctrl-m:execute:(grep -o '[0-9a-f]\{7\}' |
-                            head -1 | 
-                            xargs -I % sh -c 'git show --color=always % | 
-                            less -R') << 'FZF-EOF'
+    --exact --cycle --inline-info --prompt="Commits> " \
+    --bind "ctrl-m:execute:
+              (grep -o '[0-9a-f]\{7\}' |
+               xargs -I % sh -c 'git show --color=always % |
+               less -R') << 'FZF-EOF'
            {}
 FZF-EOF"
