@@ -19,6 +19,7 @@
      ;; markdown
      ;; org
      ;; javascript
+     python
      ruby
      ;; ruby-on-rails
      ;; semantic
