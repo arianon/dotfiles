@@ -13,7 +13,7 @@ end
 
 def data
   rmxs_venta  = HTTParty.get 'http://remexas.com'
-  rmxs_compra = HTTParty.get 'https://remexas.com/informacion/recargas-paypal/'
+  rmxs_compra = HTTParty.get 'https://remexas.com/informacion/recargas/'
 
   JSON.dump(compra: rmxs_compra[/BsF.\d+/],
             venta: rmxs_venta[/Bs \d+/])
