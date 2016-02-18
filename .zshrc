@@ -138,9 +138,7 @@ mkcd() {
 }
 
 cdt() {
-  local tmp="$(mktemp -d)"
-  echo "Created temporary directory '$tmp'"
-  builtin cd "$tmp"
+  builtin cd "$(mktemp -d)"
 }
 # }}}
 # PROMPT {{{
