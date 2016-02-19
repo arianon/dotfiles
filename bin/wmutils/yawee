@@ -1,0 +1,24 @@
+#!/bin/dash
+
+PATH=$(dirname $0):$PATH
+
+while IFS=: read ev wid; do
+    case $ev in
+        7) # Enter window
+            # wattr o $wid || focus $wid
+            ;;
+        16) # Window creation
+            wattr o $wid || {
+				focus $wid
+			}	
+            ;;
+        18) # Focus next window when deleting focused window
+            wattr $(pfw) || { 
+				focus prev 2>/dev/null || focus next 2>/dev/null
+			}
+            ;;
+        19) # Mapping request
+            wattr o $wid || focus $wid
+            ;;
+    esac
+done

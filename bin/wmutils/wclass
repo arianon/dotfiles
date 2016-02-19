@@ -1,0 +1,59 @@
+#!/bin/dash
+
+usage() {
+    printf 'usage: %s <command> <wid|lsw-args>\n' $(basename $0)
+    exit 1
+}
+
+test -z $1 && usage
+
+case $2 in
+    u) lsw_arg="-u" ;;
+    o) lsw_arg="-u" ;;
+    a) lsw_arg="-a" ;;
+esac
+
+case $1 in
+    n|name)
+        wattr $2 || usage
+        xprop -id $2 WM_CLASS | cut -d\" -f 2
+        ;;
+    c|class)
+        wattr $2 || usage
+        xprop -id $2 WM_CLASS | cut -d\" -f 4
+        ;;
+    p|process)
+        wattr $2 || usage
+        xprop -id $2 _NET_WM_PID | cut -d\  -f 3
+        ;;
+    na|nameall)
+        for i in $(seq $(lsw $lsw_arg | wc -l)); do
+            wid=$(lsw $lsw_arg | sed "$i"'!d')
+            echo "$wid $($0 n $wid)"
+        done
+        ;;
+    ca|classall)
+        for i in $(seq $(lsw $lsw_arg | wc -l)); do
+            wid=$(lsw $lsw_arg | sed "$i"'!d')
+            echo "$wid $($0 c $wid)"
+        done
+        ;;
+    pa|processall)
+        for i in $(seq $(lsw $lsw_arg | wc -l)); do
+            wid=$(lsw $lsw_arg | sed "$i"'!d')
+            echo "$wid $($0 p $wid)"
+        done
+        ;;
+    a|all)
+        $0 na $lsw_arg
+        $0 ca $lsw_arg
+
+        for i in $(seq $(lsw $lsw_args | wc -l)); do
+            wid=$(lsw $lsw_arg | sed "$i"'!d')
+            echo "$wid $(wname $wid)"
+        done
+        ;;
+    *)
+        usage
+       ;;
+esac

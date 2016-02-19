@@ -1,0 +1,20 @@
+#!/bin/dash
+
+PANELHEIGHT=16
+GROUPS=5
+GAP=24
+
+BW=2
+ACTIVE=0x8FA1B3
+INACTIVE=0x2B2B30
+WARNING=0xBF616A
+
+ROOT=$(lsw -r)
+SW=$(wattr w $ROOT)
+SH=$(wattr h $ROOT)
+
+PFW=$(pfw)
+X=$(wattr x $PFW)
+Y=$(wattr y $PFW)
+W=$(wattr w $PFW)
+H=$(wattr h $PFW)

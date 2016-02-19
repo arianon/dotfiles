@@ -1,0 +1,5 @@
+#!/bin/dash
+
+while :; do
+  sleep 60
+done

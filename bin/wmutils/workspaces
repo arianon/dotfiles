@@ -1,0 +1,62 @@
+#!/bin/dash
+
+usage() {
+    printf 'usage: %s [-ts] <workspace>\n' $(basename $0)
+    exit 1
+}
+
+WSNUM=5
+WROOT=/tmp/workspaces
+WCURFILE=$WROOT/current
+
+check_sanity() {
+    for wid in $(seq $WSNUM); do
+        test -d $WROOT/$wid || mkdir -p $WROOT/$wid
+    done
+
+    for file in $(find $WROOT -type f); do
+        winid=$(basename $file)
+        wattr $winid || rm -f $file
+    done
+
+	:> $WCURFILE
+}
+
+toggle_workspace() {
+    echo $1 > $WCURFILE
+
+    # Unmap all
+	for file in $(find $WROOT -type f); do
+        mapw -u $(basename $file)
+    done
+
+    # Map selected workspace
+	for file in $(find $WROOT/$1 -type f); do
+        mapw -m $(basename $file)
+    done
+}
+
+send_to_workspace() {
+    file=$(find $WROOT -name "$1")
+    test -n "$file" && rm -f $file
+
+    :> $WROOT/$2/$1
+
+    if test "$2" != "$(cat $WCURFILE)"; then
+        mapw -u $1
+    fi
+}
+
+check_sanity
+
+if test $# -gt 0; then
+    while getopts "t:s:" opt; do
+        case $opt in
+            t) toggle_workspace $OPTARG ;;
+			s) send_to_workspace ${PFW:-$(pfw)} $OPTARG ;;
+            *) usage ;;
+        esac
+    done
+else
+    tree --noreport $WROOT
+fi

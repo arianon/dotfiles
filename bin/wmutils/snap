@@ -1,0 +1,39 @@
+#!/bin/dash
+
+usage() {
+    printf 'usage: %s <direction> [<wid>]\n' $(basename $0)
+    exit 1
+}
+
+test -z $1 && usage
+WID=${2:-$(pfw)}
+
+wattr $WID || exit 1
+
+ROOT=$(lsw -r)
+SW=$(wattr w $ROOT)
+SH=$(wattr h $ROOT)
+
+case $1 in
+    h|left)
+        X=-$SW
+        Y=0
+        ;;
+    j|down)
+        X=0
+        Y=$SH
+        ;;
+    k|up)
+        X=0
+        Y=-$SH
+        ;;
+    l|right)
+        X=$SW
+        Y=0
+        ;;
+    *)
+        usage
+        ;;
+esac
+
+wmv $X $Y $WID

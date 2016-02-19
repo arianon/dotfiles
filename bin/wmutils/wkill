@@ -1,0 +1,24 @@
+#!/bin/dash
+
+PATH=$(dirname $0):$PATH
+
+usage() {
+    printf 'usage: %s <wid>\n' $(basename $0)
+    exit 1
+}
+
+test -z $1 && usage
+
+WID=$1
+wattr $WID || exit 1
+
+WCLASS=$(wclass c $WID)
+
+case $WCLASS in
+    Urxvt|Firefox)
+        killwa $WID
+        ;;
+    *)
+        killw $WID
+        ;;
+esac

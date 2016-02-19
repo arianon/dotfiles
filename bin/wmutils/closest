@@ -1,0 +1,34 @@
+#!/bin/dash
+
+PATH=$(dirname $0):$PATH
+
+usage() {
+    printf 'usage: %s <direction> [<wid>]\n' $(basename $0)
+    exit 1
+}
+
+test -z $1 && usage
+
+WID=${2:-$(pfw)}
+wattr $WID || exit 1
+
+case $1 in
+    h|west|left)
+        CLOSEST=$(lsw | xargs wattr xi | sort -nr | sed "0,/$WID/d" | sed '1s/^[0-9]* //p;d')
+        ;;
+    j|south|down)
+        CLOSEST=$(lsw | xargs wattr yi | sort -n | sed "0,/$WID/d" | sed '1s/^[0-9]* //p;d')
+        ;;
+    k|north|up)
+        CLOSEST=$(lsw | xargs wattr xi | sort -nr | sed "0,/$WID/d" | sed '1s/^[0-9]* //p;d')
+        ;;
+    l|east|right)
+        CLOSEST=$(lsw | xargs wattr yi | sort -n | sed "0,/$WID/d" | sed '1s/^[0-9]* //p;d')
+        ;;
+    *)
+        echo 'Unknown direction' >&2
+        usage
+        ;;
+esac
+
+focus $CLOSEST

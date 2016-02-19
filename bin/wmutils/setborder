@@ -1,0 +1,34 @@
+#!/bin/dash
+
+usage() {
+    printf 'usage: %s <state> [<wid>]\n' $(basename $0)
+    exit 1
+}
+
+test -z $1 && usage
+
+WID=${2:-$(pfw)}
+wattr $WID || exit 1
+
+BW=2
+ACTIVE=0x8FA1B3
+INACTIVE=0x2B2B30
+WARNING=0xBF616A
+
+case $1 in
+    active)
+        chwb -s $BW -c $ACTIVE $WID
+        ;;
+    inactive)
+        chwb -s $BW -c $INACTIVE $WID
+        ;;
+    warning)
+        chwb -s $BW -c $WARNING $WID
+        ;;
+    none)
+        chwb -s 0 $WID
+        ;;
+    *)
+        usage
+        ;;
+esac

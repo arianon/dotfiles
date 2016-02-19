@@ -1,0 +1,47 @@
+#!/bin/dash
+
+usage() {
+    printf 'usage: %s <position> [<wid>]\n' $(basename $0)
+    exit 1
+}
+
+test -z $1 && usage
+WID=${2:-$(pfw)}
+wattr $WID || exit 1
+
+: ${BW:=2}
+
+ROOT=$(lsw -r)
+SW=$(wattr w $ROOT)
+SH=$(wattr h $ROOT)
+W=$(wattr w $WID)
+H=$(wattr h $WID)
+
+case $1 in
+    tl|topleft)
+        X=0
+        Y=0
+        ;;
+    tr|topright)
+        X=$((SW - W - BW*2))
+        Y=0
+        ;;
+    bl|bottomleft)
+        X=0
+        Y=$((SH - H - BW*2))
+        ;;
+    br|bottomright)
+        X=$((SW - W - BW*2))
+        Y=$((SH - H - BW*2))
+        ;;
+    md|middle)
+        X=$((SW/2 - W/2 - BW))
+        Y=$((SH/2 - H/2 - BW))
+        ;;
+    *)
+        echo 'Unknown position' >&2
+        usage
+        ;;
+esac
+
+wtp $X $Y $W $H $WID

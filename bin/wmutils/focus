@@ -1,0 +1,43 @@
+#!/bin/dash
+
+PATH=$(dirname $0):$PATH
+
+usage() {
+    printf 'usage: %s <next|prev|wid>\n' $(basename $0)
+    exit 1
+}
+
+test -z $1 && usage
+
+CUR=$(pfw)
+wattr $CUR || exit 1
+
+case $1 in
+    next)
+        WID=$(lsw | grep -v $CUR | sed '1 p;d')
+        ;;
+    prev)
+        WID=$(lsw | grep -v $CUR | sed '$ p;d')
+        ;;
+    0x*)
+        wattr $1 && WID=$1
+        ;;
+esac
+
+test -z "$WID" && echo "Can't find a window to focus" >&2 && exit 1
+
+# I can't into wmutils yet
+# setborder inactive $CUR
+# setborder active $WID
+# chwso -r $WID
+# wtf $WID
+
+BW=2
+X=$(wattr x $WID)
+Y=$(wattr y $WID)
+W=$(wattr w $WID)
+H=$(wattr h $WID)
+X=$((X + W/2 - BW))
+Y=$((Y + H/2 - BW))
+
+wmp -a $X $Y
