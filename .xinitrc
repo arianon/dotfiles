@@ -11,10 +11,9 @@ hsetroot -solid "$(xrq background)"
 setxkbmap us -option compose:menu -option caps:swapescape
 
 compton -b &
-dunst &
+# dunst &
 redshift &
-steam &
+# steam &
 
-~/github/panel/rubar &
-chromium &
-i3
+# ~/github/panel/rubar &
+exec i3
