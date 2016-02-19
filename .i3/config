@@ -253,5 +253,5 @@ bar {
 }
 # }}}
 # AUTOSTART {{{
-exec emacs
+# exec emacs
 # }}}
