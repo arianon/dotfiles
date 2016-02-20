@@ -10,10 +10,6 @@ hsetroot -solid "$(xrq background)"
 # Keyboard
 setxkbmap us -option compose:menu -option caps:swapescape
 
-compton -b &
-# dunst &
 redshift &
-# steam &
 
-# ~/github/panel/rubar &
 exec i3
