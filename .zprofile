@@ -22,4 +22,4 @@ path=(
      $path
 )
 
-if [[ $(tty) == "/dev/tty1" || -z "$SSH_CLIENT" ]] startx
+if [[ x"$(tty)" == x"/dev/tty1" || -z "$SSH_CLIENT" ]] startx
