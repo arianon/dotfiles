@@ -15,5 +15,5 @@ case $URI in
 			--no-resume-playback \
 			"$URI"
 		;;
-	*) exec "$BROWSER" "$URI"
+	*) exec firefox "$URI"
 esac
