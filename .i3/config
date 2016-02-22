@@ -253,7 +253,7 @@ bar {
 }
 # }}}
 # AUTOSTART {{{
-exec compton -b
+exec firefox
 exec ~/Code/panel/rubar
 # exec emacs
 # }}}
