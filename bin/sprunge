@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ -n "$1" ]; then
-	INPUT=$1
-	if [ ! -f $INPUT ]; then
+	INPUT="$1"
+	if [ ! -f "$INPUT" ]; then
 		echo "'$INPUT' is not a valid file."
 		exit 1
 	fi
@@ -12,5 +12,5 @@ fi
 
 link=$(curl -sf -F "sprunge=<$INPUT" http://sprunge.us)
 
-echo -n "$link" | xsel -ipb
+printf '%s' "$link" | xsel -ipb
 echo "$link"
