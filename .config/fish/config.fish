@@ -1,3 +1,5 @@
+set -e fish_greeting
+
 set fish_color_autosuggestion black --bold
 set fish_color_color_comment black --bold
 set fish_color_command green
