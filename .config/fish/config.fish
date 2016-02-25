@@ -1,3 +1,14 @@
+if status -il
+	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
+		startx -- -keeptty >~/.xorg.log ^&1
+	end
+end
+
+set -gx BROWSER firefox
+set -gx EDITOR vim
+set -gx LOCAL "$HOME/.local"
+set -gx GOPATH "$HOME/.go"
+
 set -e fish_greeting
 
 set __fish_git_prompt_showdirtystate 'true'
@@ -22,5 +33,3 @@ set fish_color_redirection magenta
 
 set fish_pager_color_prefix normal
 set fish_pager_color_description black --bold
-
-
