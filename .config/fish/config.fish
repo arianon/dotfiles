@@ -4,10 +4,10 @@ if status -il
 	end
 end
 
-set -gx BROWSER firefox
-set -gx EDITOR vim
-set -gx LOCAL "$HOME/.local"
-set -gx GOPATH "$HOME/.go"
+setenv BROWSER firefox
+setenv EDITOR vim
+setenv LOCAL "$HOME/.local"
+setenv GOPATH "$HOME/.go"
 
 set -e fish_greeting
 
