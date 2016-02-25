@@ -1,5 +1,5 @@
 function ls
-	command ls -BFX $argv
+	command ls -BFX --color=auto $argv
 end
 
 function l
