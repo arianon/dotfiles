@@ -15,7 +15,7 @@
      git
      ;; github
      ;; go
-     ;; html
+     html
      ;; markdown
      ;; org
      ;; javascript
