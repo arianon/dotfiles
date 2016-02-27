@@ -212,3 +212,5 @@ fi
 
 # Gotta load the syntax-highlighting plug-in at the end.
 source ~/.zplugins/syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -218,3 +218,5 @@ export INFINALITY_FT_USE_KNOWN_SETTINGS_ON_SELECTED_FONTS=true
 export INFINALITY_FT_USE_VARIOUS_TWEAKS=true
 
 # vim: ft=sh:expandtab
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
