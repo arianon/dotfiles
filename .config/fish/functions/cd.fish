@@ -1,5 +1,5 @@
 function cd -a file
-	if test -f "$file"
+	if [ -f "$file" ]
         set -l dir (dirname "$file")
         echo "Correcting '$file' to '$dir'"
         builtin cd $dir
