@@ -1,13 +1,15 @@
-if status -il
-	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
-		startx -- -keeptty >~/.xorg.log ^&1
-	end
-end
-
 setenv BROWSER firefox
 setenv EDITOR vim
-setenv LOCAL "$HOME/.local"
-setenv GOPATH "$HOME/.go"
+setenv LOCAL ~/.local
+setenv GOPATH ~/.go
+
+setenv PATH ~/bin $LOCAL/bin /usr/bin /usr/sbin
+
+if status -il
+	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
+		exec startx -- -keeptty >~/.xorg.log ^&1
+	end
+end
 
 set -e fish_greeting
 
