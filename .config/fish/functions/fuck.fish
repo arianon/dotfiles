@@ -1,3 +1,3 @@
 function fuck
-	eval sudo (history | head -n 1)
+	eval sudo $history[1]
 end
