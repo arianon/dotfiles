@@ -3,8 +3,7 @@ setenv EDITOR vim
 setenv LOCAL ~/.local
 setenv GOPATH ~/.go
 
-setenv PATH ~/bin $LOCAL/bin /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin ~/.rvm/bin
-
+setenv PATH ~/bin $LOCAL/bin ~/.cargo/bin /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
 if status -il
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
 		exec startx -- -keeptty >~/.xorg.log ^&1
