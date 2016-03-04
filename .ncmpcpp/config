@@ -29,7 +29,7 @@ progressbar_color = "black"
 progressbar_boldness = "no"
 
 # MISC
-mpd_music_dir = "~/usr/msc"
+mpd_music_dir = "~/media/music"
 
 follow_now_playing_lyrics = "yes"
 external_editor = "vim"

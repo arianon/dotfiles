@@ -3,7 +3,7 @@ setenv EDITOR vim
 setenv LOCAL ~/.local
 setenv GOPATH ~/.go
 
-setenv PATH ~/bin $LOCAL/bin /usr/bin /usr/sbin ~/.rvm/bin
+setenv PATH ~/bin $LOCAL/bin /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin ~/.rvm/bin
 
 if status -il
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
