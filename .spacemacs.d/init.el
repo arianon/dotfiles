@@ -15,11 +15,12 @@
      git
      ;; github
      ;; go
+     rust
      html
      ;; markdown
-     ;; org
+     org
      ;; javascript
-     python
+     ;; python
      ruby
      ;; ruby-on-rails
      ;; semantic
@@ -128,8 +129,6 @@
   (use-package super-save
     :config
     (progn
-      (add-to-list 'super-save-triggers #'select-window)
-      (super-save-advise-trigger-commands)
       (super-save-initialize)))
 
   (if (configuration-layer/layer-usedp 'evil-cleverparens)
