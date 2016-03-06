@@ -2,6 +2,7 @@ setenv BROWSER firefox
 setenv EDITOR vim
 setenv LOCAL ~/.local
 setenv GOPATH ~/.go
+setenv RUST_SRC_PATH /usr/src/rust/src
 
 setenv PATH ~/bin $LOCAL/bin ~/.cargo/bin /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
 if status -il
