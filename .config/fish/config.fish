@@ -4,7 +4,7 @@ setenv LOCAL ~/.local
 setenv GOPATH ~/.go
 setenv RUST_SRC_PATH /usr/src/rust/src
 
-setenv PATH ~/bin $LOCAL/bin ~/.cargo/bin /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
+setenv PATH ~/bin $LOCAL/bin ~/.cargo/bin ~/.gem/ruby/2.3.0/bin /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
 if status -il
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
 		exec startx -- -keeptty >~/.xorg.log ^&1
