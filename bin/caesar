@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+class Caesar
+  ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+
+  def initialize(shift)
+    i = shift % ALPHABET.size
+
+    @decrypt = ALPHABET
+    @encrypt = ALPHABET[i..-1] + ALPHABET[0...i]
+  end
+
+  def encrypt(s)
+    s.tr(@decrypt, @encrypt)
+  end
+
+  def decrypt(s)
+    s.tr(@encrypt, @decrypt)
+  end
+end
+
+C = Caesar.new(Integer(ARGV.shift) || 5)
+
+if !$stdin.tty?
+  puts C.encrypt($stdin.read)
+else
+  puts C.encrypt(ARGV.join(' '))
+end
