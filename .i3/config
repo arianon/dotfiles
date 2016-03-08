@@ -6,25 +6,17 @@ set $mod Mod4
 set $font pango: ariafont
 set $border_width 2
 
-set $background #0a0c10
-set $foreground #b7bdcc
+set $background #000000
+set $foreground #ffffff
 
-set $black        #363c4a
-set $lightblack   #4d576b
-set $red          #994e55
-set $lightred     #bf616a
-set $green        #849971
-set $lightgreen   #a3be8c
-set $yellow       #c5aa75
-set $lightyellow  #ebcb8b
-set $blue         #707e8c
-set $lightblue    #8fa1b3
-set $magenta      #8f7189
-set $lightmagenta #b48ead
-set $cyan         #778f8e
-set $lightcyan    #96b5b4
-set $white        #a6aab2
-set $lightwhite   #b9bbbe
+set $black        #2a2a2a
+set $red          #d54e53
+set $green        #b9ca4a
+set $yellow       #e7c547
+set $blue         #77aa6da
+set $magenta      #c397d8
+set $cyan         #70c0b1
+set $white        #969896
 
 set $ws1 "1:I"
 set $ws2 "2:II"
@@ -225,6 +217,7 @@ for_window [class=(?i)firefox] focus child, layout tabbed, focus
 for_window [class="qemu"] floating enable
 for_window [class="(?i)gbdfed"] floating enable
 for_window [class="(?i)grip"] floating enable
+for_window [class="(?i)jetbrains-*"] floating enable
 
 assign [class="(?i)firefox*"] $ws1
 assign [class="(?i)chromium"] $ws1
@@ -244,7 +237,7 @@ bar {
 		separator $red
 
 		#                  BORDER      BACKGROUND  TEXT
-		focused_workspace  $foreground $foreground $background
+		focused_workspace  $foreground $foreground $gray
 		inactive_workspace $background $background $foreground
 		active_workspace   $background $background $foreground
 		urgent_workspace   $red        $red        $background
@@ -253,7 +246,7 @@ bar {
 }
 # }}}
 # AUTOSTART {{{
-exec firefox
-exec ~/Code/panel/rubar
+exec firefox-nightly
+exec ~/code/panel/rubar
 # exec emacs
 # }}}
