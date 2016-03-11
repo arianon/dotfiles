@@ -247,6 +247,6 @@ bar {
 # }}}
 # AUTOSTART {{{
 exec firefox-nightly
-exec ~/code/panel/rubar
+exec rubar
 # exec emacs
 # }}}

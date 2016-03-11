@@ -10,26 +10,26 @@
      ;; better-defaults
      ;; c-c++
      ;; colors
-     emacs-lisp
+     ;; emacs-lisp
      ;; fasd
      git
      ;; github
      ;; go
-     rust
+     ;; rust
      html
      ;; markdown
-     org
-     ;; javascript
+     ;; org
+     javascript
      ;; python
      ruby
      ;; ruby-on-rails
      ;; semantic
      shell
-     shell-scripts
+     ;; shell-scripts
      syntax-checking
      ;; unimpaired
      ;; yaml
-     evil-cleverparens
+     ;; evil-cleverparens
      )
    dotspacemacs-additional-packages '(
                                       helm-flycheck

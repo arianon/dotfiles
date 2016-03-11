@@ -12,4 +12,8 @@ setxkbmap us -option compose:menu -option caps:swapescape
 
 redshift &
 
-exec i3
+if [ "$XDG_VTNR" -eq 3 ]; then
+	exec qemu ~/var/vm/windows.img -full-screen
+else
+	exec i3
+fi
