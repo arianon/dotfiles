@@ -1,0 +1,7 @@
+#!/bin/sh
+exec /bin/passmenu -p ">" \
+	-fn synepis-9 \
+	-nf "$(xrq foreground)" \
+	-nb "$(xrq background)" \
+	-sf "$(xrq background)" \
+	-sb "$(xrq foreground)"

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec ~/.torbrowser/Browser/start-tor-browser --detach "$@"

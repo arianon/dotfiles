@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'colorize'
-String.colorize_disable(true) unless $stdout.tty?
+# String.colorize_disable(true) unless $stdout.tty?
 
 @colors = String.colors - %i(black light_black default)
 @words = ARGV.join(' ').upcase.delete(' ').chars
@@ -11,6 +11,6 @@ def colored_words
 end
 
 @words.length.times do
-  puts colored_words
+  puts @words.join(' ')
   @words.rotate!
 end
