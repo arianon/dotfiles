@@ -25,8 +25,8 @@ function prompt::format_time -a milliseconds
 end
 
 function prompt::current_directory
-	set_color blue
-	echo -n "$PWD" | sed -e "s|$HOME|~|" # -e "s|\([^/.]\)[^/]*/|\1/|g"
+	set_color yellow
+	echo -n "$PWD" | sed "s|$HOME|~|; s|\([^/.]\)[^/]*/|\1/|g"
 	set_color normal
 end
 
@@ -44,7 +44,7 @@ end
 
 function fish_prompt
 	set -l exit_code $status
-	set -l prompt_color "green"
+	set -l prompt_color "blue"
 	set -l prompt_char '$'
 
 	if [ $USER = "root" ]
@@ -55,16 +55,13 @@ function fish_prompt
 	[ "$exit_code" -ne 0 ]; and set prompt_color "red"
 
 	if set -q SSH_CONNECTION
-		echo -n (prompt::user)" at "(prompt::host)" in "
+		echo -n (prompt::user)"@"(prompt::host)" "
 	end
 
 	prompt::current_directory
+	echo -n " "
 
-	if git rev-parse ^/dev/null
-		echo -n " on "(prompt::git)
-	end
 
-	echo
 	set_color "$prompt_color"
 	echo -n "$prompt_char "
 	set_color normal
@@ -72,5 +69,9 @@ end
 
 function fish_right_prompt
 	set -q CMD_DURATION
-	and	prompt::format_time $CMD_DURATION
+	and prompt::format_time "$CMD_DURATION"
+
+	if git rev-parse ^/dev/null
+		echo -n "("(prompt::git)")"
+	end
 end

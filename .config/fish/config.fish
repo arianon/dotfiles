@@ -3,9 +3,13 @@ setenv EDITOR vim
 setenv LOCAL ~/.local
 setenv GOPATH ~/.go
 setenv RUST_SRC_PATH /usr/src/rust/src
+setenv GPG_TTY (tty)
+setenv MAIL ~/Mail
 
 setenv PATH ~/bin $LOCAL/bin ~/.cargo/bin ~/.gem/ruby/2.3.0/bin /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
 if status -il
+	keychain --inherit any-once --agents ssh,gpg id_rsa C508A886 --eval | source
+
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
 		exec startx -- -keeptty >~/.xorg.log ^&1
 	end
