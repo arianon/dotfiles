@@ -24,7 +24,7 @@
 #define t_background        #000000
 #define t_current_line      #2a2a2a
 #define t_selection      	#424242
-#define t_foreground      	#eaeaea
+#define t_foreground      	#ffffff
 #define t_comment	     	#969896
 #define t_red		     	#d54e53
 #define t_orange	     	#e78c45
@@ -79,6 +79,9 @@ URxvt.url-select.launcher: /home/arianon/bin/link-open
 URxvt.url-select.underline: true
 URxvt.url-select.button: 1
 
+URxvt.clipboard.copycmd: xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard 
+
 URxvt.keysym.M-w: perl:url-select:select_next
 URxvt.keysym.M-e: perl:keyboard-select:activate
 URxvt.keysym.M-c: perl:clipboard:copy
@@ -94,8 +97,11 @@ URxvt.internalBorder: 8
 
 !URxvt*boldFont: -*-ariafont-bold-*-*-*-*-*-*-*-*-*-iso10646-*
 !URxvt*font: -*-ariafont-medium-*-*-*-*-*-*-*-*-*-iso10646-*
-URxvt*font: xft:ariafont
-URxvt*letterSpace: 1
+URxvt*font: xft:synepis:size=9
+URxvt*letterSpace: 0
+
+dmenu.selforeground: t_background
+dmenu.selbackground: t_foreground
 
 ! Xft
 Xft.dpi: 96

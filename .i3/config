@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font pango: ariafont
+set $font pango: synepis 9
 set $border_width 2
 
 set $background #000000
@@ -50,7 +50,7 @@ client.urgent           $red         $red        $foreground   $red
 
 # Non-WM
 bindsym $mod+p exec dlaunch
-bindsym $mod+Shift+a exec --no-startup-id atom
+bindsym $mod+Shift+p exec passmenu
 bindsym --release Print exec teknik $(img)
 bindsym --release Shift+Print exec teknik $(img -s)
 
@@ -227,14 +227,15 @@ assign [class="(?i)steam*"] $ws4
 # }}}
 # BAR {{{
 bar {
-	# status_command i3blocks
+	status_command /home/arianon/i3barscript.rb
+	#status_command i3status
 	strip_workspace_numbers yes
 	separator_symbol "·"
 
 	colors {
-		background $background
-		statusline $white
-		separator $red
+		# background $background
+		# statusline $foreground
+		# separator $red
 
 		#                  BORDER      BACKGROUND  TEXT
 		focused_workspace  $foreground $foreground $gray
