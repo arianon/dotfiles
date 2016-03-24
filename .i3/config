@@ -4,7 +4,7 @@
 # SETTINGS {{{
 set $mod Mod4
 set $font pango: synepis 9
-set $border_width 2
+set $border_width 1
 
 set $background #000000
 set $foreground #ffffff
@@ -29,7 +29,7 @@ set $ws8 "8:VIII"
 set $ws9 "9:IX"
 set $ws10 "10:X"
 
-set $gaps_inner 24
+set $gaps_inner 0
 set $gaps_outer 0
 gaps inner $gaps_inner
 gaps outer $gaps_outer
