@@ -1,75 +1,4 @@
-! Colors
-!*background: #0a0c10
-!*foreground: #b7bdcc
-!*cursorColor: #b7bdcc
-!
-!*color0: #363c4a
-!*color1: #994e55
-!*color2: #849971
-!*color3: #c5aa75
-!*color4: #707e8c
-!*color5: #8f7189
-!*color6: #778f8e
-!*color7: #a6aab2
-!
-!*color8: #4d576b
-!*color9: #bf616a
-!*color10: #a3be8c
-!*color11: #ebcb8b
-!*color12: #8fa1b3
-!*color13: #b48ead
-!*color14: #96b5b4
-!*color15: #b9bbbe
-
-#define t_background        #000000
-#define t_current_line      #2a2a2a
-#define t_selection      	#424242
-#define t_foreground      	#ffffff
-#define t_comment	     	#969896
-#define t_red		     	#d54e53
-#define t_orange	     	#e78c45
-#define t_yellow        	#e7c547
-#define t_green	        	#b9ca4a
-#define t_aqua	        	#70c0b1
-#define t_blue	        	#7aa6da
-#define t_purple        	#c397d8
-
-*background:  t_background
-*foreground:  t_foreground
-*cursorColor: #aeafad
-
-! Black
-*color0:      t_current_line
-*color8:      t_selection
-
-! Red
-*color1:	  t_red
-*color9:	  t_red
-
-! Green
-*color2:	  t_green
-*color10:     t_green
-
-! Yellow
-*color3:	  t_orange
-*color11:     t_yellow
-
-! Blue
-*color4:      t_blue
-*color12:     t_blue
-
-! Magenta
-*color5:      t_purple
-*color13:     t_purple
-
-! Cyan
-*color6:      t_aqua
-*color14:     t_aqua
-
-! White
-*color7:      t_comment
-*color15:     t_comment
-
+#include "etc/themes/base16-bright"
 
 ! URxvt
 URxvt.perl-lib:	/usr/lib/urxvt/perl
@@ -79,13 +8,12 @@ URxvt.url-select.launcher: /home/arianon/bin/link-open
 URxvt.url-select.underline: true
 URxvt.url-select.button: 1
 
-URxvt.clipboard.copycmd: xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard 
+URxvt.clipboard.copycmd: xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
 
 URxvt.keysym.M-w: perl:url-select:select_next
-URxvt.keysym.M-e: perl:keyboard-select:activate
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-S-e: perl:keyboard-select:activate
+URxvt.keysym.M-S-c: perl:clipboard:copy
 URxvt.keysym.M-S-v: perl:clipboard:paste_escaped
 
 URxvt.iso14755: false
@@ -100,8 +28,8 @@ URxvt.internalBorder: 8
 URxvt*font: xft:synepis:size=9
 URxvt*letterSpace: 0
 
-dmenu.selforeground: t_background
-dmenu.selbackground: t_foreground
+dmenu.selforeground: #000000
+dmenu.selbackground: #ffffff
 
 ! Xft
 Xft.dpi: 96
