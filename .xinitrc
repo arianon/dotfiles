@@ -11,6 +11,7 @@ hsetroot -solid "$(xrq background)"
 setxkbmap us -option compose:menu -option caps:swapescape
 
 redshift &
+compton -b
 
 if [ "$XDG_VTNR" -eq 3 ]; then
 	exec qemu ~/var/vm/windows.img -full-screen
