@@ -4,5 +4,6 @@ function histsearch
 	history | fzf-tmux --no-sort --reverse --cycle \
                   --inline-info --prompt="Command> " > $TMPFILE
 
+	test -s $TMPFILE
 	and commandline --insert (cat $TMPFILE)
 end

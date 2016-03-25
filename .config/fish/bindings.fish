@@ -1,1 +1,0 @@
-bind \cr histsearch
