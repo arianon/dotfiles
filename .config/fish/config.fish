@@ -1,14 +1,22 @@
-source environment.fish
+set -gx BROWSER firefox
+set -gx EDITOR vim
+set -gx LOCAL ~/.local
+set -gx GOPATH ~/.go
+set -gx RUST_SRC_PATH /usr/src/rust/src
+set -gx MAIL ~/var/mail
 
-if status -l
-	source login.fish
+set -gx PATH ~/bin $LOCAL/bin ~/.cargo/bin ~/.gem/ruby/2.3.0/bin \
+             /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
+
+if status -il
+	# if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
+	# 	exec startx -- -keeptty >~/.xorg.log ^&1
+	# end
 end
 
-if status -i
-	source bindings.fish
+function fish_greeting
+	fortune
 end
-
-set -e fish_greeting
 
 # Colors
 set fish_color_autosuggestion black --bold
