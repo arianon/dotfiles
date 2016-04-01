@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font pango: synepis 9
+set $font pango: ariafont
 set $border_width 1
 
 set $background #000000
@@ -226,25 +226,23 @@ assign [class="(?i)steam*"] $ws4
 
 # }}}
 # BAR {{{
-bar {
-	status_command /home/arianon/i3barscript.rb
-	#status_command i3status
-	strip_workspace_numbers yes
-	separator_symbol "·"
-
-	colors {
-		# background $background
-		# statusline $foreground
-		# separator $red
-
-		#                  BORDER      BACKGROUND  TEXT
-		focused_workspace  $foreground $foreground $gray
-		inactive_workspace $background $background $foreground
-		active_workspace   $background $background $foreground
-		urgent_workspace   $red        $red        $background
-		binding_mode       $yellow     $yellow     $background
-	}
-}
+# bar {
+# 	strip_workspace_numbers yes
+# 	separator_symbol "·"
+# 
+# 	colors {
+# 		# background $background
+# 		# statusline $foreground
+# 		# separator $red
+# 
+# 		#                  BORDER      BACKGROUND  TEXT
+# 		focused_workspace  $foreground $foreground $gray
+# 		inactive_workspace $background $background $foreground
+# 		active_workspace   $background $background $foreground
+# 		urgent_workspace   $red        $red        $background
+# 		binding_mode       $yellow     $yellow     $background
+# 	}
+# }
 # }}}
 # AUTOSTART {{{
 exec firefox-nightly

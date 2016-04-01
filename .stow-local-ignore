@@ -3,6 +3,9 @@
 \.gitmodules
 \.stow-local-ignore
 
+Gemfile.*
+themes/
+
 # Emacs garbage
 .+~
 \#.+\#

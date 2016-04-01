@@ -8,10 +8,10 @@ set -gx MAIL ~/var/mail
 set -gx PATH ~/bin $LOCAL/bin ~/.cargo/bin ~/.gem/ruby/2.3.0/bin \
              /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
 
-if status -il
-	# if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
-	# 	exec startx -- -keeptty >~/.xorg.log ^&1
-	# end
+if status --is-login
+	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
+		exec startx -- -keeptty >~/.xorg.log ^&1
+	end
 end
 
 function fish_greeting

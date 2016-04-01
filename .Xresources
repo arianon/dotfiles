@@ -25,8 +25,8 @@ URxvt.internalBorder: 8
 
 !URxvt*boldFont: -*-ariafont-bold-*-*-*-*-*-*-*-*-*-iso10646-*
 !URxvt*font: -*-ariafont-medium-*-*-*-*-*-*-*-*-*-iso10646-*
-URxvt*font: xft:synepis:size=9
-URxvt*letterSpace: 0
+URxvt*font: xft:ariafont
+URxvt*letterSpace: 1
 
 dmenu.selforeground: #000000
 dmenu.selbackground: #ffffff

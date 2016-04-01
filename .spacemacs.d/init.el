@@ -6,36 +6,34 @@
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
-     auto-completion
+     ;; auto-completion
      ;; better-defaults
      ;; c-c++
      ;; colors
      ;; emacs-lisp
-     ;; fasd
-     git
+     ;; git
      ;; github
      ;; go
      ;; rust
-     html
+     ;; html
      ;; markdown
      ;; org
-     javascript
+     ;; javascript
      ;; python
-     ruby
+     ;; ruby
      ;; ruby-on-rails
      ;; semantic
-     shell
+     ;; shell
      ;; shell-scripts
-     syntax-checking
+     ;; syntax-checking
      ;; unimpaired
      ;; yaml
      ;; evil-cleverparens
      )
    dotspacemacs-additional-packages '(
-                                      helm-flycheck
                                       super-save
                                       )
-   dotspacemacs-excluded-packages '(persp-mode)
+   dotspacemacs-excluded-packages '()
    dotspacemacs-delete-orphan-packages t))
 
 (defun dotspacemacs/init ()
@@ -44,9 +42,10 @@
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner nil ;; 'official
    dotspacemacs-startup-lists '(recents bookmarks projects)
-   dotspacemacs-themes '(spacemacs-light spacemacs-dark)
+   dotspacemacs-themes '(spacemacs-dark spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Liberation Mono" :size 14 :weight normal :width normal :powerline-scale 1.1)
+   dotspacemacs-default-font '("Liberation Mono" :size 14 :weight normal
+                               :width normal :powerline-scale 1.1)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-RET"
    dotspacemacs-major-mode-leader-key ","
@@ -104,27 +103,24 @@
 
   ;; C theming
   (if (configuration-layer/layer-usedp 'c-c++)
-      (c-add-style "arianon"
-                   '((indent-tabs-mode . t)
-                     (c-basic-offset . 4)
-                     (c-hanging-braces-alist (substatement-open before after)
-                                             (brace-list-open)
-                                             (brace-list-open))
-                     (c-offsets-alist (substatement-open . 0)
-                                      (inline-open . 0)
-                                      (statement-cont . c-lineup-assignments)
-                                      (inextern-lang . 0)
-                                      (innamespace . 0))))
+      (c-add-style
+       "arianon"
+       '((indent-tabs-mode . t)
+         (c-basic-offset . 4)
+         (c-hanging-braces-alist
+          (substatement-open before after)
+          (brace-list-open)
+          (brace-list-open))
+         (c-offsets-alist
+          (substatement-open . 0)
+          (inline-open . 0)
+          (statement-cont . c-lineup-assignments)
+          (inextern-lang . 0)
+          (innamespace . 0))))
 
     (dolist (mode '(c-mode c++-mode))
       (spacemacs/set-leader-keys-for-major-mode mode
         "os" #'c-set-style)))
-
-  (use-package helm-flycheck
-    :defer t
-    :if (configuration-layer/layer-usedp #'syntax-checking)
-    :config
-    (spacemacs/set-leader-keys "eh" #'helm-flycheck))
 
   (use-package super-save
     :config
