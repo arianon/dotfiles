@@ -13,4 +13,5 @@ setxkbmap us -option compose:menu -option caps:swapescape
 redshift &
 compton &
 
+firefox &
 exec i3

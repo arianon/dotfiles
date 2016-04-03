@@ -244,8 +244,3 @@ assign [class="(?i)steam*"] $ws4
 # 	}
 # }
 # }}}
-# AUTOSTART {{{
-exec firefox-nightly
-exec rubar
-# exec emacs
-# }}}
