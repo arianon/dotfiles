@@ -4,9 +4,11 @@ set -gx LOCAL ~/.local
 set -gx GOPATH ~/.go
 set -gx RUST_SRC_PATH /usr/src/rust/src
 set -gx MAIL ~/var/mail
+set -gx RBENV_SHELL fish
 
-set -gx PATH ~/bin $LOCAL/bin ~/.cargo/bin ~/.gem/ruby/2.3.0/bin \
-             /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
+if [ $PATH[1] != ~/bin ]
+	set -gx PATH ~/bin $LOCAL/bin ~/.cargo/bin ~/.rbenv/bin ~/.rbenv/shims ~/.gem/ruby/2.3.0/bin $PATH
+end
 
 if status --is-login
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
@@ -33,3 +35,5 @@ set fish_color_redirection magenta
 
 set fish_pager_color_prefix normal
 set fish_pager_color_description black --bold
+
+source ~/.rbenv/completions/rbenv.fish
