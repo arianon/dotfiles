@@ -6,29 +6,28 @@
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
-     ;; auto-completion
-     ;; better-defaults
+     auto-completion
+     better-defaults
      ;; c-c++
      ;; colors
      ;; emacs-lisp
-     ;; git
+     git
      ;; github
      ;; go
      ;; rust
      ;; html
      ;; markdown
-     ;; org
+     org
      ;; javascript
      ;; python
-     ;; ruby
+     ruby
      ;; ruby-on-rails
      ;; semantic
-     ;; shell
+     (shell :variables shell-default-shell 'eshell)
      ;; shell-scripts
      ;; syntax-checking
-     ;; unimpaired
-     ;; yaml
-     ;; evil-cleverparens
+     yaml
+     evil-cleverparens
      )
    dotspacemacs-additional-packages '(
                                       super-save
@@ -44,7 +43,7 @@
    dotspacemacs-startup-lists '(recents bookmarks projects)
    dotspacemacs-themes '(spacemacs-dark spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Liberation Mono" :size 14 :weight normal
+   dotspacemacs-default-font '("ariafont" :size 10 :weight normal
                                :width normal :powerline-scale 1.1)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-RET"
