@@ -3,6 +3,7 @@
 [user]
 	email = arianon@openmailbox.org
 	name = Michael Valera
+	signingkey = 0xF5CBE817
 [alias]
 	shallow-clone = clone --depth 1
 [format]
@@ -34,3 +35,5 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[commit]
+	gpgsign = true
