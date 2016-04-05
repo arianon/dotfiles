@@ -5,7 +5,7 @@ xrdb -load ~/.Xresources
 xsetroot -cursor_name left_ptr
 
 # Wallpaper
-hsetroot -solid "$(xrq background)"
+hsetroot -full ~/usr/img/lambda.png
 
 # Keyboard
 setxkbmap us -option compose:menu -option caps:swapescape
