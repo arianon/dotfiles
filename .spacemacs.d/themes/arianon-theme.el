@@ -3,16 +3,16 @@
 
 (deftheme arianon "My personal theme for Emacs.")
 
-(let ((background "#14181f")
-      (background+1 "#2b303b")
-      (background+2 "#4d576b")
+(let ((background "#000000")
+      (background+1 "#222222")
+      (background+2 "#444444")
 
-      (foreground "#b7bdcc")
-      (foreground+1 "#a6aab2")
-      (foreground+2 "#b9bbbe")
+      (foreground "#dddddd")
+      (foreground+1 "#cccccc")
+      (foreground+2 "#bbbbbb")
 
-      (red "#bf616a")
-      (red+1 "#994e55")
+      (red "#d33")
+      (red+1 "#f22")
 
       (yellow "#c5aa75")
       (yellow+1 "#ebcb8b")

@@ -7,11 +7,10 @@
    dotspacemacs-configuration-layers
    '(
      auto-completion
-     better-defaults
      ;; c-c++
-     ;; colors
+     colors
      ;; emacs-lisp
-     git
+     ;; git
      ;; github
      ;; go
      ;; rust
@@ -23,7 +22,7 @@
      ruby
      ;; ruby-on-rails
      ;; semantic
-     (shell :variables shell-default-shell 'eshell)
+     shell
      ;; shell-scripts
      ;; syntax-checking
      yaml
@@ -77,6 +76,77 @@
 (defun dotspacemacs/user-init ()
   (setq-default custom-file "~/.spacemacs.d/.custom.el")
 
+  (custom-set-variables
+   '(spacemacs-theme-comment-bg nil)
+   '(spacemacs-theme-org-highlight nil)
+   '(spacemacs-theme-org-height nil)
+   '(spacemacs-theme-custom-colors
+     '(
+       ;; UI            MINE         ORIG
+       (act1        . "#000000") ; #121212
+       (act2        . "#222222") ; #444444
+       (base        . "#ffffff") ; #b2b2b2
+       (base-dim    . "#dddddd") ; #585858
+       (bg1         . "#000000") ; #262626
+       (bg2         . "#151515") ; #1c1c1c
+       (bg3         . "#2a2a2a") ; #121212
+       (bg4         . "#333333") ; #080808
+       (border      . "#000000") ; #111111
+       (comment-bg  . "#000000") ; #262626
+       (cursor      . "#d0d0d0") ; #d0d0d0
+       (highlight   . "#222222") ; #444444
+       (lnum        . "#222222") ; #444444
+
+       ;; CODE
+       (comment     . "#777777") ; #008787
+       (const       . "#e78c45") ; #d75fd7
+       (err         . "#ff0000") ; #e0211d
+       (func        . "#b9ca4a") ; #d75fd7
+       (keyword     . "#7aa6da") ; #268bd2
+       (str         . "#d54e53") ; #2aa198
+       (type        . "#e7c547") ; #df005f
+       (var         . "#c397d8") ; #8787d7
+
+       ;; ORG
+       (cblk        . "#ffffff") ; #b2b2b2
+       (cblk-bg     . "#000000") ; #262626
+       (cblk-ln     . "#af5faf") ; #af5faf
+       (cblk-ln-bg  . "#333333") ; #333333
+       (head1       . "#268bd2") ; #268bd2
+       (head1-bg    . "#000000") ; #262626
+       (head2       . "#2aa198") ; #2aa198
+       (head2-bg    . "#000000") ; #262626
+       (head3       . "#67b11d") ; #67b11d
+       (head3-bg    . "#000000") ; #262626
+       (head4       . "#875f00") ; #875f00
+       (head4-bg    . "#000000") ; #262626
+
+       ;; MISC
+       (comp        . "#7aa6da") ; #d75fd7
+       (mat         . "#86dc2f") ; #86dc2f
+       (meta        . "#af875f") ; #af875f
+       (suc         . "#86dc2f") ; #86dc2f
+       (ttip        . "#888888") ; #888888
+       (ttip-bg     . "#222222") ; #444444
+       (ttip-sl     . "#333333") ; #333333
+       (war         . "#dc752f") ; #dc752f
+
+       ;; COLORS
+       (aqua        . "#2aa198") ; #2aa198
+       (aqua-bg     . "#000000") ; #262626
+       (green       . "#67b11d") ; #67b11d
+       (green-bg    . "#000000") ; #262626
+       (green-bg-s  . "#000000") ; #262626
+       (cyan        . "#00ffff") ; #00ffff
+       (red         . "#d70000") ; #d70000
+       (red-bg      . "#000000") ; #262626
+       (red-bg-s    . "#000000") ; #262626
+       (blue        . "#268bd2") ; #268bd2
+       (blue-bg     . "#000000") ; #262626
+       (violet      . "#af00df") ; #af00df
+       (yellow      . "#875f00") ; #875f00
+       (yellow-bg   . "#000000") ; #262626
+       )))
   )
 
 (defun dotspacemacs/user-config ()
@@ -92,7 +162,7 @@
    )
 
   (global-hungry-delete-mode)
-  (aggressive-indent-global-mode)
+  (spacemacs/toggle-aggressive-indent-globally-on)
 
   (if (configuration-layer/layer-usedp 'colors)
       (rainbow-mode))
