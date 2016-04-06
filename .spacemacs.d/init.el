@@ -6,6 +6,7 @@
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
+     csv
      auto-completion
      ;; c-c++
      colors
