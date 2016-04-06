@@ -1,6 +1,6 @@
 #!/bin/sh
 exec /bin/passmenu -p ">" \
-	-fn synepis-9 \
+	-fn ariafont \
 	-nf "$(xrq foreground)" \
 	-nb "$(xrq background)" \
 	-sf "$(xrq background)" \
