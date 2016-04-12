@@ -6,7 +6,8 @@ browser_display_mode = columns
 song_columns_list_format = "(50)[green]{t|f} (50)[white]{ar}"
 playlist_separate_albums = "yes"
 
-progressbar_look = ""
+# progressbar_look = ""
+progressbar_look = "———"
 progressbar_elapsed_color = "white"
 progressbar_boldness = "no"
 
