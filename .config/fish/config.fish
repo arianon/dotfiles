@@ -1,5 +1,5 @@
 set -gx BROWSER firefox
-set -gx EDITOR emacsclient
+set -gx EDITOR "emacsclient -nc"
 set -gx LOCAL ~/.local
 set -gx GOPATH ~/.go
 set -gx RUST_SRC_PATH /usr/src/rust/src

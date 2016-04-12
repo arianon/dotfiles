@@ -42,6 +42,20 @@ function prompt::host
 	set_color normal
 end
 
+function prompt::tor
+  set -q LD_PRELOAD
+  or return
+
+  for lib in $LD_PRELOAD
+    if [ (basename $lib) = libtorsocks.so ]
+      set_color green
+      echo "TORIFIED"
+      set_color normal
+      return
+    end
+  end
+end
+
 function fish_prompt
 	set -l exit_code $status
 	set -l prompt_color "green"
@@ -71,6 +85,8 @@ function fish_prompt
 end
 
 function fish_right_prompt
-	set -q CMD_DURATION
-	and prompt::format_time "$CMD_DURATION"
+  prompt::tor
+
+	# set -q CMD_DURATION
+	# and prompt::format_time "$CMD_DURATION"
 end
