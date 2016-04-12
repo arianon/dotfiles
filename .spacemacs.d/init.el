@@ -6,17 +6,17 @@
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
-     csv
+     html
+     ;; csv
+     shell-scripts
+     markdown
+     ;; ansible
+     ;; javascript
      auto-completion
-     ;; c-c++
+     c-c++
      colors
      ;; emacs-lisp
-     ;; git
-     ;; github
-     ;; go
-     ;; rust
-     ;; html
-     ;; markdown
+     git
      org
      ;; javascript
      ;; python
@@ -25,7 +25,7 @@
      ;; semantic
      shell
      ;; shell-scripts
-     ;; syntax-checking
+     syntax-checking
      yaml
      evil-cleverparens
      )
@@ -43,8 +43,7 @@
    dotspacemacs-startup-lists '(recents bookmarks projects)
    dotspacemacs-themes '(spacemacs-dark spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("ariafont" :size 10 :weight normal
-                               :width normal :powerline-scale 1.1)
+   dotspacemacs-default-font '("ariafont" :size 10 :weight normal :width normal :powerline-scale 1)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-RET"
    dotspacemacs-major-mode-leader-key ","
@@ -100,11 +99,11 @@
 
        ;; CODE
        (comment     . "#777777") ; #008787
-       (const       . "#e78c45") ; #d75fd7
+       (const       . "#d54e53") ; #d75fd7
        (err         . "#ff0000") ; #e0211d
        (func        . "#b9ca4a") ; #d75fd7
        (keyword     . "#7aa6da") ; #268bd2
-       (str         . "#d54e53") ; #2aa198
+       (str         . "#e78c45") ; #2aa198
        (type        . "#e7c547") ; #df005f
        (var         . "#c397d8") ; #8787d7
 
