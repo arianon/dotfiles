@@ -20,4 +20,5 @@ ARGV.each do |file|
 
   puts url
   IO.popen('xsel -ib', 'r+') { |c| c.print url }
+  IO.popen('xsel -ip', 'r+') { |c| c.print url }
 end
