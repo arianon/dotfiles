@@ -1,35 +1,46 @@
 ;; -*- mode: emacs-lisp -*-
 
+(defun dotspacemacs/configure-org ()
+  (setq org-bullets-bullet-list '("*" ">" "+" "-")
+
+        org-agenda-files '("~/org/materias.org" "~/org/evaluaciones.org")
+        org-agenda-span 'week
+        org-agenda-tags-column -100)
+
+  (setq org-todo-keywords
+        '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE"))))
+
 (defun dotspacemacs/layers ()
   (setq-default
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
-     html
-     ;; csv
-     shell-scripts
-     markdown
-     ;; ansible
-     ;; javascript
+     evil-cleverparens
+     
+     (spell-checking :variables spell-checking-enable-by-default nil)
+     latex
+     ;; asciidoc
+     ;; html
+     ;; shell-scripts
+     ;; markdown
      auto-completion
      c-c++
      colors
-     ;; emacs-lisp
+     emacs-lisp
      git
      org
      ;; javascript
      ;; python
-     ruby
+     ;; ruby
      ;; ruby-on-rails
      ;; semantic
-     shell
-     ;; shell-scripts
-     syntax-checking
-     yaml
-     evil-cleverparens
+     ;; shell
+     ;; syntax-checking
+     ;; yaml
      )
    dotspacemacs-additional-packages '(
+                                      muttrc-mode
                                       super-save
                                       )
    dotspacemacs-excluded-packages '()
@@ -69,8 +80,8 @@
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server t
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
+   dotspacemacs-scratch-mode 'org-mode
    ))
 
 (defun dotspacemacs/user-init ()
@@ -109,9 +120,9 @@
 
        ;; ORG
        (cblk        . "#ffffff") ; #b2b2b2
-       (cblk-bg     . "#000000") ; #262626
-       (cblk-ln     . "#af5faf") ; #af5faf
-       (cblk-ln-bg  . "#333333") ; #333333
+       (cblk-bg     . "#999999") ; #262626
+       (cblk-ln     . "#ffffff") ; #af5faf
+       (cblk-ln-bg  . "#999999") ; #333333
        (head1       . "#268bd2") ; #268bd2
        (head1-bg    . "#000000") ; #262626
        (head2       . "#2aa198") ; #2aa198
@@ -151,21 +162,18 @@
 
 (defun dotspacemacs/user-config ()
   (setq-default
-   powerline-default-separator 'arrow
+   powerline-default-separator nil
    avy-all-windows 'all-frames
 
-   ;; inhibit-startup-screen t
-   ;; initial-major-mode 'ruby-mode
-   ;; initial-scratch-message "#!/usr/bin/ruby -wU\n# -*- coding: utf-8 -*-\n"
-
    evil-move-cursor-back nil
+   confirm-nonexistent-file-or-buffer nil
    )
 
   (global-hungry-delete-mode)
   (spacemacs/toggle-aggressive-indent-globally-on)
 
-  (if (configuration-layer/layer-usedp 'colors)
-      (rainbow-mode))
+  ;; (if (configuration-layer/layer-usedp 'colors)
+  ;;     (rainbow-mode))
 
   (define-key evil-normal-state-map "H" "^")
   (define-key evil-normal-state-map "L" "$")
@@ -198,4 +206,6 @@
 
   (if (configuration-layer/layer-usedp 'evil-cleverparens)
       (spacemacs/toggle-evil-cleverparens-on))
+
+  (dotspacemacs/configure-org)
   )
