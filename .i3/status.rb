@@ -9,7 +9,7 @@ end
 
 def clock
   {
-    full_text: Time.now.strftime('%X')
+    full_text: Time.now.strftime('%I:%M:%S %p')
   }
 end
 
