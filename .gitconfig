@@ -3,7 +3,7 @@
 [user]
 	email = arianon@openmailbox.org
 	name = Michael Valera
-	signingkey = 0xF5CBE817
+	signingkey = 0xF400EBEA
 [alias]
 	shallow-clone = clone --depth 1
 [format]
