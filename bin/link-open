@@ -15,5 +15,5 @@ case $URI in
 			--no-resume-playback \
 			"$URI"
 		;;
-	*) exec firefox "$URI"
+	*) exec firefox-esr "$URI"
 esac
