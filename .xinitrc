@@ -5,7 +5,7 @@ xrdb -load ~/.Xresources
 xsetroot -cursor_name left_ptr
 
 # Wallpaper
-hsetroot -full ~/usr/img/lambda.png
+hsetroot -full ~/usr/img/horario.png
 
 # Keyboard
 setxkbmap us -option compose:menu -option caps:swapescape

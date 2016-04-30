@@ -6,6 +6,7 @@ After=network.target
 Type=notify
 ExecStart=/usr/bin/transmission-daemon -f --log-error
 ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
 
 [Install]
 WantedBy=default.target

@@ -57,6 +57,7 @@ bindsym --release Shift+Print exec teknik $(img -s)
 bindsym $mod+Return exec --no-startup-id urxvt
 
 bindsym $mod+Shift+e exec emacs
+bindsym $mod+Shift+f exec firefox-esr
 
 # WM
 floating_modifier $mod
