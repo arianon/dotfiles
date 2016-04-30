@@ -1,14 +1,14 @@
 ;; -*- mode: emacs-lisp -*-
 
 (defun dotspacemacs/configure-org ()
-  (setq org-bullets-bullet-list '("*" ">" "+" "-")
+  (setq-default
 
-        org-agenda-files '("~/org/materias.org" "~/org/evaluaciones.org")
-        org-agenda-span 'week
-        org-agenda-tags-column -100)
+   org-agenda-files '("~/org/evaluaciones.org")
+   org-agenda-span 'week
+   org-agenda-tags-column -100
+   org-bullets-bullet-list '("*" ">" "+" "-")
 
-  (setq org-todo-keywords
-        '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE"))))
+   org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE"))))
 
 (defun dotspacemacs/layers ()
   (setq-default
@@ -17,8 +17,11 @@
    dotspacemacs-configuration-layers
    '(
      evil-cleverparens
-     
-     (spell-checking :variables spell-checking-enable-by-default nil)
+
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil
+                     spell-checking-enable-auto-dictionary t)
+
      latex
      ;; asciidoc
      ;; html
@@ -30,12 +33,16 @@
      emacs-lisp
      git
      org
+     (rcirc :variables
+            rcirc-enable-znc-support t)
      ;; javascript
      ;; python
      ;; ruby
      ;; ruby-on-rails
      ;; semantic
-     ;; shell
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-enable-smart-eshell t)
      ;; syntax-checking
      ;; yaml
      )
@@ -167,6 +174,9 @@
 
    evil-move-cursor-back nil
    confirm-nonexistent-file-or-buffer nil
+
+   rcirc-server-alist '(("rizon" :host "185.86.149.129" :auth "arianon/rizon"))
+   rcirc-time-format ""
    )
 
   (global-hungry-delete-mode)
