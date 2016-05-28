@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font pango: ariafont
+set $font pango: tewi 9
 set $border_width 1
 
 set $background #000000
@@ -29,12 +29,12 @@ set $ws8 "8:VIII"
 set $ws9 "9:IX"
 set $ws10 "10:X"
 
-set $gaps_inner 0
-set $gaps_outer 0
-gaps inner $gaps_inner
-gaps outer $gaps_outer
-smart_gaps on
-smart_borders on
+# set $gaps_inner 0
+# set $gaps_outer 0
+# gaps inner $gaps_inner
+# gaps outer $gaps_outer
+# smart_gaps on
+# smart_borders on
 workspace_auto_back_and_forth yes
 # }}}
 # THEME {{{
@@ -57,7 +57,7 @@ bindsym --release Shift+Print exec teknik $(img -s)
 bindsym $mod+Return exec --no-startup-id urxvt
 
 bindsym $mod+Shift+e exec emacs
-bindsym $mod+Shift+f exec firefox-esr
+bindsym $mod+Shift+f exec iceweasel
 
 # WM
 floating_modifier $mod
@@ -86,7 +86,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+i split horizontal
 bindsym $mod+o split vertical
 
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen
 
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -210,8 +210,8 @@ for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
 
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="menu"] floating enable
 
 for_window [class=(?i)chromium] focus child, layout tabbed, focus
 for_window [class=(?i)firefox] focus child, layout tabbed, focus
@@ -229,8 +229,8 @@ assign [class="(?i)steam*"] $ws4
 # BAR {{{
 bar {
 	strip_workspace_numbers yes
-	separator_symbol "·"
-  status_command ~/.i3/status.rb
+	# separator_symbol "·"
+	status_command ~/.i3/status.rb
 
 	colors {
 		# background $background
@@ -242,7 +242,7 @@ bar {
 		inactive_workspace $background $background $foreground
 		active_workspace   $background $background $foreground
 		urgent_workspace   $red        $red        $background
-		binding_mode       $yellow     $yellow     $background
+		# binding_mode       $yellow     $yellow     $background
 	}
 }
 # }}}

@@ -11,7 +11,7 @@ hsetroot -full ~/usr/img/horario.png
 setxkbmap us -option compose:menu -option caps:swapescape
 
 redshift &
-compton &
+# compton &
 
-# firefox &
+iceweasel &
 exec i3

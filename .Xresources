@@ -23,10 +23,14 @@ URxvt.scrollBar: false
 URxvt.internalBorder: 8
 !URxvt.cursorBlink: true
 
-!URxvt*boldFont: -*-ariafont-bold-*-*-*-*-*-*-*-*-*-iso10646-*
+!URxvt*font:  -*-gohufont-medium-*-*-*-14-*-*-*-*-*-iso10646-*
+URxvt*font:  -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+
 !URxvt*font: -*-ariafont-medium-*-*-*-*-*-*-*-*-*-iso10646-*
-URxvt*font: xft:ariafont
-URxvt*letterSpace: 1
+!URxvt*boldFont: -*-ariafont-bold-*-*-*-*-*-*-*-*-*-iso10646-*
+
+!URxvt*font: xft:Liberation Mono:size=9
+!URxvt*letterSpace: -2
 
 dmenu.selforeground: #000000
 dmenu.selbackground: #ffffff

@@ -1,4 +1,4 @@
-set -gx BROWSER firefox
+set -gx BROWSER iceweasel
 set -gx EDITOR "emacsclient -nc"
 set -gx LOCAL ~/.local
 set -gx GOPATH ~/.go
@@ -7,8 +7,7 @@ set -gx MAIL ~/var/mail
 set -gx RBENV_SHELL fish
 set -gx GPG_TTY (tty)
 
-set -gx PATH ~/bin $LOCAL/bin ~/.cargo/bin ~/.rbenv/bin ~/.rbenv/shims ~/.gem/ruby/2.3.0/bin \
-             /usr/bin/{core,site,vendor}_perl /usr/bin
+set -gx PATH ~/bin $LOCAL/bin ~/.npm-packages/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin /usr{/local,}/games
 
 if status --is-login
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
@@ -36,4 +35,4 @@ set fish_color_redirection magenta
 set fish_pager_color_prefix normal
 set fish_pager_color_description black --bold
 
-source ~/.rbenv/completions/rbenv.fish
+# source ~/.rbenv/completions/rbenv.fish

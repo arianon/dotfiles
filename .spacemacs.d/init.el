@@ -3,7 +3,7 @@
 (defun dotspacemacs/configure-org ()
   (setq-default
 
-   org-agenda-files '("~/org/evaluaciones.org")
+   org-agenda-files '("~/usr/org/evaluaciones.org")
    org-agenda-span 'week
    org-agenda-tags-column -100
    org-bullets-bullet-list '("*" ">" "+" "-")
@@ -16,35 +16,30 @@
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
+     auto-completion
      evil-cleverparens
 
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil
-                     spell-checking-enable-auto-dictionary t)
+     ;; (spell-checking :variables
+     ;;                 spell-checking-enable-by-default nil
+     ;;                 spell-checking-enable-auto-dictionary t)
 
      latex
-     ;; asciidoc
-     ;; html
-     ;; shell-scripts
-     ;; markdown
-     auto-completion
-     c-c++
-     colors
+     html
+     javascript
+     shell-scripts
+     markdown
+     ;; colors
      emacs-lisp
      git
      org
-     (rcirc :variables
-            rcirc-enable-znc-support t)
-     ;; javascript
-     ;; python
-     ;; ruby
-     ;; ruby-on-rails
-     ;; semantic
+     python
+     ruby
      (shell :variables
             shell-default-shell 'eshell
             shell-enable-smart-eshell t)
-     ;; syntax-checking
-     ;; yaml
+     sql
+     syntax-checking
+     yaml
      )
    dotspacemacs-additional-packages '(
                                       muttrc-mode
@@ -59,11 +54,11 @@
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner nil ;; 'official
    dotspacemacs-startup-lists '(recents bookmarks projects)
-   dotspacemacs-themes '(spacemacs-dark spacemacs-light)
+   dotspacemacs-themes '(spacemacs-light spacemacs-dark)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("ariafont" :size 10 :weight normal :width normal :powerline-scale 1)
+   dotspacemacs-default-font '("tewi" :size 11 :weight normal :width normal :powerline-scale 1)
    dotspacemacs-leader-key "SPC"
-   dotspacemacs-emacs-leader-key "M-RET"
+   dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-major-mode-emacs-leader-key "M-p"
    dotspacemacs-command-key ":"
@@ -114,7 +109,6 @@
        (cursor      . "#d0d0d0") ; #d0d0d0
        (highlight   . "#222222") ; #444444
        (lnum        . "#222222") ; #444444
-
        ;; CODE
        (comment     . "#777777") ; #008787
        (const       . "#d54e53") ; #d75fd7
@@ -124,7 +118,6 @@
        (str         . "#e78c45") ; #2aa198
        (type        . "#e7c547") ; #df005f
        (var         . "#c397d8") ; #8787d7
-
        ;; ORG
        (cblk        . "#ffffff") ; #b2b2b2
        (cblk-bg     . "#999999") ; #262626
@@ -138,7 +131,6 @@
        (head3-bg    . "#000000") ; #262626
        (head4       . "#875f00") ; #875f00
        (head4-bg    . "#000000") ; #262626
-
        ;; MISC
        (comp        . "#7aa6da") ; #d75fd7
        (mat         . "#86dc2f") ; #86dc2f
@@ -148,7 +140,6 @@
        (ttip-bg     . "#222222") ; #444444
        (ttip-sl     . "#333333") ; #333333
        (war         . "#dc752f") ; #dc752f
-
        ;; COLORS
        (aqua        . "#2aa198") ; #2aa198
        (aqua-bg     . "#000000") ; #262626
@@ -165,18 +156,16 @@
        (yellow      . "#875f00") ; #875f00
        (yellow-bg   . "#000000") ; #262626
        )))
+
   )
 
 (defun dotspacemacs/user-config ()
   (setq-default
-   powerline-default-separator nil
+   powerline-default-separator 'arrow
    avy-all-windows 'all-frames
 
    evil-move-cursor-back nil
    confirm-nonexistent-file-or-buffer nil
-
-   rcirc-server-alist '(("rizon" :host "185.86.149.129" :auth "arianon/rizon"))
-   rcirc-time-format ""
    )
 
   (global-hungry-delete-mode)

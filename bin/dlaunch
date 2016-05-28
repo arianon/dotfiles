@@ -1,12 +1,14 @@
 #!/bin/sh
 
 P=">"
-FN="ariafont"
+FN="tewi"
 
-NF="$(xrq foreground)"
-NB="$(xrq background)"
+# NF="$(xrq foreground)"
+# NB="$(xrq background)"
+NF="#ffffff"
+NB="#000000"
 SF="$NB"
 SB="$NF"
 
-dmenu_path | dmenu -p "$P" -fn "$FN" -nf "$NF" -nb "$NB" -sf "$SF" -sb "$SB" "$@" | exec sh
+dmenu_run -p "$P" -fn "$FN" -nf "$NF" -nb "$NB" -sf "$SF" -sb "$SB" "$@"
 
