@@ -57,7 +57,8 @@ bindsym --release Shift+Print exec teknik $(img -s)
 bindsym $mod+Return exec --no-startup-id urxvt
 
 bindsym $mod+Shift+e exec emacs
-bindsym $mod+Shift+f exec iceweasel
+bindsym $mod+Shift+f exec chromium
+bindsym $mod+Shift+b exec electrum
 
 # WM
 floating_modifier $mod
@@ -230,7 +231,7 @@ assign [class="(?i)steam*"] $ws4
 bar {
 	strip_workspace_numbers yes
 	# separator_symbol "·"
-	status_command ~/.i3/status.rb
+	status_command ~/.i3/status.js
 
 	colors {
 		# background $background

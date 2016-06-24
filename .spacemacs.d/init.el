@@ -16,6 +16,10 @@
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
+     c-c++
+
+     typescript
+
      auto-completion
      evil-cleverparens
 

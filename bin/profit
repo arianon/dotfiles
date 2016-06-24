@@ -1,33 +1,33 @@
-#!/bin/bash
+#!/usr/bin/env ruby
+#coding: utf-8
 
-hora=${1:-6}
-vef=${2:-1150}
-btc=450
+require 'active_support'
+require 'active_support/core_ext/numeric/conversions'
 
-diario=$((6 * hora))
-diario_btc=$((diario / btc))
+HORA = (ARGV.first || 16).to_i
+DIA = 6 * HORA
+SEMANA = 5 * DIA
+MES = 4 * SEMANA
+AÑO = 12 * MES
 
-semanal=$((5 * diario))
-semanal_btc=$((semanal / btc))
+VEF = 1000
+BTC = 650.0
 
-mensual=$((4 * semanal))
-mensual_btc=$((mensual / btc))
+def conv(n)
+  [
+    n.to_s(:currency),
+    (n / BTC).to_s(:currency, unit: '฿'),
+    (n * VEF).to_s(:currency, unit: 'VEF', format: '%n %u')
+  ]
+    .join(' | ')
+end
 
-anual=$((12 * mensual))
-anual_btc=$((anual / btc))
+puts <<EOF
+Dado que el dolar valga #{VEF} BsF y el bitcoin #{BTC} BTC;
+Ganancias previstas con #{conv(HORA)} la hora
 
-
-msg="Dado que el dolar valga %'d BsF;
-Ganancias previstas con $%'d o %'d BsF la hora:
-
-Diario (6 horas): $%'d | ฿%'d | %'d BsF
-Semanal (5 dias): $%'d | ฿%'d | %'d BsF
-Mensual (4 sems): $%'d | ฿%'d | %'d BsF
-Anual (12 meses): $%'d | ฿%'d | %'d BsF
-"
-
-printf "$msg" $vef $hora $((hora * vef)) \
-       $diario $diario_btc $((diario * vef)) \
-       $semanal $semanal_btc $((semanal * vef)) \
-       $mensual $mensual_btc $((mensual * vef)) \
-       $anual $anual_btc $((anual * vef))
+Diario (6 horas): #{conv(DIA)}
+Semanal (5 dias): #{conv(SEMANA)}
+Mensual (4 sems): #{conv(MES)}
+Anual (12 meses): #{conv(AÑO)}
+EOF

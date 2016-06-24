@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+while true
+  sudo systemctl restart NetworkManager openvpn
+  sleep 10
+end &

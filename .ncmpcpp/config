@@ -2,6 +2,7 @@ statusbar_visibility = "no"
 header_visibility = "no"
 titles_visibility = "no"
 
+user_interface = alternative
 playlist_display_mode = columns
 browser_display_mode = columns
 song_columns_list_format = "(50)[green]{t|f} (50)[white]{ar}"

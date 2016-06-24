@@ -6,6 +6,7 @@ set -gx RUST_SRC_PATH /usr/src/rust/src
 set -gx MAIL ~/var/mail
 set -gx RBENV_SHELL fish
 set -gx GPG_TTY (tty)
+set -gx NODE_PATH ~/.npm-packages/lib/node_modules
 
 set -gx PATH ~/bin $LOCAL/bin ~/.npm-packages/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin /usr{/local,}/games
 
@@ -16,7 +17,7 @@ if status --is-login
 end
 
 function fish_greeting
-	fortune
+	todo
 end
 
 # Colors
