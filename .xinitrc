@@ -15,4 +15,4 @@ redshift &
 # compton &
 
 # iceweasel &
-exec i3
+startxfce4

@@ -3,7 +3,7 @@
 [user]
 	email = arianon@openmailbox.org
 	name = arianon
-	signingkey = 0x0824BBFD
+	# signingkey = 0x0824BBFD
 [alias]
 	shallow-clone = clone --depth 1
 [format]
@@ -36,6 +36,6 @@
 [difftool]
 	prompt = false
 [commit]
-	gpgsign = true
+	# gpgsign = true
 [core]
 	quotepath = false

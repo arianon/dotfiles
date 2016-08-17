@@ -1,4 +1,4 @@
-set -gx BROWSER iceweasel
+set -gx BROWSER chromium
 set -gx EDITOR "emacsclient -nc"
 set -gx LOCAL ~/.local
 set -gx GOPATH ~/.go
@@ -6,9 +6,11 @@ set -gx RUST_SRC_PATH /usr/src/rust/src
 set -gx MAIL ~/var/mail
 set -gx RBENV_SHELL fish
 set -gx GPG_TTY (tty)
-set -gx NODE_PATH ~/.npm-packages/lib/node_modules
+set -gx NODE_PATH $LOCAL/lib/node_modules
+set -gx LANG en_US.UTF-8
+set -gx LC_ALL $LANG
 
-set -gx PATH ~/bin $LOCAL/bin ~/.npm-packages/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin /usr{/local,}/games
+set -gx PATH ~/bin $LOCAL/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin
 
 if status --is-login
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
