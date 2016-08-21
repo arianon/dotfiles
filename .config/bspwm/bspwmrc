@@ -1,31 +1,38 @@
 #! /bin/sh
 
+export SXHKD_SHELL=/bin/sh
+sxhkd &
+
 BASEDIR="$(dirname $0)"
+
+ruby $BASEDIR/_panel/app.rb |
+    lemonbar -f '-*-tewi-medium-*-*-*-*-*-*-*-*-*-*-*' |
+    dash
 
 # export PATH=$PATH:$(dirname $0)
 
 ###
 
 # Config
-bspc config border_width 1
-bspc config window_gap 0
+bspc config top_padding 16
+bspc config border_width 2
+bspc config window_gap 8
 
-bspc config normal_border_color  "$(xrq color1)"
-bspc config focused_border_color "$(xrq foreground)"
-bspc config presel_border_color  "$(xrq color4)"
-bspc config urgent_border_color  "$(xrq color1)"
+bspc config normal_border_color  "$(xrq background)"
+bspc config focused_border_color "$(xrq color1)"
+bspc config presel_feedback_color  "$(xrq color1)"
 
 bspc config split_ratio 0.5
+bspc config single_monocle true
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config focus_by_distance true
 bspc config focus_follows_pointer true
-bspc config auto_alternate true
-bspc config auto_cacenl true
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 # Rules
 bspc rule -a gimp pseudo_tiled=on
-bspc rule -a feh floating=on manage=off
+# bspc rule -a feh floating=on
 bspc rule -a firefox desktop=^1 fullscreen=on focus=on
+bspc rule -a emacs tiled=on
