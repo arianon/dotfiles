@@ -3,10 +3,8 @@
 P=">"
 FN="tewi"
 
-# NF="$(xrq foreground)"
-# NB="$(xrq background)"
-NF="#ffffff"
-NB="#000000"
+NF="$(xrq foreground)"
+NB="$(xrq background)"
 SF="$NB"
 SB="$NF"
 

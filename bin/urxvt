@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# xfontreload
-# exec /usr/bin/urxvt
-
 urxvtc "$@"
 
 if test $? -eq 2; then

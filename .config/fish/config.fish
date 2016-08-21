@@ -10,6 +10,8 @@ set -gx NODE_PATH $LOCAL/lib/node_modules
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL $LANG
 
+setenv GEMPATH ~/.gem/ruby/2.3.0
+
 set -gx PATH ~/bin $LOCAL/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin
 
 if status --is-login

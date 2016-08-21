@@ -170,7 +170,10 @@
 
    evil-move-cursor-back nil
    confirm-nonexistent-file-or-buffer nil
+
+   js2-basic-offset 2
    )
+  
 
   (global-hungry-delete-mode)
   (spacemacs/toggle-aggressive-indent-globally-on)
