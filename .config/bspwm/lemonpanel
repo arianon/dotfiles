@@ -1,0 +1,12 @@
+#!/bin/sh
+
+BASEDIR="$(dirname $(readlink -f $0))"
+HEIGHT=16
+
+bspc config top_padding $HEIGHT
+
+trap 'bspc config top_padding 0; trap - TERM; kill 0' INT TERM QUIT EXIT
+
+ruby $BASEDIR/panel/app.rb |
+	  lemonbar -f '-*-tewi-medium-*-*-*-*-*-*-*-*-*-*-*' -g x$HEIGHT -u 4 -a 32 -n lemonpanel | 
+	  dash

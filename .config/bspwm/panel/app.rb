@@ -1,20 +1,28 @@
 # coding: utf-8
 require 'json'
+require 'open-uri'
 
 Thread.abort_on_exception = true
+
+at_exit { close! }
 
 require_relative 'helpers'
 require_relative 'mkbar'
 
 $state = Hash.new('...')
+$listeners = []
 
 def render!
-  puts format('%%{l}%{music}%%{c}%{desktops}%%{r}%{volume} %{calendar} %{clock} ', $state)
+  puts format('%%{l}%{music}%%{c}%{desktops}%%{r}%{bitcoin} %{volume} %{calendar} %{clock} ', $state)
   STDOUT.flush
 end
 
 def update!(hsh)
   $state.merge!(hsh) && render!
+end
+
+def close!
+  $listeners.each(&:close)
 end
 
 def clock
@@ -24,10 +32,25 @@ def clock
 end
 
 def calendar
-  icon = ' DATE '.background!(:yellow)
+  icon = ' DATE '.background!(:magenta)
   date = Time.new.strftime('%a %d %b')
 
   "#{icon} #{date}"
+end
+
+def bitcoin
+  rates = open('http://api.bitven.com/prices') { |f| JSON.parse(f.read) }
+
+  prices = {
+    USD: rates['BTC_TO_USD_RATE'] * 0.001,
+    VEF: rates['BTC_TO_USD_RATE'] * rates['USD_TO_BSF_RATE'] * 0.001
+  }
+
+  icon = ' m฿ '.background!(:yellow)
+  usd = format('%.2f', prices[:USD]).foreground!(:green)
+  vef = format('%d', prices[:VEF]).foreground!(:red)
+
+  "#{icon} #{usd} · #{vef}"
 end
 
 def mpd
@@ -84,7 +107,7 @@ def bspwm
   output = ''
 
   desktops.each do |name, info|
-    desktop = ' ' * 8
+    desktop = ' ' * 4
 
     if info[:focused]
       desktop.underline!(:red)
@@ -128,9 +151,18 @@ threads << Thread.new do
 end
 
 threads << Thread.new do
+  loop do
+    update!(bitcoin: bitcoin)
+    sleep 600
+  end
+end
+
+threads << Thread.new do
   update!(volume: pulseaudio)
 
-  IO.foreach('| pactl subscribe change') do |line|
+  $listeners << pactl = open('| pactl subscribe change')
+
+  pactl.each_line do |line|
     # Only care about sink changes
     update!(volume: pulseaudio) if line.include? 'sink'
   end
@@ -140,7 +172,9 @@ threads << Thread.new do
   if system 'mpc'
     update!(music: mpd)
 
-    IO.foreach('| mpc idleloop player') do
+    $listeners << mpc = open('| mpc idleloop player')
+
+    mpc.each_line do
       update!(music: mpd)
     end
   else
@@ -151,7 +185,9 @@ end
 threads << Thread.new do
   update!(desktops: bspwm)
 
-  IO.foreach('| bspc subscribe desktop') do
+  $listeners << bspc = open('| bspc subscribe desktop')
+
+  bspc.each_line do
     update!(desktops: bspwm)
   end
 end
