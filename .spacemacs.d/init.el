@@ -165,7 +165,7 @@
 
 (defun dotspacemacs/user-config ()
   (setq-default
-   powerline-default-separator 'arrow
+   powerline-default-separator nil
    avy-all-windows 'all-frames
 
    evil-move-cursor-back nil
@@ -173,7 +173,6 @@
 
    js2-basic-offset 2
    )
-  
 
   (global-hungry-delete-mode)
   (spacemacs/toggle-aggressive-indent-globally-on)

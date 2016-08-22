@@ -14,4 +14,4 @@ setxkbmap us -option compose:menu -option caps:swapescape
 redshift &
 # compton &
 
-bspwm
+exec bspwm
