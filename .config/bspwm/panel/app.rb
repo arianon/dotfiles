@@ -122,8 +122,8 @@ def bspwm
   end
 
   output
-    .action!('bspc desktop -f prev', 4)
-    .action!('bspc desktop -f next', 5)
+    .action!('bspc desktop -f prev.occupied', 4)
+    .action!('bspc desktop -f next.occupied', 5)
 end
 
 #

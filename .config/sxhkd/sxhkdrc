@@ -47,7 +47,7 @@ super + ctrl + {comma, period}
   bspc node @/ --rotate {90, 180}
   
 super + bracket{left,right}
-  bspc desktop --focus {prev,next}
+  bspc desktop --focus {prev,next}.occupied
 
 super + {grave,Tab}
   bspc {node,desktop} --focus last
