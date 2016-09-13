@@ -13,7 +13,7 @@ $state = Hash.new('...')
 $listeners = []
 
 def render!
-  puts format('%%{l}%{music}%%{c}%{desktops}%%{r}%{bitcoin} %{volume} %{calendar} %{clock} ', $state)
+  puts format('%%{l}%{music}%%{c}%{desktops}%%{r}%{bitcoin} %{memory} %{volume} %{calendar} %{clock} ', $state)
   STDOUT.flush
 end
 
@@ -38,6 +38,22 @@ def calendar
   "#{icon} #{date}"
 end
 
+def memory
+  total, free, buffers, cached = File.read('/proc/meminfo')
+                                     .scan(/^(?:MemTotal|MemFree|Buffers|Cached):\s+(\d+) kB/)
+				     .flatten
+				     .map!(&:to_f)
+				     .map! { |n| n / 1024 }
+
+  real_free = free + buffers + cached
+  used = total - real_free
+  percentage = (used / total) * 100
+
+  icon = ' MEM '.background!(:blue)
+
+  "#{icon} #{mkbar(percentage)}"
+end
+
 def bitcoin
   rates = open('http://api.bitven.com/prices') { |f| JSON.parse(f.read) }
 
@@ -51,6 +67,8 @@ def bitcoin
   vef = format('%d', prices[:VEF]).foreground!(:red)
 
   "#{icon} #{usd} · #{vef}"
+rescue
+  ""
 end
 
 def mpd
@@ -151,6 +169,13 @@ threads << Thread.new do
 end
 
 threads << Thread.new do
+	loop do
+		update!(memory: memory)
+		sleep 1
+	end
+end
+
+threads << Thread.new do
   loop do
     update!(bitcoin: bitcoin)
     sleep 600
@@ -192,4 +217,4 @@ threads << Thread.new do
   end
 end
 
-sleep
+threads.each(&:join)

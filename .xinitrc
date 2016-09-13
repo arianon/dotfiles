@@ -6,12 +6,17 @@ xsetroot -cursor_name left_ptr
 
 # Wallpaper
 # xsetroot -mod 2 2 -bg "#333"
-hsetroot -full ~/background.png
+hsetroot -center ~/usr/img/railways.jpg
 
 # Keyboard
 setxkbmap us -option compose:menu -option caps:swapescape
 
 redshift &
 # compton &
+mpd &
 
-exec bspwm
+sleep 0.25
+
+chromium &
+# SXHKD_SHELL=/bin/sh sxhkd &
+exec startxfce4

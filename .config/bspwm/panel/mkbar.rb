@@ -1,7 +1,7 @@
 require_relative 'xresources'
 require_relative 'helpers'
 
-SIZE = 20
+SIZE = 16
 CHAR1 = ' '
 CHAR2 = ' '
 

@@ -16,9 +16,13 @@
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d")
    dotspacemacs-configuration-layers
    '(
-     c-c++
+     gtags
 
-     typescript
+     php
+
+     ;; c-c++
+
+     ;; typescript
 
      auto-completion
      evil-cleverparens
@@ -60,7 +64,7 @@
    dotspacemacs-startup-lists '(recents bookmarks projects)
    dotspacemacs-themes '(spacemacs-light spacemacs-dark)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("tewi" :size 11 :weight normal :width normal :powerline-scale 1)
+   dotspacemacs-default-font '("Liberation Mono" :size 12 :weight normal :width normal :powerline-scale 1)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-leader-key ","
@@ -175,7 +179,7 @@
    )
 
   (global-hungry-delete-mode)
-  (spacemacs/toggle-aggressive-indent-globally-on)
+  ;; (spacemacs/toggle-aggressive-indent-globally-on)
 
   ;; (if (configuration-layer/layer-usedp 'colors)
   ;;     (rainbow-mode))
