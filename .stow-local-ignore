@@ -4,7 +4,7 @@
 \.stow-local-ignore
 
 Gemfile.*
-themes
+x11/themes
 
 # Emacs garbage
 .+~
