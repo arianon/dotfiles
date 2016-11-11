@@ -13,7 +13,6 @@ setxkbmap us -option compose:menu -option caps:swapescape
 
 redshift &
 # compton &
-mpd &
 
 sleep 0.25
 
