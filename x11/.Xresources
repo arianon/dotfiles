@@ -1,4 +1,4 @@
-#include "etc/themes/base16-bright"
+#include "etc/x11/themes/base16-bright"
 
 ! URxvt
 URxvt.perl-lib:	/usr/lib/urxvt/perl

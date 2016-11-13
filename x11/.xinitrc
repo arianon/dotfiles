@@ -6,7 +6,7 @@ xsetroot -cursor_name left_ptr
 
 # Wallpaper
 # xsetroot -mod 2 2 -bg "#333"
-hsetroot -center ~/usr/img/railways.jpg
+hsetroot -center ~/usr/lambda.png
 
 # Keyboard
 setxkbmap us -option compose:menu -option caps:swapescape
@@ -18,4 +18,4 @@ sleep 0.25
 
 chromium &
 # SXHKD_SHELL=/bin/sh sxhkd &
-exec startxfce4
+exec i3
