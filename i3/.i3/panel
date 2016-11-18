@@ -16,20 +16,20 @@ class Widget:
         self.text = ''
         self.color = ''
 
-    def __repr__(self):
+    def to_dict(self):
         d = {'full_text': self.text}
 
         if self.color:
             d['color'] = self.color
 
-        return json.dumps(d)
+        return d
 
 
 class Panel:
     def __init__(self):
         self.loop = asyncio.get_event_loop()
-        self.listeners = []
         self.q = Queue()
+        self._listeners = []
 
     async def start(self):
         """
@@ -37,29 +37,33 @@ class Panel:
         """
         consumer = self.renderer()
         producers = [
-            # self.volume(),
+            self.volume(),
             self.mpd(),
             self.calendar(),
             self.clock()
         ]
 
-        await asyncio.wait(producers + [consumer])
+        await asyncio.wait([consumer, *producers])
 
     async def renderer(self):
         """
         Receives the data from the workers queue and renders it to i3bar
         """
-        state = defaultdict(lambda: Widget())
+        state = defaultdict(Widget)
 
-        print(json.dumps({'version': 1}), end='\n[\n')
+        self.write({'version': 1})
+
+        # Begin infinite array.
+        print('[[],')
 
         while True:
             new_state = await self.q.get()
             state.update(new_state)
 
-            widgets = [state['music'], state['date'], state['time']]
+            widgets = ['volume', 'music', 'date', 'time']
+            widgets = [state[w].to_dict() for w in widgets]
 
-            print(widgets, end=',\n', flush=True)
+            self.write(widgets, end=',', flush=True)
 
     async def calendar(self):
         """
@@ -94,12 +98,12 @@ class Panel:
         reports a `player` action (song switched, paused, unpaused or stopped)
         """
         widget = Widget()
-        idleloop = await aiopopen('mpc', 'idleloop', 'player', stdout=PIPE)
-        self.listeners.append(idleloop)
+        q = Queue()
+
+        asyncio.ensure_future(self._mpd_listener(q))
 
         while True:
-            proc = await aiopopen('mpc', stdout=PIPE)
-            mpc = (await proc.stdout.read()).decode()
+            mpc = await q.get()
 
             widget.text = mpc.split('\n')[0]
 
@@ -113,19 +117,16 @@ class Panel:
 
             await self.q.put({'music': widget})
 
-            # Wait until next event.
-            await idleloop.stdout.readline()
-
     async def volume(self):
         widget = Widget()
-        sub = await aiopopen('pactl', 'subscribe', 'change', stdout=PIPE)
-        self.listeners.append(sub)
+        q = Queue()
+
+        asyncio.ensure_future(self._volume_listener(q))
 
         while True:
-            proc = await aiopopen('pactl', 'list', 'sinks')
-            pactl = (await proc.stdout.read()).decode()
+            pactl = await q.get()
 
-            volume = re.search('([0-9])+%', pactl).group(1)
+            volume = re.search(r'([0-9]+)%', pactl).group(1)
             volume = int(volume)
 
             muted = 'Mute: yes' in pactl
@@ -137,7 +138,38 @@ class Panel:
             if muted:
                 widget.color = '#d54e53'
 
-            widget.text = mkbar(volume)
+            widget.text = "VOL: {}".format(mkbar(volume))
+
+            await self.q.put({'volume': widget})
+
+    async def _mpd_listener(self, q):
+        idleloop = await aiopopen('mpc', 'idleloop', 'player', stdout=PIPE)
+        self._listeners.append(idleloop)
+
+        while True:
+            proc = await aiopopen('mpc', stdout=PIPE)
+            mpc = await proc.stdout.read()
+            mpc = mpc.decode()
+
+            await q.put(mpc)
+
+            await idleloop.stdout.readline()
+
+    async def _volume_listener(self, q):
+        sub = await aiopopen('pactl', 'subscribe', 'change', stdout=PIPE)
+        self._listeners.append(sub)
+
+        while True:
+            proc = await aiopopen('pactl', 'list', 'sinks', stdout=PIPE)
+            pactl = await proc.stdout.read()
+
+            await q.put(pactl.decode())
+
+            await sub.stdout.readline()
+
+    @staticmethod
+    def write(*args, **kwargs):
+        print(json.dumps(*args), **kwargs)
 
     def run(self):
         """
@@ -153,7 +185,7 @@ class Panel:
                 gathered.cancel()
                 self.loop.run_until_complete(gathered)
 
-                for proc in self.listeners:
+                for proc in self._listeners:
                     proc.kill()
 
                 gathered.exception()
