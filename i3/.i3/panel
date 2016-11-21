@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 import time
@@ -10,6 +10,7 @@ from collections import defaultdict
 import asyncio
 from asyncio.subprocess import PIPE
 from asyncio import Queue, sleep, create_subprocess_exec as aiopopen
+
 
 class Widget:
     def __init__(self):
@@ -63,7 +64,7 @@ class Panel:
             widgets = ['volume', 'music', 'date', 'time']
             widgets = [state[w].to_dict() for w in widgets]
 
-            self.write(widgets, end=',', flush=True)
+            self.write(widgets, end=',\n', flush=True)
 
     async def calendar(self):
         """
@@ -159,13 +160,19 @@ class Panel:
         sub = await aiopopen('pactl', 'subscribe', 'change', stdout=PIPE)
         self._listeners.append(sub)
 
-        while True:
+        async def pactl():
             proc = await aiopopen('pactl', 'list', 'sinks', stdout=PIPE)
             pactl = await proc.stdout.read()
+            return pactl.decode()
 
-            await q.put(pactl.decode())
+        await q.put(await pactl())
 
-            await sub.stdout.readline()
+        while True:
+            message = await sub.stdout.readline()
+
+            # Only care about messages about the sink.
+            if b'sink' in message:
+                await q.put(await pactl())
 
     @staticmethod
     def write(*args, **kwargs):
@@ -196,12 +203,9 @@ class Panel:
         finally:
             self.loop.close()
 
-def mkbar(value):
-    if value > 100:
-        value = 100
-    elif value < 0:
-        value = 0
 
+def mkbar(value):
+    value = max(min(value, 100), 0)
     value = round(value / 100 * 16)
     remainder = 16 - value
 
@@ -213,6 +217,7 @@ def mkbar(value):
         bar.append('-' * remainder)
 
     return ''.join(bar)
+
 
 if __name__ == '__main__':
     panel = Panel()
