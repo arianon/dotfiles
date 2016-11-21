@@ -1,6 +1,7 @@
 set -gx BROWSER chromium
-set -gx EDITOR "emacsclient -nc"
+set -gx EDITOR vim
 set -gx LOCAL ~/.local
+set -gx PREFIX $LOCAL
 set -gx GOPATH ~/.go
 set -gx RUST_SRC_PATH /usr/src/rust/src
 set -gx MAIL ~/var/mail
@@ -10,14 +11,16 @@ set -gx NODE_PATH $LOCAL/lib/node_modules
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL $LANG
 
-setenv GEMPATH ~/.gem/ruby/2.3.0
-
 set -gx PATH ~/bin $LOCAL/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin
 
 if status --is-login
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
 		exec startx -- -keeptty >~/.xorg.log ^&1
 	end
+end
+
+if which keychain >/dev/null ^&1
+	keychain -q -Q --eval | source
 end
 
 function fish_greeting

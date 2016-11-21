@@ -15,11 +15,11 @@ end
 
 function prompt::format_time -a milliseconds
 	[ "$milliseconds" -gt 0 ]; or return
-	which mili2human >/dev/null ^&1; or return
+	which milli2human >/dev/null ^&1; or return
 
 	echo -n "("
 	set_color yellow
-	mili2human "$milliseconds"
+	milli2human "$milliseconds"
 	set_color normal
 	echo -n ")"
 end
@@ -72,12 +72,13 @@ function fish_prompt
 		echo -n (prompt::user)"@"(prompt::host)" "
 	end
 
+	echo
 	prompt::current_directory
-	echo -n " "
+	echo
 
-	if git rev-parse ^/dev/null
-		echo -n "("(prompt::git)") "
-	end
+	# if git rev-parse ^/dev/null
+	# 	echo -n "("(prompt::git)") "
+	# end
 
 	set_color "$prompt_color"
 	echo -n "$prompt_char "
@@ -85,8 +86,8 @@ function fish_prompt
 end
 
 function fish_right_prompt
-  prompt::tor
+	prompt::tor
 
-	# set -q CMD_DURATION
-	# and prompt::format_time "$CMD_DURATION"
+	set -q CMD_DURATION
+	and prompt::format_time "$CMD_DURATION"
 end
