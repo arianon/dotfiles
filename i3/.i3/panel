@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3.6
 # -*- coding: utf-8 -*-
 
 import time
@@ -29,42 +29,23 @@ class Widget:
 class Panel:
     def __init__(self):
         self.loop = asyncio.get_event_loop()
-        self.q = Queue()
         self._listeners = []
 
     async def start(self):
         """
-        Starts the workers and runs them in parallel.
-        """
-        consumer = self.renderer()
-        producers = [
-            self.volume(),
-            self.mpd(),
-            self.calendar(),
-            self.clock()
-        ]
-
-        await asyncio.wait([consumer, *producers])
-
-    async def renderer(self):
-        """
         Receives the data from the workers queue and renders it to i3bar
         """
-        state = defaultdict(Widget)
 
         self.write({'version': 1})
 
         # Begin infinite array.
         print('[[],')
 
-        while True:
-            new_state = await self.q.get()
-            state.update(new_state)
-
-            widgets = ['volume', 'music', 'date', 'time']
-            widgets = [state[w].to_dict() for w in widgets]
+        async for widgets in self.consume():
+            widgets = [widgets[w] for w in 'volume music calendar clock'.split()]
 
             self.write(widgets, end=',\n', flush=True)
+
 
     async def calendar(self):
         """
@@ -74,7 +55,8 @@ class Panel:
 
         while True:
             widget.text = time.strftime('%a %d %b')
-            await self.q.put({'date': widget})
+
+            yield widget
 
             now = datetime.now()
             seconds_elapsed = (now.hour * 3600) - (now.minute * 60) - now.second
@@ -89,23 +71,19 @@ class Panel:
 
         while True:
             widget.text = time.strftime('%H:%M:%S')
-            await self.q.put({'time': widget})
+
+            yield widget
 
             await sleep(1)
 
-    async def mpd(self):
+    async def music(self):
         """
         Fetches the current song from `mpc` and waits until `mpc idleloop`
         reports a `player` action (song switched, paused, unpaused or stopped)
         """
         widget = Widget()
-        q = Queue()
 
-        asyncio.ensure_future(self._mpd_listener(q))
-
-        while True:
-            mpc = await q.get()
-
+        async for mpc in self._mpd_listener():
             widget.text = mpc.split('\n')[0]
 
             if '[playing]' in mpc:
@@ -113,20 +91,19 @@ class Panel:
             elif '[paused]' in mpc:
                 widget.color = '#e7c547'
             else:
-                widget.text = 'NOTHING PLAYING'
-                widget.color = '#d54e53'
+                widget.text = ''
+                # widget.color = '#d54e53'
 
-            await self.q.put({'music': widget})
+            yield widget
 
     async def volume(self):
+        """
+        Fetches the volume from `pactl` and waits until `pactl subscribe`
+        reports actions on the "sink" (volume stuff)
+        """
         widget = Widget()
-        q = Queue()
 
-        asyncio.ensure_future(self._volume_listener(q))
-
-        while True:
-            pactl = await q.get()
-
+        async for pactl in self._pulseaudio_listener():
             volume = re.search(r'([0-9]+)%', pactl).group(1)
             volume = int(volume)
 
@@ -139,11 +116,11 @@ class Panel:
             if muted:
                 widget.color = '#d54e53'
 
-            widget.text = "VOL: {}".format(mkbar(volume))
+            widget.text = "VOL: {}%".format(volume)
 
-            await self.q.put({'volume': widget})
+            yield widget
 
-    async def _mpd_listener(self, q):
+    async def _mpd_listener(self):
         idleloop = await aiopopen('mpc', 'idleloop', 'player', stdout=PIPE)
         self._listeners.append(idleloop)
 
@@ -152,12 +129,12 @@ class Panel:
             mpc = await proc.stdout.read()
             mpc = mpc.decode()
 
-            await q.put(mpc)
+            yield mpc
 
             await idleloop.stdout.readline()
 
-    async def _volume_listener(self, q):
-        sub = await aiopopen('pactl', 'subscribe', 'change', stdout=PIPE)
+    async def _pulseaudio_listener(self):
+        sub = await aiopopen('pactl', 'subscribe', stdout=PIPE)
         self._listeners.append(sub)
 
         async def pactl():
@@ -165,14 +142,39 @@ class Panel:
             pactl = await proc.stdout.read()
             return pactl.decode()
 
-        await q.put(await pactl())
+        yield await pactl()
 
         while True:
             message = await sub.stdout.readline()
 
             # Only care about messages about the sink.
             if b'sink' in message:
-                await q.put(await pactl())
+                yield await pactl()
+
+    async def consume(self):
+        """
+        Starts the workers, running them in parallel.
+
+        This is where the black magic happens.
+        """
+        state = defaultdict(dict)
+        queue = Queue()
+        producers = [self.volume, self.music, self.calendar, self.clock]
+
+        async def consume_agen(agen):
+            async for widget in agen():
+                await queue.put({
+                    agen.__name__: widget.to_dict()
+                })
+
+        for agen in producers:
+            self.loop.create_task(consume_agen(agen))
+
+        while True:
+            state.update(await queue.get())
+
+            yield state
+
 
     @staticmethod
     def write(*args, **kwargs):
