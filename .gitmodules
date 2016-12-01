@@ -1,0 +1,3 @@
+[submodule "i3/.i3/panel"]
+	path = i3/.i3/panel
+	url = git@github.com:arianon/panel.git
