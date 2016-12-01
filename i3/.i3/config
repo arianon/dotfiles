@@ -51,8 +51,8 @@ client.urgent           $red         $red        $foreground   $red
 # Non-WM
 bindsym $mod+p exec dlaunch
 bindsym $mod+Shift+p exec passmenu
-bindsym --release Print exec teknik $(img)
-bindsym --release Shift+Print exec teknik $(img -s)
+bindsym --release Print exec img
+bindsym --release Shift+Print exec img -s
 
 bindsym $mod+Return exec --no-startup-id urxvt
 
@@ -230,8 +230,8 @@ assign [class="(?i)steam*"] $ws4
 # BAR {{{
 bar {
 	strip_workspace_numbers yes
-	separator_symbol "·"
-	status_command ~/.i3/panel
+	separator_symbol " "
+	status_command ~/.i3/panel/run.py
 
 	colors {
 		# background $background
