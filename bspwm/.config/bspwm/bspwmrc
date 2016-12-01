@@ -1,8 +1,6 @@
 #! /bin/sh
 
-BASEDIR="$(dirname $(readlink -f $0))"
-
-$BASEDIR/lemonpanel &
+# BASEDIR="$(dirname $(readlink -f $0))"
 
 # export PATH=$PATH:$(dirname $0)
 
@@ -34,6 +32,5 @@ bspc rule -a gimp pseudo_tiled=on
 # bspc rule -a feh floating=on
 bspc rule -a firefox desktop=^1 fullscreen=on focus=on
 bspc rule -a emacs tiled=on
-bspc rule -a lemonpanel manage=on layer=below
 
 wait
