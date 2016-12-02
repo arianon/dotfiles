@@ -24,7 +24,7 @@ def count_lines(file):
 def main(argv=sys.argv[1:]):
     args = set(argv)
 
-    if len(args) > 500:
+    if len(args) > 1000:
         try:
             pool = Pool()
             counts = pool.map(count_lines, args)
