@@ -1,24 +1,16 @@
 #!/usr/bin/python -S
 
-from subprocess import Popen, PIPE
-from contextlib import closing
-from io import StringIO
+from subprocess import check_output as qx
 
 def colorhexa(color, hexcode):
-    with closing(StringIO()) as output:
-        output.write('\033[48;5;{}m'.format(color))
-        output.write(' ' * len(hexcode))
-        output.write('\033[0m')
-        output.write(' ')
-        output.write('\033[38;5;{}m'.format(color))
-        output.write(hexcode.strip())
-        output.write('\033[0m')
-        return output.getvalue()
+    template = '\033[48;5;{color}m{}\033[0m \033[38;5;{color}m{}\033[0m'
 
-proc = Popen('xrq color{0..15}', shell=True, stdout=PIPE)
+    return template.format(' ' * len(hexcode), hexcode, color=color)
+
+hexcodes = qx('xrq color{0..15}', shell=True).splitlines()
 
 colors = [colorhexa(index, color.decode())
-          for index, color in enumerate(proc.stdout.readlines())]
+          for index, color in enumerate(hexcodes)]
 
 for dark_color, bright_color in zip(colors[:8], colors[8:]):
     print(dark_color, bright_color)
