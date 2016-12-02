@@ -51,8 +51,8 @@ client.urgent           $red         $red        $foreground   $red
 # Non-WM
 bindsym $mod+p exec dlaunch
 bindsym $mod+Shift+p exec passmenu
-bindsym --release Print exec img
-bindsym --release Shift+Print exec img -s
+bindsym --release Print exec teknik $(img) | xsel -b
+bindsym --release Shift+Print exec teknik $(img -s) | xsel -b
 
 bindsym $mod+Return exec --no-startup-id urxvt
 
