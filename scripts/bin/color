@@ -4,25 +4,21 @@ from subprocess import Popen, PIPE
 from contextlib import closing
 from io import StringIO
 
-def block(color):
+def colorhexa(color, hexcode):
     with closing(StringIO()) as output:
         output.write('\033[48;5;{}m'.format(color))
-        output.write(' ' * 8)
+        output.write(' ' * len(hexcode))
         output.write('\033[0m')
-        return output.getvalue()
-
-def hexa(color, hexcode):
-    with closing(StringIO()) as output:
+        output.write(' ')
         output.write('\033[38;5;{}m'.format(color))
-        output.write(hexcode)
+        output.write(hexcode.strip())
         output.write('\033[0m')
         return output.getvalue()
 
 proc = Popen('xrq color{0..15}', shell=True, stdout=PIPE)
-hexas = [s.decode() for s in proc.stdout.read().split()]
 
-for color in range(7):
-    print("{} {}\t{} {}".format(
-        block(color), hexa(color, hexas[color]),
-        block(color + 8), hexa(color, hexas[color + 8])
-    ))
+colors = [colorhexa(index, color.decode())
+          for index, color in enumerate(proc.stdout.readlines())]
+
+for dark_color, bright_color in zip(colors[:8], colors[8:]):
+    print(dark_color, bright_color)

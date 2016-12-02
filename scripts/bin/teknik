@@ -3,7 +3,12 @@
 import sys
 import json
 import asyncio
-import aiohttp
+
+try:
+    import aiohttp
+except ImportError:
+    print("Install 'aiohttp' with `pip install aiohttp`", file=sys.stderr)
+    sys.exit(1)
 
 TEKNIK = 'https://api.teknik.io/v1/Upload'
 
