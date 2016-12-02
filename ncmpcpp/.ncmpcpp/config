@@ -21,4 +21,4 @@ main_window_highlight_color = "white"
 playlist_disable_highlight_delay = 1
 empty_tag_color = "black"
 
-# vim: ft=perl
+# vim: ft=config
