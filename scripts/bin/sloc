@@ -1,16 +1,43 @@
-#!/usr/bin/ruby -wU
-# coding: utf-8
+#!/usr/bin/python -S
 
-count = 0
+import sys
+import re
+from multiprocessing import Pool
 
-ARGF.each do |line|
-  case line
-  when /^\s*$/ then next
-  # when /^\s*#/ then next
-  when /^\s*[{}]/ then next
-  when %r{^\s*[/*]} then next
-  else count += 1
-  end
-end
+PATTERN = re.compile(r'^\s*($|#|[{}])')
 
-puts "SLOC: #{count}"
+def count_lines(file):
+    count = 0
+
+    try:
+        with open(file, 'r') as f:
+            for line in f.readlines():
+                if PATTERN.match(line):
+                    continue
+                else:
+                    count += 1
+    except IsADirectoryError:
+        return 0
+
+    return count
+
+def main(argv=sys.argv[1:]):
+    args = set(argv)
+
+    if len(args) > 500:
+        try:
+            pool = Pool()
+            counts = pool.map(count_lines, args)
+        finally:
+            pool.close()
+            pool.join()
+    else:
+        counts = map(count_lines, args)
+
+    return sum(counts)
+
+if __name__ == '__main__':
+    try:
+        print("SLOC: {}".format(main()))
+    except KeyboardInterrupt:
+        pass

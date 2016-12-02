@@ -6,7 +6,7 @@ FN="tewi-9"
 NF="$(xrq foreground)"
 NB="$(xrq background)"
 SF="$NB"
-SB="$(xrq color1)"
+SB="$NF"
 
 dmenu_run -l 8 -p "$P" -fn "$FN" -nf "$NF" -nb "$NB" -sf "$SF" -sb "$SB" "$@"
 

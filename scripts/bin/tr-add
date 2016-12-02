@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 tr-notify() {
 	notify-send "<b>Transmission:</b>\n$1"

@@ -1,12 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-
-git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(bold black)(%cr) %C(bold blue)<%an>" "$@" |
+git log --graph --color=always --format="%C(auto)%h%d %s %C(bold black)(%cr) %C(bold blue)<%an>" "$@" |
 SHELL="/bin/bash" fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=ctrl-s \
     --exact --cycle --inline-info --prompt="Commits> " \
-    --bind "ctrl-m:execute:
-			(grep -o '[0-9a-f]\{7\}' | head -1 |
-			xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF_EOF'
-	{}
-FZF_EOF"
+    --bind "ctrl-m:execute:(grep -o '[0-9a-f]\{7\}' <<< {} | xargs git show --color=always | diff-highlight | less -R)" \
+    --preview "grep -o '[0-9a-f]\{7\}' <<< {} | xargs git show --color=always --pretty='' | diff-highlight"

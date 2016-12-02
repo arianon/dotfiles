@@ -1,24 +1,48 @@
-#!/usr/bin/ruby -wU
+#!/usr/bin/python
 
-require 'json'
-
-# TODO: Use net/http instead of rest-client
-
-begin
-  require 'rest-client'
-rescue LoadError
-  abort '$ gem install rest-client'
-end
+import sys
+import json
+import asyncio
+import aiohttp
 
 TEKNIK = 'https://api.teknik.io/v1/Upload'
 
-ARGV.each do |file|
-  request = RestClient.post TEKNIK, file: File.new(file)
+async def upload(file):
+    payload = {
+        'file': open(file, 'rb'),
+        'encrypt': json.dumps(False)
+    }
 
-  response = JSON.parse request
-  url = response['result']['url']
+    async with aiohttp.ClientSession() as session:
+        async with session.post(TEKNIK, data=payload) as resp:
+            return await resp.json()
 
-  puts url
-  IO.popen('xsel -ib', 'r+') { |c| c.print url }
-  IO.popen('xsel -ip', 'r+') { |c| c.print url }
-end
+async def main(argv=sys.argv[1:]):
+    args = set(argv)
+
+    if {'-h', '--help'} & args:
+        print('Usage: teknik [-h | --help] <files>...')
+        return 0
+
+    tasks = [upload(file) for file in args]
+    responses = await asyncio.gather(*tasks)
+
+    error = any(res.get('error') for res in responses)
+
+    if error:
+        json.dump(responses, fp=sys.stderr, indent=2)
+
+    for res in responses:
+        if 'result' in res:
+            print(res['result']['url'])
+
+    return 1 if error else 0
+
+
+if __name__ == '__main__':
+    try:
+        loop = asyncio.get_event_loop()
+        exit_code = loop.run_until_complete(main())
+        sys.exit(exit_code)
+    finally:
+        loop.close()

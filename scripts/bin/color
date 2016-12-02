@@ -1,17 +1,28 @@
-#!/usr/bin/env ruby
+#!/usr/bin/python -S
 
-def block(color)
-  "\e[48;5;#{color}m" << ' ' * 8 << "\e[0m"
-end
+from subprocess import Popen, PIPE
+from contextlib import closing
+from io import StringIO
 
-def hexa(color, hexcode)
-  "\e[38;5;#{color}m" << hexcode << "\e[0m"
-end
+def block(color):
+    with closing(StringIO()) as output:
+        output.write('\033[48;5;{}m'.format(color))
+        output.write(' ' * 8)
+        output.write('\033[0m')
+        return output.getvalue()
 
-hexas = `xrq color{0..15}`.split
+def hexa(color, hexcode):
+    with closing(StringIO()) as output:
+        output.write('\033[38;5;{}m'.format(color))
+        output.write(hexcode)
+        output.write('\033[0m')
+        return output.getvalue()
 
-(0..7).each_with_index do |color, i|
-  printf("%s %s\t%s %s\n",
-         block(color), hexa(color, hexas[i]),
-         block(color + 8), hexa(color, hexas[i + 8]))
-end
+proc = Popen('xrq color{0..15}', shell=True, stdout=PIPE)
+hexas = [s.decode() for s in proc.stdout.read().split()]
+
+for color in range(7):
+    print("{} {}\t{} {}".format(
+        block(color), hexa(color, hexas[color]),
+        block(color + 8), hexa(color, hexas[color + 8])
+    ))
