@@ -38,6 +38,7 @@ def main(argv=sys.argv[1:]):
 
 if __name__ == '__main__':
     try:
-        print("SLOC: {}".format(main()))
+        sloc = main()
+        print("SLOC: {}".format(sloc))
     except KeyboardInterrupt:
         pass
