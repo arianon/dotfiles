@@ -10,8 +10,8 @@ def count_lines(file):
     count = 0
 
     try:
-        with open(file, 'r') as f:
-            for line in f.readlines():
+        with open(file, 'r') as file:
+            for line in file:
                 if PATTERN.match(line):
                     continue
                 else:
@@ -24,7 +24,7 @@ def count_lines(file):
 def main(argv=sys.argv[1:]):
     args = set(argv)
 
-    if len(args) > 1000:
+    if len(args) > 5000:
         try:
             pool = Pool()
             counts = pool.map(count_lines, args)

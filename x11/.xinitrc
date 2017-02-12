@@ -12,6 +12,7 @@ hsetroot -center ~/usr/lambda.png
 setxkbmap us -option compose:menu -option caps:swapescape
 
 redshift &
+parcellite &
 # compton &
 
 sleep 0.25

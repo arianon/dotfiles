@@ -26,7 +26,8 @@ end
 
 function prompt::current_directory
 	set_color blue
-	echo -n "$PWD" | sed "s|$HOME|~|; s|\([^/.]\)[^/]*/|\1/|g"
+	# echo -n "$PWD" | sed "s|$HOME|~|; s|\([^/.]\)[^/]*/|\1/|g"
+	echo -n "$PWD" | sed "s|$HOME|~|"
 	set_color normal
 end
 

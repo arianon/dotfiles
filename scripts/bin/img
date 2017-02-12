@@ -10,7 +10,8 @@ if [[ "$1" == "-s" ]]; then
 	OPTS='-s -b 3 -c 0.600,0.306,0.333'
 fi
 
-FILE=${1:-'/tmp/temp.png'}
+# FILE=${1:-'/tmp/temp.png'}
 
-maim $OPTS $FILE
+cd ~/scrots
+maim --format jpg $OPTS
 echo $FILE

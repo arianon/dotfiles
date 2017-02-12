@@ -1,5 +1,5 @@
 set -gx BROWSER chromium
-set -gx EDITOR vim
+set -gx EDITOR "subl3 -w"
 set -gx LOCAL ~/.local
 set -gx PREFIX $LOCAL
 set -gx GOPATH ~/.go
@@ -10,14 +10,20 @@ set -gx GPG_TTY (tty)
 set -gx NODE_PATH $LOCAL/lib/node_modules
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL $LANG
+set -gx PYENV_ROOT ~/.pyenv
 
-set -gx PATH ~/bin $LOCAL/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin
+set -gx PATH ~/bin $PYENV_ROOT/{bin,shims} $GOPATH/bin $LOCAL/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin
 
 if status --is-login
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
 		exec startx -- -keeptty >~/.xorg.log ^&1
 	end
 end
+
+if status --is-interactive and if which pyenv >/dev/null ^&1
+	source $PYENV_ROOT/completions/pyenv.fish
+	set -gx PYENV_SHELL fish
+end	
 
 if which keychain >/dev/null ^&1
 	keychain -q -Q --eval | source
@@ -42,5 +48,3 @@ set fish_color_redirection magenta
 
 set fish_pager_color_prefix normal
 set fish_pager_color_description black --bold
-
-# source ~/.rbenv/completions/rbenv.fish
