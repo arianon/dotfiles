@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+import click
+
+def set_language(lang='en'):
+    pass

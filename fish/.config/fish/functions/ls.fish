@@ -1,5 +1,5 @@
 function ls
-	command ls -BFX --group-directories-first --color=auto $argv
+	command ls -BF --group-directories-first --color=auto $argv
 end
 
 function l

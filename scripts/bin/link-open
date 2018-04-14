@@ -2,7 +2,7 @@
 
 URI="$*"
 
-printf '%s' "$URI" | xsel -ib
+printf '%s' "$URI" | xclip -selection clipboard
 
 case $URI in
 	*.webm|*.mp4|*.mkv)
@@ -13,5 +13,5 @@ case $URI in
 		notify-send "Opening a YouTube video."
 		exec mpv --no-resume-playback "$URI"
 		;;
-	*) exec chromium "$URI"
+	*) exec "$BROWSER" "$URI"
 esac

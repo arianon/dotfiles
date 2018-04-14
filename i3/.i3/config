@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # SETTINGS {{{
 set $mod Mod4
-set $font pango: tewi 9
+set $font pango: tewi 8
 set $border_width 1
 
 set $background #000000
@@ -29,7 +29,7 @@ set $ws8 "8:VIII"
 set $ws9 "9:IX"
 set $ws10 "10:X"
 
-set $gaps_inner 32
+set $gaps_inner 0
 set $gaps_outer 0
 gaps inner $gaps_inner
 gaps outer $gaps_outer
@@ -51,8 +51,8 @@ client.urgent           $red         $red        $foreground   $red
 # Non-WM
 bindsym $mod+p exec dlaunch
 bindsym $mod+Shift+p exec passmenu
-bindsym --release Print exec teknik $(img) | xsel -b
-bindsym --release Shift+Print exec teknik $(img -s) | xsel -b
+bindsym --release Print exec img
+bindsym --release Shift+Print exec img -s
 
 bindsym $mod+Return exec --no-startup-id urxvt
 
@@ -220,6 +220,7 @@ for_window [class="qemu"] floating enable
 for_window [class="(?i)gbdfed"] floating enable
 for_window [class="(?i)grip"] floating enable
 for_window [class="(?i)jetbrains-*"] floating enable
+# for_window [class="(?i)telegram"] floating enable
 
 assign [class="(?i)firefox*"] $ws1
 assign [class="(?i)chromium"] $ws1
@@ -231,7 +232,7 @@ assign [class="(?i)steam*"] $ws4
 bar {
 	strip_workspace_numbers yes
 	separator_symbol " "
-	status_command ~/.i3/panel/run.py
+	status_command ~/.i3/panel/bin/panel
 
 	colors {
 		# background $background

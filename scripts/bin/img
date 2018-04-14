@@ -1,17 +1,41 @@
 #!/bin/bash
 
-maim() {
-	command maim --hidecursor $@ 
-	(( $? != 0 )) && exit 1
-}
+set -euo pipefail
 
-if [[ "$1" == "-s" ]]; then 
+if [[ "${1:-}" == "-s" ]]; then
 	shift
 	OPTS='-s -b 3 -c 0.600,0.306,0.333'
 fi
 
-# FILE=${1:-'/tmp/temp.png'}
+file=${1:-"$HOME/scrots/$(date +%s).png"}
 
-cd ~/scrots
-maim --format jpg $OPTS
-echo $FILE
+maim --hidecursor ${OPTS:-} ${file}
+
+optipng -quiet $file
+
+xclip -selection clipboard -t image/png < ${file}
+echo $file
+
+# FILE_PNG=${1:-"$HOME/scrots/$(date +%s).png"}
+# FILE_JPG=${FILE_PNG/png/jpg}
+#
+# maim $OPTS $FILE_PNG
+#
+# convert $FILE_PNG $FILE_JPG
+# size_png=$(du -b $FILE_PNG | cut -f1)
+# size_jpg=$(du -b $FILE_JPG | cut -f1)
+#
+# echo "PNG: $size_png bytes" > /dev/stderr
+# echo "JPG: $size_jpg bytes" > /dev/stderr
+#
+# if (( $size_png < $size_jpg )); then
+# 	file=$FILE_PNG
+# 	rm $FILE_JPG
+# else
+# 	file=$FILE_JPG
+# 	rm $FILE_PNG
+# fi
+#
+# # mime_type=$(file --brief --mime-type $file)
+# xclip -selection clipboard -target image/png < $file
+# echo $file

@@ -1,8 +1,9 @@
 set -gx BROWSER chromium
-set -gx EDITOR "subl3 -w"
+set -gx EDITOR vim
 set -gx LOCAL ~/.local
 set -gx PREFIX $LOCAL
 set -gx GOPATH ~/.go
+set -gx CARGOPATH ~/.cargo/bin
 set -gx RUST_SRC_PATH /usr/src/rust/src
 set -gx MAIL ~/var/mail
 set -gx RBENV_SHELL fish
@@ -12,7 +13,7 @@ set -gx LANG en_US.UTF-8
 set -gx LC_ALL $LANG
 set -gx PYENV_ROOT ~/.pyenv
 
-set -gx PATH ~/bin $PYENV_ROOT/{bin,shims} $GOPATH/bin $LOCAL/bin /usr/local/{s,}bin /{s,}bin /usr/{s,}bin
+set -gx PATH ~/bin $CARGOPATH /usr/local/{s,}bin /{s,}bin /usr/{s,}bin $LOCAL/bin
 
 if status --is-login
 	if [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ]
@@ -30,7 +31,6 @@ if which keychain >/dev/null ^&1
 end
 
 function fish_greeting
-	todo
 end
 
 # Colors
@@ -48,3 +48,10 @@ set fish_color_redirection magenta
 
 set fish_pager_color_prefix normal
 set fish_pager_color_description black --bold
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[ -f /home/arianon/.npm/_npx/2603/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.fish ]; and . /home/arianon/.npm/_npx/2603/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.fish
+
+# OPAM configuration
+source /home/arianon/.opam/opam-init/init.fish >/dev/null ^/dev/null or true

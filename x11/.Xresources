@@ -25,6 +25,7 @@ URxvt.internalBorder: 8
 
 !URxvt*font:  -*-gohufont-medium-*-*-*-14-*-*-*-*-*-iso10646-*
 URxvt*font:  -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+!URxvt*italicFont:  -*-tewi-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 
 !URxvt*font: -*-ariafont-medium-*-*-*-*-*-*-*-*-*-iso10646-*
 !URxvt*boldFont: -*-ariafont-bold-*-*-*-*-*-*-*-*-*-iso10646-*

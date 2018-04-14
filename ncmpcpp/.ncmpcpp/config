@@ -11,14 +11,16 @@ playlist_separate_albums = "yes"
 # progressbar_look = ""
 #progressbar_look = "———"
 progressbar_look = "=|-"
+progressbar_color = "black:b"
 progressbar_elapsed_color = "white"
-progressbar_boldness = "no"
 
 follow_now_playing_lyrics = "yes"
 main_window_color = "white"
-main_window_highlight_color = "white"
+# main_window_highlight_color = "white"
 
 playlist_disable_highlight_delay = 1
 empty_tag_color = "black"
+
+mpd_music_dir = "/home/arianon/media/music"
 
 # vim: ft=config

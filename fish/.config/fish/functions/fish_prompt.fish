@@ -15,7 +15,6 @@ end
 
 function prompt::format_time -a milliseconds
 	[ "$milliseconds" -gt 0 ]; or return
-	which milli2human >/dev/null ^&1; or return
 
 	echo -n "("
 	set_color yellow

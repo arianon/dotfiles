@@ -1,44 +1,86 @@
-#!/usr/bin/python -S
+#!/usr/bin/python
 
-import sys
 import re
 from multiprocessing import Pool
+import click
 
 PATTERN = re.compile(r'^\s*($|#|[{}])')
+
 
 def count_lines(file):
     count = 0
 
-    try:
-        with open(file, 'r') as file:
-            for line in file:
-                if PATTERN.match(line):
-                    continue
-                else:
-                    count += 1
-    except IsADirectoryError:
-        return 0
+    with file:
+        for line in file:
+            if PATTERN.match(line):
+                continue
+            else:
+                count += 1
 
     return count
 
-def main(argv=sys.argv[1:]):
-    args = set(argv)
 
-    if len(args) > 5000:
-        try:
-            pool = Pool()
-            counts = pool.map(count_lines, args)
-        finally:
-            pool.close()
-            pool.join()
-    else:
-        counts = map(count_lines, args)
+@click.command()
+@click.argument('files', type=click.File('r', lazy=True), nargs=-1)
+def count(files):
+    '''
+    This script counts the lines of code of all the FILES.
+    '''
+    count = 0
 
-    return sum(counts)
+    label = 'Counting lines from files'
+    with click.progressbar(files, label=label) as bar:
+        for file in bar:
+            count += count_lines(file)
+
+    click.echo(f'SLOC: {count}')
+
 
 if __name__ == '__main__':
-    try:
-        sloc = main()
-        print("SLOC: {}".format(sloc))
-    except KeyboardInterrupt:
-        pass
+    count()
+
+
+# import sys
+# import re
+# from multiprocessing import Pool
+#
+# import click
+#
+# PATTERN = re.compile(r'^\s*($|#|[{}])')
+#
+# def count_lines(file):
+#     count = 0
+#
+#     try:
+#         with open(file, 'r') as file:
+#             for line in file:
+#                 if PATTERN.match(line):
+#                     continue
+#                 else:
+#                     count += 1
+#     except IsADirectoryError:
+#         return 0
+#
+#     return count
+#
+# def main(argv=sys.argv[1:]):
+#     args = set(argv)
+#
+#     if len(args) > 5000:
+#         try:
+#             pool = Pool()
+#             counts = pool.map(count_lines, args)
+#         finally:
+#             pool.close()
+#             pool.join()
+#     else:
+#         counts = map(count_lines, args)
+#
+#     return sum(counts)
+#
+# if __name__ == '__main__':
+#     try:
+#         sloc = main()
+#         print("SLOC: {}".format(sloc))
+#     except KeyboardInterrupt:
+#         pass
