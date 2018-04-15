@@ -5,8 +5,7 @@ xrdb -load ~/.Xresources
 xsetroot -cursor_name left_ptr
 
 # Wallpaper
-# xsetroot -mod 16 16 -bg black -fg white
-hsetroot -fill ~/media/images/death-stranding.png
+xsetroot -mod 16 16 -bg black -fg white
 
 # Keyboard
 setxkbmap us,es \
